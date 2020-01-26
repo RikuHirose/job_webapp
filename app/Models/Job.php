@@ -20,15 +20,25 @@ class Job extends Model
     ];
 
 
-  // Relations
-  public function bgImage()
-  {
-      return $this->belongsTo(\App\Models\File::class, '_id', 'id');
-  }
+    // Relations
+    public function bgImage()
+    {
+        return $this->belongsTo(\App\Models\File::class, '_id', 'id');
+    }
 
-  public function company()
-  {
-      return $this->belongsTo(\App\Models\Comapny::class, 'company_id', 'id');
-  }
+    public function company()
+    {
+        return $this->belongsTo(\App\Models\Comapny::class, 'company_id', 'id');
+    }
+
+    public function occupations()
+    {
+        return $this->belongsToMany(\App\Models\Occupation::class, 'job_occupations', 'job_id', 'occupation_id');
+    }
+
+    public function skills()
+    {
+        return $this->belongsToMany(\App\Models\Skill::class, 'job_skills', 'job_id', 'skill_id');
+    }
 
 }

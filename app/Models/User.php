@@ -21,7 +21,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'profile_image_id',
+        'bg_image_id',
         'description',
         'address',
         'gender',
@@ -45,4 +45,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // Relations
+    public function bgImage()
+    {
+        return $this->belongsTo(\App\Models\File::class, 'bg_image_id', 'id');
+    }
+
+    public function occupations()
+    {
+        return $this->belongsToMany(\App\Models\Occupation::class, 'user_occupations', 'user_id', 'occupation_id');
+    }
+
+    public function skills()
+    {
+        return $this->belongsToMany(\App\Models\Skill::class, 'user_skills', 'user_id', 'skill_id');
+    }
 }
