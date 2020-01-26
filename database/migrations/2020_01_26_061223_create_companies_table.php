@@ -20,11 +20,11 @@ class CreateCompaniesTable extends Migration
             $table->string('name');
             $table->string('email');
 
-            $table->longText('description')->nullable();
-            $table->text('address')->nullable();
-            $table->date('founded_at')->nullable();
-            $table->string('ceo_name')->nullable();
-            $table->string('staff_number_type')->nullable();
+            $table->longText('description');
+            $table->text('address');
+            $table->date('founded_at');
+            $table->string('ceo_name');
+            $table->unsignedBigInteger('staff_number_type');
             $table->string('website_url')->nullable();
 
             $table->foreign('logo_image_id')->references('id')->on('files')->onDelete('set null');

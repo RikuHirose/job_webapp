@@ -4,17 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class File extends Model
+class Skill extends Model
 {
-
-    protected $table = 'file';
+    protected $table = 'skills';
 
     protected $fillable = [
-        'url',
-        'title',
+      'name',
     ];
 
-
-    // Relations
+  // Relations
 
 }

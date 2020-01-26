@@ -4,16 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Problemset extends Model
+class Occupation extends Model
 {
-
-    protected $table = 'problemsets';
+    protected $table = 'occupations';
 
     protected $fillable = [
-        'id',
-        'body',
+      'name',
     ];
-
 
   // Relations
 

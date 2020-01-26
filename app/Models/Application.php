@@ -4,23 +4,24 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Exam extends Model
+class Application extends Model
 {
-
-    protected $table = 'exams';
+    protected $table = 'applications';
 
     protected $fillable = [
-        'id',
-        'user_id',
-        'company_id',
-        'problemset_id',
-        'slug',
-        'minutes',
-        'started_at'
+      'job_id'
+      'user_id'
+      'comapny_id'
+      'status'
     ];
 
 
   // Relations
+  public function job()
+  {
+      return $this->belongsTo(\App\Models\File::class, 'job_id', 'id');
+  }
+
   public function user()
   {
       return $this->belongsTo(\App\Models\User::class, 'user_id', 'id');
@@ -30,10 +31,4 @@ class Exam extends Model
   {
       return $this->belongsTo(\App\Models\Company::class, 'company_id', 'id');
   }
-
-  public function problemset()
-  {
-      return $this->belongsTo(\App\Models\Problemset::class, 'problemset_id', 'id');
-  }
-
 }

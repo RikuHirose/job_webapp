@@ -18,9 +18,8 @@ class CreateJobsTable extends Migration
 
             $table->unsignedBigInteger('bg_image_id')->index();
             $table->unsignedBigInteger('company_id')->index();
-            $table->unsignedBigInteger('category_id')->index();
 
-            $table->string('title')->default('');
+            $table->string('title');
             $table->longText('description');
             $table->longText('application_qualification');
 
@@ -30,7 +29,6 @@ class CreateJobsTable extends Migration
 
             $table->foreign('bg_image_id')->references('id')->on('files')->onDelete('cascade');
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
 
             $table->timestamps();
         });
