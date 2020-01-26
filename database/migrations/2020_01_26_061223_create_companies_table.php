@@ -30,6 +30,7 @@ class CreateCompaniesTable extends Migration
             $table->foreign('logo_image_id')->references('id')->on('files')->onDelete('set null');
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->foreign('bg_image_id')->references('id')->on('files')->onDelete('set null');
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

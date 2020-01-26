@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Job extends Model
 {
+    use SoftDeletes;
+
     protected $table = 'jobs';
 
     protected $fillable = [
@@ -19,6 +22,7 @@ class Job extends Model
       'work_place'
     ];
 
+    protected $dates = ['deleted_at'];
 
     // Relations
     public function bgImage()

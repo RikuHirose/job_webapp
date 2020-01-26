@@ -25,7 +25,9 @@ class CreateApplicationsTable extends Migration
             $table->foreign('job_id')->references('id')->on('jobs')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('comapny_id')->references('id')->on('companies')->onDelete('cascade');
+
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
