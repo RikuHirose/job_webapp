@@ -27,12 +27,12 @@ class Job extends Model
     // Relations
     public function bgImage()
     {
-        return $this->belongsTo(\App\Models\File::class, '_id', 'id');
+        return $this->belongsTo(\App\Models\File::class, 'bg_image_id', 'id');
     }
 
     public function company()
     {
-        return $this->belongsTo(\App\Models\Comapny::class, 'company_id', 'id');
+        return $this->belongsTo(\App\Models\Company::class, 'company_id', 'id');
     }
 
     public function occupations()

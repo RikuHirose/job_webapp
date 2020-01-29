@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Job;
 
 class HomeController extends Controller
 {
@@ -23,7 +24,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        \SeoHelper::setIndexSeo();
-        return view('home');
+        $jobs = Job::all();
+        $jobs->load('bgImage', 'company', 'occupations', 'skills');
+
+        return view('home', [
+            'jobs' => $jobs
+        ]);
     }
 }
