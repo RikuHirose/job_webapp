@@ -25,7 +25,9 @@ class CreateJobsTable extends Migration
 
             $table->string('salary_min')->nullable();
             $table->string('salary_max')->nullable();
-            $table->string('work_place')->nullable();
+
+            $table->unsignedBigInteger('office_time');
+            $table->unsignedBigInteger('work_time');
 
             $table->foreign('bg_image_id')->references('id')->on('files')->onDelete('cascade');
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');

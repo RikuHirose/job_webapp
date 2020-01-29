@@ -20,7 +20,8 @@ class JobSeeder extends Seeder
          'application_qualification' => 'カスタマーサクセスの立ち上げ・体制構築のご経験',
          'salary_min'                => '10万円',
          'salary_max'                => '20万円',
-         'work_place'                => 1,
+         'office_time'               => 1,
+         'work_time'                 => 1,
         ]
       ]);
     }
