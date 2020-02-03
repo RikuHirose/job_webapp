@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 namespace App\Console\Commands;
 
@@ -67,11 +66,12 @@ class CreateRepositoryFileCommand extends Command
     public function handle()
     {
         $this->fileName = $this->argument('repositoryName');
+        $this->dirName  = $this->fileName;
 
         if (is_null($this->fileName)) {
             $this->error('Repository Name invalid');
         }
-        $this->dirName = $this->ask('new directory name. or use directory name');
+        // $this->dirName = $this->ask('new directory name. or use directory name');
 
         if (is_null($this->dirName)) {
             $this->error('Directory required!');
@@ -99,7 +99,7 @@ class CreateRepositoryFileCommand extends Command
      */
     private function creatRepositoryFile(): void
     {
-        $content = "<?php\n\nnamespace App\\Repositories\\$this->dirName;\n\nclass $this->fileName" . "Repository implements $this->fileName" . "RepositoryInterface\n{\n\n\t\tpublic function getBlankModel()\n\t\t{\n\t\t\treturn new $this->fileName();\n\t\t}\n}\n";
+        $content = "<?php\n\nnamespace App\\Repositories\\$this->dirName;\n\nUse App\\Models\\$this->dirName;\n\nclass $this->fileName" . "Repository implements $this->fileName" . "RepositoryInterface\n{\n\n\t\tpublic function getBlankModel()\n\t\t{\n\t\t\treturn new $this->fileName();\n\t\t}\n}\n";
         file_put_contents($this->repositoryFileName, $content);
     }
 
