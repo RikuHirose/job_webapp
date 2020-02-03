@@ -11,37 +11,13 @@ use App\Models\Occupation;
 class JobController extends Controller
 {
 
-    public function __construct(
-    )
-    {
-    }
-
-
     public function index(Request $request)
     {
-        $parameter = \Request::query();
-        $jobs   = new Job();
-        $skills      = Skill::all();
-        $occupations = Occupation::all();
+        $parameters  = \Request::query();
+        $skills      = $this->skillRepository->getBlankModel()->all();
+        $occupations = $this->occupationRepository->getBlankModel()->all();
 
-        if (!is_null($parameter['occupation_id'])) {
-            $occupationId = $parameter['occupation_id'];
-            $jobs         = $jobs->when($occupationId, function ($query) use ($occupationId) {
-                return $query->whereHas('occupations', function ($q) use ($occupationId) {
-                    $q->where('occupations.id', $occupationId);
-                });
-            });
-        }
-
-        if (!is_null($parameter['skill_id'])) {
-            $skillId = $parameter['skill_id'];
-            $jobs    = $jobs->when($skillId, function ($query) use ($skillId) {
-                return $query->whereHas('skills', function ($q) use ($skillId) {
-                    $q->where('skills.id', $skillId);
-                });
-            });
-        }
-
+        $jobs = $this->jobRepository->filterByParameters($parameters);
         $jobs = $jobs->paginate();
         $jobs->load('bgImage', 'company.logo', 'occupations', 'skills');
 
@@ -49,7 +25,7 @@ class JobController extends Controller
 
         return view('pages.jobs.index', [
             'jobs'      => $jobs,
-            'parameter' => $parameter,
+            'parameters' => $parameters,
             'skills'      => $skills,
             'occupations' => $occupations,
         ]);
