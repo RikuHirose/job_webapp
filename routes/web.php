@@ -33,8 +33,14 @@ Route::group(['middleware' => ['auth']], function ()
 
 Route::get('/', 'HomeController@index')->name('home');
 
-// jobs
-Route::resource('jobs', 'User\JobController', ['only' => ['index', 'show']]);
+Route::group([
+  'as'        => 'user.',
+  'namespace' => 'User'
+], function () {
+  // jobs
+  Route::resource('jobs', 'JobController', ['only' => ['index', 'show']]);
+});
+
 // Route::get('/q', 'User\JobController@index')->name('jobs.search');
 
 // Route::group(['as' => 'about.'], function () {

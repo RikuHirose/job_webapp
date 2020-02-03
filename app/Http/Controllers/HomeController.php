@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Job;
+use App\Models\Skill;
+use App\Models\Occupation;
 
 class HomeController extends Controller
 {
@@ -24,11 +26,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $jobs = Job::all();
+        $skills      = Skill::all();
+        $occupations = Occupation::all();
+        $jobs        = Job::paginate(2);
+
         $jobs->load('bgImage', 'company', 'occupations', 'skills');
 
         return view('home', [
-            'jobs' => $jobs
+            'jobs'        => $jobs,
+            'skills'      => $skills,
+            'occupations' => $occupations,
         ]);
     }
 }

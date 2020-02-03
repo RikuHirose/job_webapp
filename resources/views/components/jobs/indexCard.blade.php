@@ -1,7 +1,7 @@
 <div class="row mb-3 c-job-index-card">
 
   <div class="col-md-7 c-job-index-card--img__wrap">
-    <a href="{{ route('jobs.show', $job->id) }}">
+    <a href="{{ route('user.jobs.show', $job->id) }}">
       <img src="{{ $job->bgImage->url }}" class="c-job-index-card--img__sizing">
     </a>
   </div>
@@ -9,7 +9,7 @@
   <div class="col-md-5 mt-2 mb-2 c-job-index-card--right">
     <div class="c-job-index-card__ttl--wrap">
         <h2 class="c-job-index-card__ttl">
-          <a href="{{ route('jobs.show', $job->id) }}" class="c-job-index-card__ttl--link">{{ $job->title }}</a>
+          <a href="{{ route('user.jobs.show', $job->id) }}" class="c-job-index-card__ttl--link">{{ $job->title }}</a>
         </h2>
     </div>
 
@@ -38,7 +38,7 @@
     </div>
 
     <div class="c-job-index-card__btn--wrap">
-      <a href="{{ route('jobs.show', $job->id) }}" class="w-100 m-btnM" btn-type="primary">
+      <a href="{{ route('user.jobs.show', $job->id) }}" class="w-100 m-btnM" btn-type="primary">
         詳しく見る
       </a>
     </div>
