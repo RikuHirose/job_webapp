@@ -1,28 +1,20 @@
 <?php
-namespace App\Repositories;
 
-use App\Models\Job;
+namespace App\Repositories\Job;
 
-class JobRepository
+Use App\Models\Job;
+
+class JobRepository implements JobRepositoryInterface
 {
-    protected $job;
 
-    /**
-    * @param object $job
-    */
-    public function __construct(Job $job)
-    {
-        $this->job = $job;
-    }
-
-    public function getBlankModel()
-    {
-        return new Job();
-    }
+	public function getBlankModel()
+	{
+		return new Job();
+	}
 
     public function filterByParameters($parameters)
     {
-        $jobs = $this->job;
+        $jobs = $this->getBlankModel();
 
         if (!is_null($parameters['occupation_id'])) {
             $occupationId = $parameters['occupation_id'];
@@ -44,5 +36,4 @@ class JobRepository
 
         return $jobs;
     }
-
 }

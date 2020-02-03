@@ -7,9 +7,9 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
-use App\Repositories\JobRepository;
-use App\Repositories\SkillRepository;
-use App\Repositories\OccupationRepository;
+use App\Repositories\Job\JobRepositoryInterface;
+use App\Repositories\Skill\SkillRepositoryInterface;
+use App\Repositories\Occupation\OccupationRepositoryInterface;
 
 class Controller extends BaseController
 {
@@ -20,9 +20,9 @@ class Controller extends BaseController
     protected $occupationRepository;
 
     public function __construct(
-        JobRepository $jobRepository,
-        SkillRepository $skillRepository,
-        OccupationRepository $occupationRepository
+        JobRepositoryInterface $jobRepository,
+        SkillRepositoryInterface $skillRepository,
+        OccupationRepositoryInterface $occupationRepository
     )
     {
         $this->jobRepository        = $jobRepository;
