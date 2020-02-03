@@ -32,6 +32,8 @@ class HomeController extends Controller
 
         $jobs->load('bgImage', 'company', 'occupations', 'skills');
 
+        \SeoHelper::setIndexSeo();
+
         return view('home', [
             'jobs'        => $jobs,
             'skills'      => $skills,

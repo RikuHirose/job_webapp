@@ -45,6 +45,8 @@ class JobController extends Controller
         $jobs = $jobs->paginate();
         $jobs->load('bgImage', 'company.logo', 'occupations', 'skills');
 
+        \SeoHelper::setIndexSeo();
+
         return view('pages.jobs.index', [
             'jobs'      => $jobs,
             'parameter' => $parameter,
@@ -57,6 +59,7 @@ class JobController extends Controller
     {
         $job->load('bgImage', 'company.logo', 'occupations', 'skills');
 
+        \SeoHelper::setJobShowSeo();
         return view('pages.jobs.show', [
                 'job' => $job,
         ]);

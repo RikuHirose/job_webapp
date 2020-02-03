@@ -23,8 +23,8 @@ class SeoHelper
         return self::setSeoText($title, $keyWords, $description);
     }
 
-    // mypage & user
-    public function setUserShowSeo($model)
+    // job
+    public function setJobShowSeo($model)
     {
         $appName      = config('app.name');
         $title        = $model->name. '  |  ' .trans('seo.users.show.title');
