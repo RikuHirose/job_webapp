@@ -17,8 +17,7 @@ class JobController extends Controller
         $skills      = $this->skillRepository->getBlankModel()->all();
         $occupations = $this->occupationRepository->getBlankModel()->all();
 
-        $jobs = $this->jobRepository->filterByParameters($parameters);
-        $jobs = $jobs->paginate();
+        $jobs = $this->jobRepository->paginateFilterByParameters($parameters);
         $jobs->load('bgImage', 'company.logo', 'occupations', 'skills');
 
         \SeoHelper::setIndexSeo();
