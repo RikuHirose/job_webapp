@@ -15,33 +15,30 @@
 Auth::routes();
 
 
-Route::group(['middleware' => ['auth']], function ()
-{
-
-  // Route::group(['prefix' => 'mypage/', 'as' => 'mypage.'], function () {
-  //     Route::get('/', 'User\UserController@show')->name('show');
-  //     Route::get('/edit', 'User\UserController@edit')->name('edit');
-  //     Route::post('/update', 'User\UserController@update')->name('update');
-
-  //     Route::get('/favorited', 'User\UserController@showFavorited')->name('favorited');
-
-  //     Route::get('/password', 'User\UserController@editPassword')->name('edit.password');
-  //     Route::post('/password', 'User\UserController@updatePassword')->name('update.password');
-
-  // });
-});
-
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::group([
-  'as'        => 'user.',
-  'namespace' => 'User'
-], function () {
+Route::group(['as' => 'user.', 'namespace' => 'User'], function () {
   // jobs
   Route::resource('jobs', 'JobController', ['only' => ['index', 'show']]);
+
+  // 認証ずみのみ
+  Route::group(['middleware' => ['auth']], function () {
+
+    Route::group(['prefix' => 'me', 'as' => 'me.'], function () {
+        Route::get('/', 'UserController@show')->name('show');
+        Route::get('/edit', 'UserController@edit')->name('edit');
+        Route::post('/update', 'UserController@update')->name('update');
+
+        Route::get('/favorites', 'UserController@getFavorites')->name('favorites');
+        Route::get('/applications', 'UserController@getApplications')->name('applications');
+
+        // Route::get('/password', 'UserController@editPassword')->name('edit.password');
+        // Route::post('/password', 'UserController@updatePassword')->name('update.password');
+
+    });
+  });
 });
 
-// Route::get('/q', 'User\JobController@index')->name('jobs.search');
 
 // Route::group(['as' => 'about.'], function () {
 //   Route::get('/privacy', 'User\AboutController@privacy')->name('privacy');
