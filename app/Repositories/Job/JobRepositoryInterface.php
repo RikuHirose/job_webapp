@@ -2,7 +2,9 @@
 
 namespace App\Repositories\Job;
 
-interface JobRepositoryInterface
+use App\Repositories\Base\BaseRepositoryInterface;
+
+interface JobRepositoryInterface extends BaseRepositoryInterface
 {
 		public function getBlankModel();
 

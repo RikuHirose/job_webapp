@@ -3,8 +3,9 @@
 namespace App\Repositories\UserOccupation;
 
 Use App\Models\UserOccupation;
+use App\Repositories\Base\BaseRepository;
 
-class UserOccupationRepository implements UserOccupationRepositoryInterface
+class UserOccupationRepository extends BaseRepository implements UserOccupationRepositoryInterface
 {
 
 		public function getBlankModel()

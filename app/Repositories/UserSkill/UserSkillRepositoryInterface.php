@@ -2,7 +2,9 @@
 
 namespace App\Repositories\UserSkill;
 
-interface UserSkillRepositoryInterface
+use App\Repositories\Base\BaseRepositoryInterface;
+
+interface UserSkillRepositoryInterface extends BaseRepositoryInterface
 {
 		public function getBlankModel();
 

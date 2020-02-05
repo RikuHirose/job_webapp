@@ -12,7 +12,7 @@ class SkillSeeder extends Seeder
     public function run()
     {
       $skills = [
-        'HTML',
+        'HTML/CSS',
         'JavaScript',
         'React.js',
         'Vue.js',

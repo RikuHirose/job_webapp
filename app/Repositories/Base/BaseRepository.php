@@ -33,6 +33,8 @@ class BaseRepository implements BaseRepositoryInterface
 
     public function update($model, Array $input)
     {
-      return $model->fill($input)->save();;
+      $model->fill($input)->save();
+
+      return $model;
     }
 }

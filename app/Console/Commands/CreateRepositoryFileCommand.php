@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 
 /**
+ * https://qiita.com/hironeko/items/1a2df88f7857d02a38a1
  * CreateRepositoryFileCommand class
  */
 class CreateRepositoryFileCommand extends Command

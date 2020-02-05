@@ -29,22 +29,20 @@
 
       <div class="m-frmbox">
         <label>生年月日</label>
-
         <div class="form-row">
           <div class="form-group col-md-4">
-
             <select class="form-control m-frmbox__text" name="birth_year">
-            <option value="">----</option>
-              @for ($i = 1910; $i <= 2020; $i++)
-                <option value="{{ $i }}" @if(old('birth_year') == $i || UserHelper::getBirthYear() == $i) selected @endif>{{ $i }}</option>
-              @endfor
-            </select>
+              <option value="">----</option>
+                @for ($i = 1910; $i <= 2020; $i++)
+                  <option value="{{ $i }}" @if(old('birth_year') == $i || $currentUser->birthday_year == $i) selected @endif>{{ $i }}</option>
+                @endfor
+              </select>
           </div>
           <div class="form-group col-md-4">
             <select id="birth_month" class="form-control m-frmbox__text" name="birth_month">
               <option value="">--</option>
               @for ($i = 1; $i <= 12; $i++)
-                <option value="{{ $i }}" @if(old('birth_month') == $i || UserHelper::getBirthMonth() == $i) selected @endif>{{ $i }}</option>
+                <option value="{{ $i }}" @if(old('birth_month') == $i || $currentUser->birthday_mounth == $i) selected @endif>{{ $i }}</option>
               @endfor
             </select>
           </div>
@@ -52,7 +50,7 @@
             <select id="birth_day" class="form-control m-frmbox__text" name="birth_day">
               <option value="">--</option>
               @for ($i = 1; $i <= 31; $i++)
-                <option value="{{ $i }}" @if(old('birth_day') == $i || UserHelper::getBirthDay() == $i) selected @endif>{{ $i }}</option>
+                <option value="{{ $i }}" @if(old('birth_day') == $i || $currentUser->birthday_day == $i) selected @endif>{{ $i }}</option>
               @endfor
             </select>
           </div>
@@ -75,7 +73,7 @@
 
         @foreach($occupations as $occupation)
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" name="occupation[]" value="{{ $occupation->id }}" @if($occupation->id === UserHelper::existUserOccupation($occupation->id)) checked @endif>
+            <input class="form-check-input" type="checkbox" name="occupations[]" value="{{ $occupation->id }}" @if($occupation->id === UserHelper::existUserOccupation($occupation->id)) checked @endif>
             <span class="form-check-label">{{ $occupation->name }}</span>
           </div>
         @endforeach
@@ -86,7 +84,11 @@
 
         <select class="form-control m-frmbox__text" name="office_time_request">
           @foreach(config('constants.job.office_time') as $key => $value)
-            <option value="{{ $key }}" @if(old('office_time_request') === $key) selected @endif>{{ $value }}</option>
+            <option
+              value="{{ $key }}"
+              @if(old('office_time_request') === $key || $currentUser->office_time_request === $key) selected @endif>
+              {{ $value }}
+            </option>
           @endforeach
         </select>
       </div>
@@ -96,7 +98,11 @@
 
         <select class="form-control m-frmbox__text" name="work_time_request">
           @foreach(config('constants.job.work_time') as $value)
-            <option value="{{ $key }}" @if(old('work_time_request') === $key) selected @endif>{{ $value }}</option>
+            <option
+              value="{{ $key }}"
+              @if(old('work_time_request') === $key || $currentUser->work_time_request === $key) selected @endif>
+            {{ $value }}
+          </option>
           @endforeach
         </select>
       </div>

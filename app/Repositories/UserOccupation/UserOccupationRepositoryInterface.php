@@ -2,7 +2,9 @@
 
 namespace App\Repositories\UserOccupation;
 
-interface UserOccupationRepositoryInterface
+use App\Repositories\Base\BaseRepositoryInterface;
+
+interface UserOccupationRepositoryInterface extends BaseRepositoryInterface
 {
 		public function getBlankModel();
 

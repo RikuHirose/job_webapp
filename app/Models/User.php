@@ -46,6 +46,13 @@ class User extends Authenticatable
 
     protected $dates = ['deleted_at'];
 
+    // UIにカスタム情報を返すため
+    protected $appends = [
+        'birthday_year',
+        'birthday_mounth',
+        'birthday_day',
+    ];
+
     // Relations
     public function bgImage()
     {
@@ -60,5 +67,30 @@ class User extends Authenticatable
     public function skills()
     {
         return $this->belongsToMany(\App\Models\Skill::class, 'user_skills', 'user_id', 'skill_id');
+    }
+
+    public function userOccupations()
+    {
+        return $this->hasMany(\App\Models\UserOccupation::class, 'user_id', 'id');
+    }
+
+    public function userSkills()
+    {
+        return $this->hasMany(\App\Models\UserSkill::class, 'user_id', 'id');
+    }
+
+    public function getBirthdayYearAttribute()
+    {
+        return \UserHelper::getBirthYear($this->birthday);
+    }
+
+    public function getBirthdayMounthAttribute()
+    {
+        return \UserHelper::getBirthMonth($this->birthday);
+    }
+
+    public function getBirthdayDayAttribute()
+    {
+        return \UserHelper::getBirthDay($this->birthday);
     }
 }

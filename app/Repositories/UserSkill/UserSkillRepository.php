@@ -3,8 +3,9 @@
 namespace App\Repositories\UserSkill;
 
 Use App\Models\UserSkill;
+use App\Repositories\Base\BaseRepository;
 
-class UserSkillRepository implements UserSkillRepositoryInterface
+class UserSkillRepository extends BaseRepository implements UserSkillRepositoryInterface
 {
 
 		public function getBlankModel()

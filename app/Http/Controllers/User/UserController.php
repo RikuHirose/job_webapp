@@ -11,20 +11,45 @@ class UserController extends Controller
 
     public function edit()
     {
+        $user = \Auth::user();
+
         return view('pages.users.edit', [
         ]);
     }
 
     public function update(UserRequest $request)
     {
-        dd($this->userRepository->all());
-        $skills     = $request->input('skills');
-        $occupation = $request->input('occupation');
+        $skillIds      = $request->input('skills');
+        $occupationIds = $request->input('occupations');
+        $input         = $request->only($this->userRepository->getBlankModel()->getFillable());
 
-        $input  = $request->only($this->userRepository->getBlankModel()->getFillable());
-        $update = \Auth::user()->update($input);
+        $user = \DB::transaction(function () use ($input, $skillIds, $occupationIds) {
+            $user = $this->userRepository->update(\Auth::user(), $input);
 
-        if (empty($update)) {
+            // $user->userSkills()->delete();
+            // $user->userOccupations()->delete();
+            if (!is_null($skillIds)) {
+                foreach ($skillIds as $key => $skillId) {
+                    $this->userSkillRepository->firstOrCreate([
+                        'user_id'  => $user->id,
+                        'skill_id' => $skillId,
+                    ]);
+                }
+            }
+
+            if (!is_null($occupationIds)) {
+                foreach ($occupationIds as $key => $occupationId) {
+                    $this->userOccupationRepository->firstOrCreate([
+                        'user_id'        => $user->id,
+                        'occupation_id'  => $occupationId,
+                    ]);
+                }
+            }
+
+            return $user;
+        });
+
+        if (empty($user)) {
             return redirect()->back()->withErrors(trans('errors.general.save_failed'));
         }
 

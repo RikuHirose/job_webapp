@@ -18,32 +18,33 @@ class UserHelper
         $this->userOccupationRepository = $userOccupationRepository;
     }
 
-    public function getFullBirthDay()
+    public function getFullBirthDay($day)
     {
-        return explode('-', \Auth::user()->birthday);
+        // return explode('-', \Auth::user()->birthday);
+        return explode('-', $day);
     }
 
-    public function getBirthYear()
+    public function getBirthYear($day)
     {
-        $birthDay = $this->getFullBirthDay();
+        $birthDay = $this->getFullBirthDay($day);
 
-        if (!isset($birthDay)) {
+        if (isset($birthDay)) {
             return $birthDay[0];
         }
     }
-    public function getBirthMonth()
+    public function getBirthMonth($day)
     {
-        $birthDay = $this->getFullBirthDay();
+        $birthDay = $this->getFullBirthDay($day);
 
-        if (!isset($birthDay)) {
+        if (isset($birthDay)) {
             return $birthDay[1];
         }
     }
-    public function getBirthDay()
+    public function getBirthDay($day)
     {
-        $birthDay = $this->getFullBirthDay();
+        $birthDay = $this->getFullBirthDay($day);
 
-        if (!isset($birthDay)) {
+        if (isset($birthDay)) {
             return $birthDay[2];
         }
     }
