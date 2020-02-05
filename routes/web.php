@@ -17,17 +17,23 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::group(['as' => 'user.', 'namespace' => 'User'], function () {
+Route::group(['namespace' => 'User'], function () {
   // jobs
   Route::resource('jobs', 'JobController', ['only' => ['index', 'show']]);
 
   // 認証ずみのみ
   Route::group(['middleware' => ['auth']], function () {
 
-    Route::group(['prefix' => 'me', 'as' => 'me.'], function () {
-        Route::get('/', 'UserController@show')->name('show');
+    Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
+
         Route::get('/edit', 'UserController@edit')->name('edit');
         Route::post('/update', 'UserController@update')->name('update');
+
+        Route::get('/request', 'UserController@getRequest')->name('get.request');
+        Route::post('/request', 'UserController@postRequest')->name('post.request');
+
+        Route::get('/portfolio', 'UserController@getPortfolio')->name('get.portfolio');
+        Route::post('/portfolio', 'UserController@postPortfolio')->name('post.portfolio');
 
         Route::get('/favorites', 'UserController@getFavorites')->name('favorites');
         Route::get('/applications', 'UserController@getApplications')->name('applications');

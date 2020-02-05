@@ -6,5 +6,5 @@ interface JobRepositoryInterface
 {
 		public function getBlankModel();
 
-    public function paginateFilterByParameters(Array $parameters);
+    public function paginateFilterByParameters(Array $parameters = null);
 }

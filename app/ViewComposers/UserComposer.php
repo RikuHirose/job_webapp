@@ -2,11 +2,14 @@
 namespace App\Http\ViewComposers;
 
 use Illuminate\View\View;
+use App\Models\Skill;
+use App\Models\Occupation;
 
 class UserComposer
 {
-
     protected $user;
+    protected $skills;
+    protected $occupations;
 
     public function __construct()
     {
@@ -15,8 +18,11 @@ class UserComposer
         if (is_null($currentUser)) {
             $this->user = $currentUser;
         } else {
-            $this->user = $currentUser->load('image', 'socialProvider', 'userCategories.category');
+            $this->user = $currentUser->load('bgImage', 'occupations', 'skills');
         }
+
+        $this->skills      = Skill::all();
+        $this->occupations = Occupation::all();
     }
 
     /**
@@ -27,5 +33,7 @@ class UserComposer
     public function compose(View $view)
     {
         $view->with('currentUser', $this->user);
+        $view->with('skills', $this->skills);
+        $view->with('occupations', $this->occupations);
     }
 }

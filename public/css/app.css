@@ -11395,12 +11395,45 @@ a.m-btn {
   border-radius: 40px;
 }
 
+/* ----------------------------------------------------------------------------
+ * Form
+ * ------------------------------------------------------------------------- */
+
+.m-frmbox {
+  margin: 32px 0;
+}
+
+.m-frmbox__text,
+.m-frmbox__select {
+  width: 100%;
+  height: 32px;
+}
+
+.m-frmbox input {
+  font-size: 16px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.m-frmbox label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bolder;
+}
+
+.m-frmbox .error-message {
+  font-size: 8px;
+  color: #a10000;
+}
+
 /* ============================================================================
 * pages
 * ========================================================================= */
 
 /* ----------------------------------------------------------------------------
- * page restaurant show
+ * page job show
  * ------------------------------------------------------------------------- */
 
 .p-job-show h1 {
@@ -11466,6 +11499,15 @@ a.m-btn {
   margin-bottom: 16px;
 }
 
+/* ----------------------------------------------------------------------------
+ * page user edit
+ * ------------------------------------------------------------------------- */
+
+.p-user-edit__container {
+  width: 80%;
+  margin: 0 auto;
+}
+
 .p-auth .or {
   display: flex;
   color: #DEDEDE;
@@ -11506,7 +11548,6 @@ a.m-btn {
 }
 
 .p-auth .signup label {
-  margin-left: 2rem;
   font-size: 14px;
 }
 

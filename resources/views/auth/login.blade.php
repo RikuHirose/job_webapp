@@ -6,14 +6,11 @@
       <div class="row">
         <div class="mx-auto w-100">
           <div class="card-signin">
-            <h2 class="text-center my-4 black font-weight-bold">ようこそ<span class="light-blue">{{ config('app.name') }}</span>へ</h2>
+            <h2 class="text-center my-4 black font-weight-bold">
+              ようこそ<span class="light-blue">{{ config('app.name') }}</span>へ
+            </h2>
 
             <div class="signup card-body">
-              <h5
-                v-if="callbackMessage"
-                class="title title-up text-center mb-3 font-weight-bold gray">
-                ss
-              </h5>
               <!-- login fb -->
               <div>
                 <div class="text-center mb-3">
@@ -35,55 +32,38 @@
                 </div>
               </div>
 
-              <!-- email signup -->
               <div>
-                <h5 class="title title-up text-center mb-3 font-weight-bold gray">
-                  メールアドレスでログイン
-                </h5>
-                <div class="form-label-group col-lg-8 my-2 mx-auto black font-weight-bold">
-                  <label>
-                    名前
-                  </label>
-                  <input
-                    name="name"
-                    class="form-control"
-                    type="email"
-                    placeholder="名前を入力してください"
-                    required>
-                </div>
-                <div class="form-label-group col-lg-8 my-2 mx-auto black font-weight-bold">
-                  <label>
-                    メールアドレス
-                  </label>
-                  <input
-                    name="email"
-                    class="form-control"
-                    type="email"
-                    placeholder="メールアドレスを入力してください"
-                    required>
-                </div>
-                <div class="form-label-group col-lg-8 my-2 mx-auto black font-weight-bold">
-                   <label>
-                      パスワード
-                    </label>
-                  <input
-                    name="password"
-                    class="form-control"
-                    type="password"
-                    placeholder="パスワードを入力してください"
-                    required>
-                </div>
-
-                <div class="text-center">
-                  <button
-                    class="m-btn mx-auto col-md-4 my-2" btn-type="primary" type="submit">
+                <form method="POST" action="{{ route('login') }}">
+                  @csrf
+                  <h5 class="title title-up text-center mb-3 font-weight-bold gray">
                     メールアドレスでログイン
-                  </button>
-                </div>
+                  </h5>
+
+                  <div class="form-label-group col-lg-8 my-2 mx-auto black font-weight-bold">
+                    <label>
+                      メールアドレス
+                    </label>
+                    <input name="email" class="form-control" type="email" placeholder="メールアドレスを入力してください" required>
+                  </div>
+
+                  <div class="form-label-group col-lg-8 my-2 mx-auto black font-weight-bold">
+                     <label>
+                        パスワード
+                      </label>
+                    <input name="password" class="form-control" type="password" placeholder="パスワードを入力してください" required>
+                  </div>
+
+                  <div class="text-center">
+                    <button
+                      class="m-btn mx-auto col-md-4 my-2" btn-type="primary" type="submit">
+                      メールアドレスでログイン
+                    </button>
+                  </div>
+                </form>
               </div>
 
               <div class="text-center gray">
-                  アカウントをお持ちでない方は<a href="/register">会員登録</a>
+                  アカウントをお持ちでない方は<a href="{{ route('register') }}">会員登録</a>
               </div>
             </div>
             <div class="footer text-center">

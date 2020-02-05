@@ -178,7 +178,6 @@ return [
         App\Providers\RepositoryServiceProvider::class,
         App\Providers\ServiceServiceProvider::class,
         App\Providers\ViewCreatorServiceProvider::class,
-        App\Providers\HelperServiceProvider::class,
 
     ],
 
@@ -236,8 +235,8 @@ return [
         'OpenGraph' => Artesaos\SEOTools\Facades\OpenGraph::class,
         'Twitter'   => Artesaos\SEOTools\Facades\TwitterCard::class,
         // helper
-        'SeoHelper' => App\Helpers\SeoHelper::class,
-
+        'SeoHelper' => App\Facades\Helpers\SeoHelper::class,
+        'UserHelper' => \App\Facades\Helpers\UserHelper::class,
     ],
 
 ];

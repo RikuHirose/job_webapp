@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Job;
 
 class JobController extends Controller
 {
@@ -11,8 +12,6 @@ class JobController extends Controller
     public function index(Request $request)
     {
         $parameters  = \Request::query();
-        $skills      = $this->skillRepository->getBlankModel()->all();
-        $occupations = $this->occupationRepository->getBlankModel()->all();
 
         $jobs = $this->jobRepository->paginateFilterByParameters($parameters);
         $jobs->load('bgImage', 'company.logo', 'occupations', 'skills');
@@ -22,8 +21,6 @@ class JobController extends Controller
         return view('pages.jobs.index', [
             'jobs'      => $jobs,
             'parameters' => $parameters,
-            'skills'      => $skills,
-            'occupations' => $occupations,
         ]);
     }
 
@@ -31,7 +28,8 @@ class JobController extends Controller
     {
         $job->load('bgImage', 'company.logo', 'occupations', 'skills');
 
-        \SeoHelper::setJobShowSeo();
+        \SeoHelper::setJobShowSeo($job);
+
         return view('pages.jobs.show', [
                 'job' => $job,
         ]);

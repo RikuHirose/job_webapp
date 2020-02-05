@@ -30,6 +30,24 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repositories\Occupation\OccupationRepositoryInterface::class,
             \App\Repositories\Occupation\OccupationRepository::class
         );
+
+        // UserOccupation
+        $this->app->singleton(
+            \App\Repositories\UserOccupation\UserOccupationRepositoryInterface::class,
+            \App\Repositories\UserOccupation\UserOccupationRepository::class
+        );
+
+        // UserSkill
+        $this->app->singleton(
+            \App\Repositories\UserSkill\UserSkillRepositoryInterface::class,
+            \App\Repositories\UserSkill\UserSkillRepository::class
+        );
+
+        // User
+        $this->app->singleton(
+            \App\Repositories\User\UserRepositoryInterface::class,
+            \App\Repositories\User\UserRepository::class
+        );
     }
 
     /**

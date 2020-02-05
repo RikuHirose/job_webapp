@@ -24,17 +24,17 @@ class SeoHelper
     }
 
     // job
-    public function setJobShowSeo($model)
+    public static function setJobShowSeo($model)
     {
         $appName      = config('app.name');
-        $title        = $model->name. '  |  ' .trans('seo.users.show.title');
+        $title        = $model->title. '  |  ' .trans('seo.users.show.title');
         $description  = $model->description;
         $keyWords     = trans('seo.index.keywords');
 
         $imageTwitter  = config('app.url').'images/logo-ogp.jpg';
         $imageFacebook = config('app.url').'images/logo-ogp.jpg';
 
-        return $this->setSeo($title, $keyWords, $description, $imageFacebook, $imageTwitter);
+        return self::setSeo($title, $keyWords, $description, $imageFacebook, $imageTwitter);
     }
 
     public function setDefaultSeo()
@@ -64,9 +64,9 @@ class SeoHelper
         empty($imageTwitter) ?: \Twitter::setImage($imageTwitter);
     }
 
-    public function setSeo($title, $keyWords, $description, $imageFacebook, $imageTwitter)
+    public static function setSeo($title, $keyWords, $description, $imageFacebook, $imageTwitter)
     {
-        $this->setSeoText($title, $keyWords, $description);
+        self::setSeoText($title, $keyWords, $description);
         empty($imageFacebook) ?: \OpenGraph::addImage($imageFacebook);
         empty($imageTwitter) ?: \Twitter::setImage($imageTwitter);
     }

@@ -12,11 +12,11 @@ class JobRepository implements JobRepositoryInterface
 		return new Job();
 	}
 
-    public function paginateFilterByParameters($parameters)
+    public function paginateFilterByParameters(Array $parameters = null)
     {
         $jobs = $this->getBlankModel();
 
-        if (!is_null($parameters['occupation_id'])) {
+        if (isset($parameters['occupation_id'])) {
             $occupationId = $parameters['occupation_id'];
             $jobs         = $jobs->when($occupationId, function ($query) use ($occupationId) {
                 // return $query->whereHas('occupations', function ($q) use ($occupationId) {
@@ -30,7 +30,7 @@ class JobRepository implements JobRepositoryInterface
             });
         }
 
-        if (!is_null($parameters['skill_id'])) {
+        if (isset($parameters['skill_id'])) {
             $skillId = $parameters['skill_id'];
             $jobs    = $jobs->when($skillId, function ($query) use ($skillId) {
                 // return $query->whereHas('skills', function ($q) use ($skillId) {

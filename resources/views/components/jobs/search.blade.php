@@ -1,5 +1,5 @@
 <div class="c-job-search">
-  <form method="GET" action="{{ route('user.jobs.index') }}" accept-charset="UTF-8">
+  <form method="GET" action="{{ route('jobs.index') }}" accept-charset="UTF-8">
 
     <select name="occupation_id" class="">
       <option value="">職種</option>

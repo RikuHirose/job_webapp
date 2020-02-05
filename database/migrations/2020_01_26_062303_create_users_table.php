@@ -20,9 +20,14 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email');
 
-            $table->longText('description')->nullable();
-            $table->text('address')->nullable();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password')->nullable();
             $table->date('birthday')->nullable();
+
+            $table->unsignedBigInteger('office_time_request')->nullable();
+            $table->unsignedBigInteger('work_time_request')->nullable();
+
+            $table->rememberToken();
 
             $table->foreign('bg_image_id')->references('id')->on('files')->onDelete('set null');
 

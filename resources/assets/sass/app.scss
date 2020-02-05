@@ -41,11 +41,13 @@
 @import "./modules/icon";
 @import "./modules/tag";
 @import "./modules/pagination";
+@import "./modules/frmTextbox";
 
 
  /* ============================================================================
  * pages
  * ========================================================================= */
 @import "./pages/jobs/show";
+@import "./pages/users/edit";
 
 @import './pages/auth';

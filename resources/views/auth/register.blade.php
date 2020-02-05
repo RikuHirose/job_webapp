@@ -33,66 +33,62 @@
                   </div>
                   <div class="or__block or__block--right"></div>
                 </div>
-
-                <div class="text-center mb-3">
-                  <button
-                    class="m-btn mx-auto col-md-6" btn-type="emailSignup" type="submit">
-                    メールアドレスで新規登録
-                  </button>
-                </div>
               </div>
 
               <!-- email signup -->
               <div>
-                <h5 class="title title-up text-center mb-3 font-weight-bold gray">
-                  メールアドレスで新規登録
-                </h5>
-                <div class="form-label-group col-lg-8 my-2 mx-auto black font-weight-bold">
-                  <label>
-                    名前
-                  </label>
-                  <input
-                    name="name"
-                    class="form-control"
-                    type="email"
-                    placeholder="名前を入力してください"
-                    required>
-                </div>
-                <div class="form-label-group col-lg-8 my-2 mx-auto black font-weight-bold">
-                  <label>
-                    メールアドレス
-                  </label>
-                  <input
-                    name="email"
-                    class="form-control"
-                    type="email"
-                    placeholder="メールアドレスを入力してください"
-                    required>
-                </div>
-                <div class="form-label-group col-lg-8 my-2 mx-auto black font-weight-bold">
-                   <label>
-                      パスワード
-                    </label>
-                  <input
-                    name="password"
-                    class="form-control"
-                    type="password"
-                    placeholder="パスワードを入力してください"
-                    required>
-                </div>
-                <div class="form-label-group col-lg-8 my-2 mx-auto black font-weight-bold">
-                  <label>
-                    パスワードの確認
-                  </label>
-                  <input
-                    name="password_confirmation" type="password" class="form-control" placeholder="パスワードを入力してください" required>
-                </div>
-                <div class="text-center">
-                  <button
-                    class="m-btn mx-auto col-md-4 my-2" btn-type="primary" type="submit">
+                <form action="{{ route('register') }}" method="POST">
+                  @csrf
+                  <h5 class="title title-up text-center mb-3 font-weight-bold gray">
                     メールアドレスで新規登録
-                  </button>
-                </div>
+                  </h5>
+                  <div class="form-label-group col-lg-8 my-2 mx-auto black font-weight-bold">
+                    <label>
+                      名前
+                    </label>
+                    <input
+                      name="name"
+                      class="form-control"
+                      type="text"
+                      placeholder="名前を入力してください"
+                      required>
+                  </div>
+                  <div class="form-label-group col-lg-8 my-2 mx-auto black font-weight-bold">
+                    <label>
+                      メールアドレス
+                    </label>
+                    <input
+                      name="email"
+                      class="form-control"
+                      type="email"
+                      placeholder="メールアドレスを入力してください"
+                      required>
+                  </div>
+                  <div class="form-label-group col-lg-8 my-2 mx-auto black font-weight-bold">
+                     <label>
+                        パスワード
+                      </label>
+                    <input
+                      name="password"
+                      class="form-control"
+                      type="password"
+                      placeholder="パスワードを入力してください"
+                      required>
+                  </div>
+                  <div class="form-label-group col-lg-8 my-2 mx-auto black font-weight-bold">
+                    <label>
+                      パスワードの確認
+                    </label>
+                    <input
+                      name="password_confirmation" type="password" class="form-control" placeholder="パスワードを入力してください" required>
+                  </div>
+                  <div class="text-center">
+                    <button
+                      class="m-btn mx-auto col-md-4 my-2" btn-type="primary" type="submit">
+                      メールアドレスで新規登録
+                    </button>
+                  </div>
+                </form>
               </div>
 
               <div class="text-center gray">
