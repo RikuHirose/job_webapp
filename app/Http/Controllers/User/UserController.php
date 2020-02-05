@@ -17,6 +17,10 @@ class UserController extends Controller
 
     public function update(UserRequest $request)
     {
+        dd($this->userRepository->all());
+        $skills     = $request->input('skills');
+        $occupation = $request->input('occupation');
+
         $input  = $request->only($this->userRepository->getBlankModel()->getFillable());
         $update = \Auth::user()->update($input);
 

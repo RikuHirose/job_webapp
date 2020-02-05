@@ -48,6 +48,12 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repositories\User\UserRepositoryInterface::class,
             \App\Repositories\User\UserRepository::class
         );
+
+        // Base
+        $this->app->singleton(
+            \App\Repositories\Base\BaseRepositoryInterface::class,
+            \App\Repositories\Base\BaseRepository::class
+        );
     }
 
     /**
