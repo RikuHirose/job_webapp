@@ -74,8 +74,18 @@
     <!-- show actions -->
     <div class="p-job-show--actions">
       <div class="w-50 mx-auto">
-        <button class="m-btn">気になる!</button>
-        <button class="m-btn">応募する!</button>
+        <button class="m-btn" btn-type="favorite">
+          <span class="fa-star-yellow"></span>気になる!
+        </button>
+
+        <favorite-button
+            :job-id="{{ json_encode($job->id) }}"
+            :user-id="{{ json_encode($currentUser->id) }}"
+            :default-favorite-count="{{ json_encode($defaultFavoriteCount) }}"
+            :default-is-favorited="{{ json_encode($defaultIsFavorited) }}">
+        </favorite-button>
+
+        <button class="m-btn" btn-type="apply">応募する!</button>
       </div>
     </div>
 

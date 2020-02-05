@@ -11033,69 +11033,6 @@ input[type=button]::focus {
   color: #fff;
 }
 
-.m-btn[btn-type=primary],
-.m-btnS[btn-type=primary],
-.m-btnM[btn-type=primary],
-.m-btnL[btn-type=primary] {
-  background: #3b37af;
-}
-
-.m-btn[btn-type=primary]:hover,
-.m-btnS[btn-type=primary]:hover,
-.m-btnM[btn-type=primary]:hover,
-.m-btnL[btn-type=primary]:hover {
-  background: #5e5ad6;
-}
-
-.m-btn[btn-type=primary]:active,
-.m-btnS[btn-type=primary]:active,
-.m-btnM[btn-type=primary]:active,
-.m-btnL[btn-type=primary]:active {
-  background: #0a02e8;
-}
-
-.m-btn[btn-type=secondly],
-.m-btnS[btn-type=secondly],
-.m-btnM[btn-type=secondly],
-.m-btnL[btn-type=secondly] {
-  background: #293162;
-}
-
-.m-btn[btn-type=secondly]:hover,
-.m-btnS[btn-type=secondly]:hover,
-.m-btnM[btn-type=secondly]:hover,
-.m-btnL[btn-type=secondly]:hover {
-  background: #44509f;
-}
-
-.m-btn[btn-type=secondly]:active,
-.m-btnS[btn-type=secondly]:active,
-.m-btnM[btn-type=secondly]:active,
-.m-btnL[btn-type=secondly]:active {
-  background: #071c9f;
-}
-
-.m-btn[btn-type=negative],
-.m-btnS[btn-type=negative],
-.m-btnM[btn-type=negative],
-.m-btnL[btn-type=negative] {
-  background: #505050;
-}
-
-.m-btn[btn-type=negative]:hover,
-.m-btnS[btn-type=negative]:hover,
-.m-btnM[btn-type=negative]:hover,
-.m-btnL[btn-type=negative]:hover {
-  background: #747474;
-}
-
-.m-btn[btn-type=negative]:active,
-.m-btnS[btn-type=negative]:active,
-.m-btnM[btn-type=negative]:active,
-.m-btnL[btn-type=negative]:active {
-  background: #232323;
-}
-
 .m-btn[btn-type=facebook],
 .m-btnS[btn-type=facebook],
 .m-btnM[btn-type=facebook],
@@ -11111,6 +11048,35 @@ input[type=button]::focus {
 .m-btnL[btn-type=facebook]:hover {
   border-color: #3b5998;
   background: #3b5998;
+}
+
+.m-btn[btn-type=favorite],
+.m-btnS[btn-type=favorite],
+.m-btnM[btn-type=favorite],
+.m-btnL[btn-type=favorite] {
+  border-radius: 24px;
+  border: 1px solid #19bfbf;
+  color: #19bfbf;
+  background: #fff;
+}
+
+.m-btn[btn-type=favorite]:hover,
+.m-btnS[btn-type=favorite]:hover,
+.m-btnM[btn-type=favorite]:hover,
+.m-btnL[btn-type=favorite]:hover {
+  color: #fff;
+  border-color: #19bfbf;
+  background: #19bfbf;
+}
+
+.m-btn[btn-type=apply],
+.m-btnS[btn-type=apply],
+.m-btnM[btn-type=apply],
+.m-btnL[btn-type=apply] {
+  border-radius: 24px;
+  border-color: #19bfbf;
+  color: #fff;
+  background: #19bfbf;
 }
 
 .m-btn[btn-type=search-obsessed],

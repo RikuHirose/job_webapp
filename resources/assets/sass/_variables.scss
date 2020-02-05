@@ -12,6 +12,7 @@ $line-height-base: 1.6;
  * color code
  * ========================================================================= */
 $facebook_color: #3b5998;
+$c-point: #19bfbf;
 
 // カラー
 $c-border: #d8d8d8;
@@ -45,20 +46,6 @@ $c-text-warning: #b0442c;
 $c-bg-warning: #f9f2e2;
 $c-text-error: #a10000;
 $c-bg-error: #f9e2e2;
-
-// button
-$c-btn-secondly-normal: #293163;
-$c-btn-secondly-hover: #44509f;
-$c-btn-secondly-press: #071c9f;
-// ★テキストリンクと同じ色なので全置換で対応しない様注意してください
-$c-btn-primary-normal: #3b37af;
-$c-btn-primary-hover: #5a56d2;
-$c-btn-primary-press: #0a02e8;
-
-$c-btn-negative-normal: #505050;
-$c-btn-negative-hover: #747474;
-$c-btn-negative-press: #232323;
-
 
 // labels
 $c-tag: #796bae;

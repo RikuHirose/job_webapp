@@ -17,6 +17,16 @@ class JobRepository extends BaseRepository implements JobRepositoryInterface
     {
         $jobs = $this->getBlankModel();
 
+        if (isset($parameters['word'])) {
+            $word = $parameters['word'];
+            $jobs = $jobs->when($word, function ($query) use ($word) {
+                  return $query
+                  ->orWhere('title', 'like', "%{$word}%")
+                  ->orWhere('description', 'like', "%{$word}%")
+                  ->orWhere('application_qualification', 'like', "%{$word}%");
+            });
+        }
+
         if (isset($parameters['occupation_id'])) {
             $occupationId = $parameters['occupation_id'];
             $jobs         = $jobs->when($occupationId, function ($query) use ($occupationId) {
@@ -42,6 +52,20 @@ class JobRepository extends BaseRepository implements JobRepositoryInterface
                         ->select('job_skills.job_id')
                         ->where('job_skills.skill_id', $skillId);
                 });
+            });
+        }
+
+        if (isset($parameters['work_time'])) {
+            $workTime = $parameters['work_time'];
+            $jobs     = $jobs->when($workTime, function ($query) use ($workTime) {
+                return $query->where('work_time', $workTime);
+            });
+        }
+
+        if (isset($parameters['office_time'])) {
+            $officeTime = $parameters['office_time'];
+            $jobs       = $jobs->when($officeTime, function ($query) use ($officeTime) {
+                return $query->where('office_time', $officeTime);
             });
         }
 

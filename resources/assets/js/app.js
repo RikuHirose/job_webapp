@@ -27,6 +27,11 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * ========================================================================= */
 Vue.component('search-form', require('./components/form/searchForm.vue').default)
 
+/* ============================================================================
+ * button
+ * ========================================================================= */
+Vue.component('favorite-button', require('./components/button/favoriteButton.vue').default)
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

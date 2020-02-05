@@ -13,6 +13,12 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        // Base
+        $this->app->singleton(
+            \App\Repositories\Base\BaseRepositoryInterface::class,
+            \App\Repositories\Base\BaseRepository::class
+        );
+
         // Job
         $this->app->singleton(
             \App\Repositories\Job\JobRepositoryInterface::class,
@@ -49,10 +55,10 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repositories\User\UserRepository::class
         );
 
-        // Base
+        // Favorite
         $this->app->singleton(
-            \App\Repositories\Base\BaseRepositoryInterface::class,
-            \App\Repositories\Base\BaseRepository::class
+            \App\Repositories\Favorite\FavoriteRepositoryInterface::class,
+            \App\Repositories\Favorite\FavoriteRepository::class
         );
     }
 

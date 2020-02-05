@@ -26,37 +26,37 @@
   }
 
   // プライマリー
-  &[btn-type="primary"] {
-    background: $c-btn-primary-normal;
-     &:hover {
-      background: #5e5ad6;
-    }
-     &:active {
-      background: $c-btn-primary-press;
-    }
-  }
+  // &[btn-type="primary"] {
+  //   background: $c-btn-primary-normal;
+  //    &:hover {
+  //     background: #5e5ad6;
+  //   }
+  //    &:active {
+  //     background: $c-btn-primary-press;
+  //   }
+  // }
 
-  // セカンダリー
-  &[btn-type="secondly"] {
-    background: $c-text-link-normal;
-     &:hover {
-      background: $c-btn-secondly-hover;
-    }
-     &:active {
-      background: $c-btn-secondly-press;
-    }
-  }
+  // // セカンダリー
+  // &[btn-type="secondly"] {
+  //   background: $c-text-link-normal;
+  //    &:hover {
+  //     background: $c-btn-secondly-hover;
+  //   }
+  //    &:active {
+  //     background: $c-btn-secondly-press;
+  //   }
+  // }
 
-  // ネガティブ
-  &[btn-type="negative"] {
-    background: $c-btn-negative-normal;
-     &:hover {
-      background: $c-btn-negative-hover;
-    }
-     &:active {
-      background: $c-btn-negative-press;
-    }
-  }
+  // // ネガティブ
+  // &[btn-type="negative"] {
+  //   background: $c-btn-negative-normal;
+  //    &:hover {
+  //     background: $c-btn-negative-hover;
+  //   }
+  //    &:active {
+  //     background: $c-btn-negative-press;
+  //   }
+  // }
 
   // facebook
   &[btn-type="facebook"] {
@@ -67,6 +67,27 @@
       border-color: $facebook_color;
       background: $facebook_color;
     }
+  }
+
+  // favorite
+  &[btn-type="favorite"] {
+    border-radius: 24px;
+    border: 1px solid $c-point;
+    color: $c-point;
+    background: $c-white;
+    &:hover {
+      color: $c-white;
+      border-color: $c-point;
+      background: $c-point;
+    }
+  }
+
+  // apply
+  &[btn-type="apply"] {
+    border-radius: 24px;
+    border-color: $c-point;
+    color: $c-white;
+    background: $c-point;
   }
 
   &[btn-type="search-obsessed"] {

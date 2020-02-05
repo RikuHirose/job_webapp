@@ -10,7 +10,7 @@
       :occupations="{{ json_encode($occupations) }}"
       :office-time="{{ json_encode(config('constants.job.office_time')) }}"
       :work-time="{{ json_encode(config('constants.job.work_time')) }}"
-      :parameter="{{ json_encode($parameter) }}"
+      :parameters="{{ json_encode($parameters) }}"
       :search-button-title="'検索する'" />
   </div>
 

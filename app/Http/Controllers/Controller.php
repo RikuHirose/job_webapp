@@ -10,8 +10,9 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Repositories\Job\JobRepositoryInterface;
 use App\Repositories\User\UserRepositoryInterface;
 use App\Repositories\Skill\SkillRepositoryInterface;
-use App\Repositories\Occupation\OccupationRepositoryInterface;
+use App\Repositories\Favorite\FavoriteRepositoryInterface;
 use App\Repositories\UserSkill\UserSkillRepositoryInterface;
+use App\Repositories\Occupation\OccupationRepositoryInterface;
 use App\Repositories\UserOccupation\UserOccupationRepositoryInterface;
 
 class Controller extends BaseController
@@ -21,22 +22,25 @@ class Controller extends BaseController
     protected $jobRepository;
     protected $userRepository;
     protected $skillRepository;
-    protected $occupationRepository;
+    protected $favoriteRepository;
     protected $userSkillRepository;
+    protected $occupationRepository;
     protected $userOccupationRepository;
 
     public function __construct(
         JobRepositoryInterface $jobRepository,
         UserRepositoryInterface $userRepository,
         SkillRepositoryInterface $skillRepository,
-        OccupationRepositoryInterface $occupationRepository,
+        FavoriteRepositoryInterface $favoriteRepository,
         UserSkillRepositoryInterface $userSkillRepository,
+        OccupationRepositoryInterface $occupationRepository,
         UserOccupationRepositoryInterface $userOccupationRepository
     )
     {
         $this->jobRepository            = $jobRepository;
         $this->userRepository           = $userRepository;
         $this->skillRepository          = $skillRepository;
+        $this->favoriteRepository       = $favoriteRepository;
         $this->occupationRepository     = $occupationRepository;
         $this->userSkillRepository      = $userSkillRepository;
         $this->userOccupationRepository = $userOccupationRepository;
