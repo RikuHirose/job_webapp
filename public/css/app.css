@@ -11113,6 +11113,40 @@ input[type=button]::focus {
   background: #3b5998;
 }
 
+.m-btn[btn-type=search-obsessed],
+.m-btnS[btn-type=search-obsessed],
+.m-btnM[btn-type=search-obsessed],
+.m-btnL[btn-type=search-obsessed] {
+  color: #aaaaaa;
+  background: #fff;
+  position: relative;
+  border-bottom: 1px solid #d5d5d8;
+  border-left: 1px solid #aaaaaa;
+  border-right: 1px solid #aaaaaa;
+}
+
+.m-btn[btn-type=search-obsessed]::after,
+.m-btnS[btn-type=search-obsessed]::after,
+.m-btnM[btn-type=search-obsessed]::after,
+.m-btnL[btn-type=search-obsessed]::after {
+  content: " ";
+  height: 0;
+  position: absolute;
+  width: 0;
+  border: 5px solid transparent;
+  border-top-color: #aaaaaa;
+  top: 43%;
+  left: 55%;
+  margin-left: 46px;
+}
+
+.m-btn[btn-type=search-obsessed]:focus,
+.m-btnS[btn-type=search-obsessed]:focus,
+.m-btnM[btn-type=search-obsessed]:focus,
+.m-btnL[btn-type=search-obsessed]:focus {
+  outline: none;
+}
+
 .m-btn[disabled],
 .m-btn.is-disabled,
 .m-btnS[disabled],
@@ -11409,7 +11443,13 @@ a.m-btn {
   height: 32px;
 }
 
-.m-frmbox input {
+.m-frmbox__textarea {
+  width: 100%;
+  min-height: 120px;
+}
+
+.m-frmbox input,
+.m-frmbox textarea {
   font-size: 16px;
   border: 1px solid #ccc;
   cursor: pointer;

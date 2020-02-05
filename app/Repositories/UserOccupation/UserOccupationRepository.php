@@ -15,9 +15,6 @@ class UserOccupationRepository extends BaseRepository implements UserOccupationR
 
     public function existByUserIdAndOccupationId(int $userId, int $occupationId)
     {
-      return $this->getBlankModel()->where(
-        ['user_id' => $userId],
-        ['occupation_id' => $occupationId],
-      )->exists();
+      return $this->getBlankModel()->where('user_id' ,$userId)->where('occupation_id', $occupationId)->exists();
     }
 }

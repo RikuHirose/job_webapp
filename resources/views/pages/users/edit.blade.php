@@ -62,7 +62,9 @@
 
         @foreach($skills as $skill)
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" name="skills[]" value="{{ $skill->id }}" @if($skill->id === UserHelper::existUserSkill($skill->id)) checked @endif>
+            <input class="form-check-input" type="checkbox" name="skills[]" value="{{ $skill->id }}"
+              @if($skill->id == UserHelper::existUserSkill($skill->id)) checked @endif>
+
             <span class="form-check-label">{{ $skill->name }}</span>
           </div>
         @endforeach
@@ -73,7 +75,8 @@
 
         @foreach($occupations as $occupation)
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" name="occupations[]" value="{{ $occupation->id }}" @if($occupation->id === UserHelper::existUserOccupation($occupation->id)) checked @endif>
+            <input class="form-check-input" type="checkbox" name="occupations[]" value="{{ $occupation->id }}" @if($occupation->id == UserHelper::existUserOccupation($occupation->id)) checked @endif>
+
             <span class="form-check-label">{{ $occupation->name }}</span>
           </div>
         @endforeach
@@ -86,7 +89,7 @@
           @foreach(config('constants.job.office_time') as $key => $value)
             <option
               value="{{ $key }}"
-              @if(old('office_time_request') === $key || $currentUser->office_time_request === $key) selected @endif>
+              @if(old('office_time_request') == $key || $currentUser->office_time_request == $key) selected @endif>
               {{ $value }}
             </option>
           @endforeach
@@ -100,11 +103,25 @@
           @foreach(config('constants.job.work_time') as $value)
             <option
               value="{{ $key }}"
-              @if(old('work_time_request') === $key || $currentUser->work_time_request === $key) selected @endif>
+              @if(old('work_time_request') == $key || $currentUser->work_time_request == $key) selected @endif>
             {{ $value }}
           </option>
           @endforeach
         </select>
+      </div>
+
+      <div class="m-frmbox">
+        <label>自己PR</label>
+
+        @if(old('description'))
+          <textarea name="description" class="form-control m-frmbox__textarea">
+            {{ old('description') }}
+          </textarea>
+        @else
+          <textarea name="description" class="form-control m-frmbox__textarea">
+            {{ $currentUser->description }}
+          </textarea>
+        @endif
       </div>
 
       <div class="text-center">

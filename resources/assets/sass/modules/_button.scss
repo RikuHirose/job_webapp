@@ -69,6 +69,32 @@
     }
   }
 
+  &[btn-type="search-obsessed"] {
+    color: #aaaaaa;
+    background: $c-white;
+    position: relative;
+    border-bottom: 1px solid #d5d5d8;
+    border-left: 1px solid #aaaaaa;
+    border-right: 1px solid #aaaaaa;
+
+    &::after {
+      content: " ";
+      height: 0;
+      position: absolute;
+      width: 0;
+      border: 5px solid transparent;
+      border-top-color: #aaaaaa;
+      top: 43%;
+      left: 55%;
+      margin-left: 46px;
+    }
+    &:hover {
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+
   // 非活性
   &[disabled],
   &.is-disabled {

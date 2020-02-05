@@ -27,6 +27,8 @@ class CreateUsersTable extends Migration
             $table->unsignedBigInteger('office_time_request')->nullable();
             $table->unsignedBigInteger('work_time_request')->nullable();
 
+            $table->longText('description')->nullable();
+
             $table->rememberToken();
 
             $table->foreign('bg_image_id')->references('id')->on('files')->onDelete('set null');

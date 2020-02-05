@@ -27,7 +27,7 @@ class UserRequest extends FormRequest
             'name'                => 'string|max:255',
             'email'               => 'string|email|max:255',
             'password'            => 'string|min:8|confirmed',
-            'gender'              => 'string|max:255',
+            'description'         => 'string',
             'birthday'            => 'date',
             'skills'              => 'array',
             'occupations'         => 'array',

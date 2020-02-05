@@ -15,9 +15,6 @@ class UserSkillRepository extends BaseRepository implements UserSkillRepositoryI
 
     public function existByUserIdAndSkillId(int $userId, int $skillId)
     {
-      return $this->getBlankModel()->where(
-        ['user_id'  => $userId],
-        ['skill_id' => $skillId],
-      )->exists();
+      return $this->getBlankModel()->where('user_id', $userId)->where('skill_id', $skillId)->exists();
     }
 }

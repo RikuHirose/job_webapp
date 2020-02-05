@@ -25,6 +25,7 @@ class User extends Authenticatable
         'birthday',
         'office_time_request',
         'work_time_request',
+        'description',
     ];
 
     /**

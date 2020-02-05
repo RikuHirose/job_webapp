@@ -28,7 +28,7 @@ class UserHelper
     {
         $birthDay = $this->getFullBirthDay($day);
 
-        if (isset($birthDay)) {
+        if (isset($birthDay[0])) {
             return $birthDay[0];
         }
     }
@@ -36,7 +36,7 @@ class UserHelper
     {
         $birthDay = $this->getFullBirthDay($day);
 
-        if (isset($birthDay)) {
+        if (isset($birthDay[1])) {
             return $birthDay[1];
         }
     }
@@ -44,7 +44,7 @@ class UserHelper
     {
         $birthDay = $this->getFullBirthDay($day);
 
-        if (isset($birthDay)) {
+        if (isset($birthDay[2])) {
             return $birthDay[2];
         }
     }

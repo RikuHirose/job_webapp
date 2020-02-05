@@ -22,6 +22,11 @@ import Vue from 'vue'
 // Vue.prototype.$axios = window.axios
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
+/* ============================================================================
+ * form
+ * ========================================================================= */
+Vue.component('search-form', require('./components/form/searchForm.vue').default)
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

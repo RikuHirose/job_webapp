@@ -23,6 +23,7 @@ class UserComposer
 
         $this->skills      = Skill::all();
         $this->occupations = Occupation::all();
+        $this->parameters  = \Request::query();
     }
 
     /**
@@ -35,5 +36,6 @@ class UserComposer
         $view->with('currentUser', $this->user);
         $view->with('skills', $this->skills);
         $view->with('occupations', $this->occupations);
+        $view->with('parameters', $this->parameters);
     }
 }
