@@ -14,8 +14,6 @@ class BaseRepository implements BaseRepositoryInterface
 
     public function delete($model)
     {
-      $model = $this->getBlankModel();
-
       return $model->delete();
     }
 
@@ -28,6 +26,8 @@ class BaseRepository implements BaseRepositoryInterface
 
     public function firstOrCreate(Array $input)
     {
+      $model = $this->getBlankModel();
+
       return $model->firstOrCreate($input);
     }
 
