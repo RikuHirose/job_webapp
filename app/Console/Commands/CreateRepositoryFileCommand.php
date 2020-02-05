@@ -99,7 +99,7 @@ class CreateRepositoryFileCommand extends Command
      */
     private function creatRepositoryFile(): void
     {
-        $content = "<?php\n\nnamespace App\\Repositories\\$this->dirName;\n\nUse App\\Models\\$this->dirName;\n\nclass $this->fileName" . "Repository implements $this->fileName" . "RepositoryInterface\n{\n\n\t\tpublic function getBlankModel()\n\t\t{\n\t\t\treturn new $this->fileName();\n\t\t}\n}\n";
+        $content = "<?php\n\nnamespace App\\Repositories\\$this->dirName;\n\nUse App\\Models\\$this->dirName;\nuse App\Repositories\Base\BaseRepository;\n\nclass $this->fileName" . "Repository extends BaseRepository implements $this->fileName" . "RepositoryInterface\n{\n\n\t\tpublic function getBlankModel()\n\t\t{\n\t\t\treturn new $this->fileName();\n\t\t}\n}\n";
         file_put_contents($this->repositoryFileName, $content);
     }
 
@@ -109,7 +109,7 @@ class CreateRepositoryFileCommand extends Command
      */
     private function createInterFaceFile(): void
     {
-        $content = "<?php\n\nnamespace App\\Repositories\\$this->dirName;\n\ninterface $this->fileName" . "RepositoryInterface\n{\n\t\tpublic function getBlankModel();\n}\n";
+        $content = "<?php\n\nnamespace App\\Repositories\\$this->dirName;\n\nuse App\Repositories\Base\BaseRepositoryInterface;\n\ninterface $this->fileName" . "RepositoryInterface extends BaseRepositoryInterface\n{\n\t\tpublic function getBlankModel();\n}\n";
         file_put_contents($this->interfaceFileName, $content);
     }
 
