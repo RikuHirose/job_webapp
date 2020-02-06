@@ -34,8 +34,8 @@ class UserComposer
     public function compose(View $view)
     {
         $view->with('currentUser', $this->user);
-        $view->with('skills', $this->skills);
-        $view->with('occupations', $this->occupations);
+        $view->with('allSkills', $this->skills);
+        $view->with('allOccupations', $this->occupations);
         $view->with('parameters', $this->parameters);
     }
 }

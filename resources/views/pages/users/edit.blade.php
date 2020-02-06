@@ -60,7 +60,7 @@
       <div class="m-frmbox">
         <label>スキル</label>
 
-        @foreach($skills as $skill)
+        @foreach($allSkills as $skill)
           <div class="form-check form-check-inline">
             <input class="form-check-input" type="checkbox" name="skills[]" value="{{ $skill->id }}"
               @if($skill->id == UserHelper::existUserSkill($skill->id)) checked @endif>
@@ -73,7 +73,7 @@
       <div class="m-frmbox">
         <label>希望職種</label>
 
-        @foreach($occupations as $occupation)
+        @foreach($allOccupations as $occupation)
           <div class="form-check form-check-inline">
             <input class="form-check-input" type="checkbox" name="occupations[]" value="{{ $occupation->id }}" @if($occupation->id == UserHelper::existUserOccupation($occupation->id)) checked @endif>
 

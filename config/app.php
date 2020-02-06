@@ -237,6 +237,7 @@ return [
         // helper
         'SeoHelper' => App\Facades\Helpers\SeoHelper::class,
         'UserHelper' => \App\Facades\Helpers\UserHelper::class,
+        'MailHelper' => \App\Facades\Helpers\MailHelper::class,
     ],
 
 ];

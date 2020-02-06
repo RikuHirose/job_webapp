@@ -11434,6 +11434,46 @@ a.m-btn {
   color: #a10000;
 }
 
+/* ----------------------------------------------------------------------------
+ * Modal
+ * ------------------------------------------------------------------------- */
+
+.m-modal__header {
+  background-color: #F0F0F0;
+  border-bottom: 1px solid #DEDEDE;
+  padding-top: 10px;
+}
+
+.m-modal__header__ttl {
+  font-size: 16px;
+  text-align: center;
+  margin: 10px 0;
+  line-height: 1.5;
+}
+
+.m-modal__header__close-btn {
+  background-color: #F0F0F0;
+  position: absolute;
+  top: 10px;
+  right: 13px;
+  cursor: pointer;
+  width: 34px;
+  height: 34px;
+}
+
+.m-modal__content {
+  padding: 8px;
+}
+
+.m-modal__content--head {
+  font-size: 16px;
+  margin: 0 auto;
+  padding: 0 0 8px 0;
+  border-bottom: dotted 1px #ccc;
+  text-align: center;
+  font-weight: bold;
+}
+
 /* ============================================================================
 * pages
 * ========================================================================= */

@@ -58,11 +58,23 @@ class UserController extends Controller
 
     public function getFavorites()
     {
-        
+        $jobs = $this->jobRepository->getByFavorited(\Auth::user()->id);
+
+        \SeoHelper::setUserFavoriteSeo();
+
+        return view('pages.users.favorite', [
+            'jobs' => $jobs
+        ]);
     }
 
     public function getApplications()
     {
-        
+        $jobs = $this->jobRepository->getByApplied(\Auth::user()->id);
+
+        \SeoHelper::setUserApplicationSeo();
+
+        return view('pages.users.application', [
+            'jobs' => $jobs
+        ]);
     }
 }

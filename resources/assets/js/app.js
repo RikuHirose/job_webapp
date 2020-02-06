@@ -7,6 +7,8 @@
 require('./bootstrap');
 
 import Vue from 'vue'
+import VModal from 'vue-js-modal'
+import Toasted from 'vue-toasted'
 
 /**
  * The following block of code may be used to automatically register your
@@ -19,8 +21,8 @@ import Vue from 'vue'
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-// Vue.prototype.$axios = window.axios
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.use(VModal, { dynamic: true, injectModalsContainer: true })
+
 
 /* ============================================================================
  * form
@@ -30,6 +32,7 @@ Vue.component('search-form', require('./components/form/searchForm.vue').default
 /* ============================================================================
  * button
  * ========================================================================= */
+Vue.component('apply-button', require('./components/button/applyButton.vue').default)
 Vue.component('favorite-button', require('./components/button/favoriteButton.vue').default)
 
 /**

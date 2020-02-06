@@ -1,30 +1,15 @@
-<!-- <template>
-  <button class="m-btn" btn-type="favorite" @click="postFavorite">
-    <span class="fa-star-yellow"></span>気になる!
-  </button>
-</template> -->
-
 <template>
-  <div class="text-center">
-    <div
-    v-if="!isLiked"
-    class="c-btn-like c-btn-like--disliked">
-      <span
-        @click="postFavorite()"
-        class="">
-        <i class="fa-thumbs-up"></i>
-        行きたい {{ likesCount }}
-      </span>
-    </div>
-    <div
-    v-if="isLiked"
-    class="c-btn-like c-btn-like--liked">
-      <span
-        @click="postDisFavorite()">
-        <i class="fa-thumbs-up"></i>
-        行きたい {{ likesCount }}
-      </span>
-    </div>
+  <div class="" style="display: inline-block;">
+    <button
+      v-if="!isLiked"
+      class="m-btn" btn-type="favorite" @click="postFavorite()">
+      <span class="fa-star-yellow"></span>気になる! {{ likesCount }}
+    </button>
+    <button
+      v-if="isLiked"
+      class="m-btn" btn-type="favorite" @click="postDisFavorite()">
+      <span class="fa-star-yellow"></span>気になる! {{ likesCount }}
+    </button>
   </div>
 </template>
 
@@ -56,61 +41,22 @@ export default {
           this.likesCount = response['likesCount']
           this.isLiked    = response['isLiked']
         }
-
-        if (response['status'] === 'fail') {
-          this.showShareModal()
-        }
     },
 
     async postDisFavorite() {
         let response = await api.postDisFavorite( { job_id: this.jobId, user_id: this.userId} )
-        console.log(response)
+
         if (response['status'] === 'success') {
           this.likesCount = response['likesCount']
           this.isLiked    = response['isLiked']
         }
 
-        if (response['status'] === 'fail') {
-          this.showShareModal()
-        }
-    },
-
-    showShareModal () {
-      this.$modal.show(ShareModal, {
-      }, {
-        height: 'auto',
-        width: '320'
-      })
+        // if (response['status'] === 'fail') {
+        // }
     },
   }
 }
 
 </script>
 <style lang="scss" scoped>
-.c-btn-like {
-    max-width: 130px;
-    min-width: 130px;
-    border: 1px solid #19bfbf;
-    box-sizing: border-box;
-    height: 30px;
-    cursor: pointer;
-    transition-property: all;
-    transition-duration: .25s;
-    transition-timing-function: cubic-bezier(.215,.61,.355,1);
-    border-radius: 6px;
-
-    &:hover {
-      opacity: .8;
-    }
-
-    &--liked {
-      background: #19bfbf;
-      color: #fff;
-    }
-
-    &--disliked {
-      background: #fff;
-      color: #19bfbf;
-    }
-}
 </style>

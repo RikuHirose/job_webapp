@@ -13,6 +13,12 @@ class JobRepository extends BaseRepository implements JobRepositoryInterface
 		return new Job();
 	}
 
+    /**
+     * parameterからjobsを検索
+     *
+     * @param array $parameters
+     * @return $jobs
+     */
     public function paginateFilterByParameters(Array $parameters = null)
     {
         $jobs = $this->getBlankModel();
@@ -68,6 +74,44 @@ class JobRepository extends BaseRepository implements JobRepositoryInterface
                 return $query->where('office_time', $officeTime);
             });
         }
+
+        return $jobs->paginate();
+    }
+
+    /**
+     * お気に入りされたjobsを取得
+     *
+     * @param array $parameters
+     * @return $jobs
+     */
+    public function getByFavorited(int $userId)
+    {
+        $jobs = $this->getBlankModel();
+
+        $jobs->whereIn('jobs.id', function ($query) use ($userId) {
+            $query->from('favorites')
+                ->select('favorites.job_id')
+                ->where('favorites.user_id', $userId);
+        });
+
+        return $jobs->paginate();
+    }
+
+    /**
+     * 応募されたjobsを取得
+     *
+     * @param array $parameters
+     * @return $jobs
+     */
+    public function getByApplied(int $userId)
+    {
+        $jobs = $this->getBlankModel();
+
+        $jobs->whereIn('jobs.id', function ($query) use ($userId) {
+            $query->from('applications')
+                ->select('applications.job_id')
+                ->where('applications.user_id', $userId);
+        });
 
         return $jobs->paginate();
     }

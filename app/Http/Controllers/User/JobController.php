@@ -28,13 +28,16 @@ class JobController extends Controller
     {
         $job->load('bgImage', 'company.logo', 'occupations', 'skills');
 
-        $defaultIsFavorited   = \Auth::check() ? $this->favoriteRepository->getIsFavorited($job->id, \Auth::user()->id) : false;
+        $defaultIsApplied     = \Auth::check() ? $this->applicationRepository->isApplied($job->id, \Auth::user()->id) : false;
+        $defaultIsFavorited   = \Auth::check() ? $this->favoriteRepository->isFavorited($job->id, \Auth::user()->id) : false;
         $defaultFavoriteCount = $this->favoriteRepository->getFavoriteCount($job->id);
+
 
         \SeoHelper::setJobShowSeo($job);
 
         return view('pages.jobs.show', [
             'job'                  => $job,
+            'defaultIsApplied'     => $defaultIsApplied,
             'defaultIsFavorited'   => $defaultIsFavorited,
             'defaultFavoriteCount' => $defaultFavoriteCount,
         ]);

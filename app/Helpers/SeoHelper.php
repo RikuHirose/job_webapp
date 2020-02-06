@@ -37,6 +37,33 @@ class SeoHelper
         return self::setSeo($title, $keyWords, $description, $imageFacebook, $imageTwitter);
     }
 
+    // user
+    public static function setUserFavoriteSeo()
+    {
+        $appName      = config('app.name');
+        $title        = '気になるした求人一覧  |  ' .trans('seo.users.show.title');
+        $description  = trans('seo.index.description');
+        $keyWords     = trans('seo.index.keywords');
+
+        $imageTwitter  = config('app.url').'images/logo-ogp.jpg';
+        $imageFacebook = config('app.url').'images/logo-ogp.jpg';
+
+        return self::setSeo($title, $keyWords, $description, $imageFacebook, $imageTwitter);
+    }
+
+    public static function setUserApplicationSeo()
+    {
+        $appName      = config('app.name');
+        $title        = '応募した求人一覧  |  ' .trans('seo.users.show.title');
+        $description  = trans('seo.index.description');
+        $keyWords     = trans('seo.index.keywords');
+
+        $imageTwitter  = config('app.url').'images/logo-ogp.jpg';
+        $imageFacebook = config('app.url').'images/logo-ogp.jpg';
+
+        return self::setSeo($title, $keyWords, $description, $imageFacebook, $imageTwitter);
+    }
+
     public function setDefaultSeo()
     {
         $appName     = config('app.name');

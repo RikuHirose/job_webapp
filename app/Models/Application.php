@@ -12,10 +12,10 @@ class Application extends Model
     protected $table = 'applications';
 
     protected $fillable = [
-      'job_id'
-      'user_id'
-      'comapny_id'
-      'status'
+      'job_id',
+      'user_id',
+      'comapny_id',
+      'status',
     ];
 
     protected $dates = ['deleted_at'];

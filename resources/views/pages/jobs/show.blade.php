@@ -52,6 +52,7 @@
                   {{ $skill->name }}
                 </span>
               @endforeach
+
               @foreach($job->occupations as $occupation)
                 <span class="m-tag">
                   {{ $occupation->name }}
@@ -74,18 +75,29 @@
     <!-- show actions -->
     <div class="p-job-show--actions">
       <div class="w-50 mx-auto">
-        <button class="m-btn" btn-type="favorite">
-          <span class="fa-star-yellow"></span>気になる!
-        </button>
+        @guest
+          <button class="m-btn" btn-type="favorite">
+            <span class="fa-star-yellow"></span>気になる!
+          </button>
 
-        <favorite-button
-            :job-id="{{ json_encode($job->id) }}"
-            :user-id="{{ json_encode($currentUser->id) }}"
-            :default-favorite-count="{{ json_encode($defaultFavoriteCount) }}"
-            :default-is-favorited="{{ json_encode($defaultIsFavorited) }}">
-        </favorite-button>
+          <button class="m-btn" btn-type="apply">応募する!</button>
+        @endGuest
 
-        <button class="m-btn" btn-type="apply">応募する!</button>
+        @auth
+          <favorite-button
+              :job-id="{{ json_encode($job->id) }}"
+              :user-id="{{ json_encode($currentUser->id) }}"
+              :default-favorite-count="{{ json_encode($defaultFavoriteCount) }}"
+              :default-is-favorited="{{ json_encode($defaultIsFavorited) }}">
+          </favorite-button>
+
+          <apply-button
+              :job-id="{{ json_encode($job->id) }}"
+              :user-id="{{ json_encode($currentUser->id) }}"
+              :default-is-applied="{{ json_encode($defaultIsApplied) }}">
+          </apply-button>
+        @endAuth
+
       </div>
     </div>
 

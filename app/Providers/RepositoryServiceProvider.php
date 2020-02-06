@@ -60,6 +60,12 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repositories\Favorite\FavoriteRepositoryInterface::class,
             \App\Repositories\Favorite\FavoriteRepository::class
         );
+
+        // Application
+        $this->app->singleton(
+            \App\Repositories\Application\ApplicationRepositoryInterface::class,
+            \App\Repositories\Application\ApplicationRepository::class
+        );
     }
 
     /**

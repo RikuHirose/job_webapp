@@ -13,6 +13,7 @@ use App\Repositories\Skill\SkillRepositoryInterface;
 use App\Repositories\Favorite\FavoriteRepositoryInterface;
 use App\Repositories\UserSkill\UserSkillRepositoryInterface;
 use App\Repositories\Occupation\OccupationRepositoryInterface;
+use App\Repositories\Application\ApplicationRepositoryInterface;
 use App\Repositories\UserOccupation\UserOccupationRepositoryInterface;
 
 class Controller extends BaseController
@@ -25,6 +26,7 @@ class Controller extends BaseController
     protected $favoriteRepository;
     protected $userSkillRepository;
     protected $occupationRepository;
+    protected $applicationRepository;
     protected $userOccupationRepository;
 
     public function __construct(
@@ -34,6 +36,7 @@ class Controller extends BaseController
         FavoriteRepositoryInterface $favoriteRepository,
         UserSkillRepositoryInterface $userSkillRepository,
         OccupationRepositoryInterface $occupationRepository,
+        ApplicationRepositoryInterface $applicationRepository,
         UserOccupationRepositoryInterface $userOccupationRepository
     )
     {
@@ -41,8 +44,9 @@ class Controller extends BaseController
         $this->userRepository           = $userRepository;
         $this->skillRepository          = $skillRepository;
         $this->favoriteRepository       = $favoriteRepository;
-        $this->occupationRepository     = $occupationRepository;
         $this->userSkillRepository      = $userSkillRepository;
+        $this->occupationRepository     = $occupationRepository;
+        $this->applicationRepository    = $applicationRepository;
         $this->userOccupationRepository = $userOccupationRepository;
     }
 }

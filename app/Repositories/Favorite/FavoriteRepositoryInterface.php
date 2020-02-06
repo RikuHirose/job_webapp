@@ -10,5 +10,5 @@ interface FavoriteRepositoryInterface extends BaseRepositoryInterface
 
     public function getFavoriteCount(int $jobId);
 
-    public function getIsFavorited(int $jobId, int $userId);
+    public function isFavorited(int $jobId, int $userId);
 }

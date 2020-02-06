@@ -29,11 +29,11 @@ Route::group(['namespace' => 'User'], function () {
         Route::get('/edit', 'UserController@edit')->name('edit');
         Route::post('/update', 'UserController@update')->name('update');
 
-        Route::get('/request', 'UserController@getRequest')->name('get.request');
-        Route::post('/request', 'UserController@postRequest')->name('post.request');
+        // Route::get('/request', 'UserController@getRequest')->name('get.request');
+        // Route::post('/request', 'UserController@postRequest')->name('post.request');
 
-        Route::get('/portfolio', 'UserController@getPortfolio')->name('get.portfolio');
-        Route::post('/portfolio', 'UserController@postPortfolio')->name('post.portfolio');
+        // Route::get('/portfolio', 'UserController@getPortfolio')->name('get.portfolio');
+        // Route::post('/portfolio', 'UserController@postPortfolio')->name('post.portfolio');
 
         Route::get('/favorites', 'UserController@getFavorites')->name('favorites');
         Route::get('/applications', 'UserController@getApplications')->name('applications');
