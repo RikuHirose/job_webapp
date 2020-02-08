@@ -24,6 +24,11 @@ class Job extends Model
 
     protected $dates = ['deleted_at'];
 
+    // カスタムの情報を返す
+    protected $appends = [
+        'short_title',
+    ];
+
     // Relations
     public function bgImage()
     {
@@ -43,6 +48,12 @@ class Job extends Model
     public function skills()
     {
         return $this->belongsToMany(\App\Models\Skill::class, 'job_skills', 'job_id', 'skill_id');
+    }
+
+    // Attributes
+    public function getShortTitleAttribute()
+    {
+        return mb_strimwidth($this->title, 0, 55, '...');
     }
 
 }

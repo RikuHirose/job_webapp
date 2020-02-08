@@ -10989,44 +10989,74 @@ input[type=button]::focus {
 }
 
 /* ----------------------------------------------------------------------------
- * jobs indexCard
+ * jobs smallCard
  * ------------------------------------------------------------------------- */
 
-.c-job-index-card--img__wrap {
+.c-job-small-card {
+  border: 1px solid #202020;
+  -o-border-image: initial;
+     border-image: initial;
+  border-radius: 4px;
+}
+
+.c-job-small-card--img__wrap {
   padding: 0;
 }
 
-.c-job-index-card--img__sizing {
+.c-job-small-card--img__sizing {
   width: 100%;
-  height: auto;
+  height: 128px;
   -o-object-fit: cover;
      object-fit: cover;
   opacity: 1;
   transition: 0.3s ease-in-out;
 }
 
-.c-job-index-card--img__sizing:hover {
+.c-job-small-card--img__sizing:hover {
   opacity: 0.8;
 }
 
-.c-job-index-card--right {
+.c-job-small-card--right {
   position: relative;
 }
 
-.c-job-index-card__ttl {
+.c-job-small-card__ttl {
   padding-bottom: 8px;
-  font-size: 16px;
-  line-height: 1.4;
+  font-size: 12px;
   margin: 0;
   font-weight: 600;
+  line-height: 1.4;
 }
 
-.c-job-index-card__ttl--wrap {
+.c-job-small-card__ttl--wrap {
   min-height: 40px;
+  padding: 16px;
 }
 
-.c-job-index-card__ttl--link {
+.c-job-small-card__ttl--link {
   color: #000000;
+}
+
+.c-job-small-card__job-item {
+  font-size: 10px;
+  padding-bottom: 8px;
+}
+
+.c-job-small-card__job-item--ttl {
+  font-weight: 700;
+  margin-right: 4px;
+}
+
+/* ----------------------------------------------------------------------------
+ * jobs count
+ * ------------------------------------------------------------------------- */
+
+.c-job-count {
+  margin: 16px 0;
+}
+
+.c-job-count__bold {
+  font-weight: 800;
 }
 
 /* ============================================================================
@@ -11424,15 +11454,20 @@ a.m-btn {
 }
 
 .m-pagination ul.pagination li a.active {
-  background-color: #4b90f6;
-  color: white;
-  border-radius: 40px;
+  font-weight: 600;
+  border: 1px solid #202020;
+  border-radius: 100%;
+  text-decoration: none;
   width: 38px;
   height: 38px;
 }
 
+.m-pagination ul.pagination li a.active:hover {
+  color: #fff;
+  background-color: #202020;
+}
+
 .m-pagination ul.pagination li a:hover:not(.active) {
-  background-color: #e1e7f0;
   border-radius: 40px;
 }
 
@@ -11555,21 +11590,21 @@ a.m-btn {
   margin: 40px 0;
 }
 
-.p-job-show--content h2,
-.p-job-show--description h2,
-.p-job-show--application-qualification .p-job-show--requirement h2,
-.p-job-show--actions h2,
-.p-job-show--company h2 {
+.p-job-show--content .h2-ttl,
+.p-job-show--description .h2-ttl,
+.p-job-show--application-qualification .p-job-show--requirement .h2-ttl,
+.p-job-show--actions .h2-ttl,
+.p-job-show--company .h2-ttl {
   margin-bottom: 16px;
   font-size: 16px;
   color: #000000;
 }
 
-.p-job-show--content h3,
-.p-job-show--description h3,
-.p-job-show--application-qualification .p-job-show--requirement h3,
-.p-job-show--actions h3,
-.p-job-show--company h3 {
+.p-job-show--content .h3-ttl,
+.p-job-show--description .h3-ttl,
+.p-job-show--application-qualification .p-job-show--requirement .h3-ttl,
+.p-job-show--actions .h3-ttl,
+.p-job-show--company .h3-ttl {
   margin-bottom: 8px;
   font-size: 14px;
   color: #000000;
@@ -11596,6 +11631,11 @@ a.m-btn {
 
 .p-job-show--requirement__block {
   margin-bottom: 16px;
+}
+
+.p-job-show--other__more {
+  text-align: center;
+  margin: 40px 0;
 }
 
 /* ----------------------------------------------------------------------------

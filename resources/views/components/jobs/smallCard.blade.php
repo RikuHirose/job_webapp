@@ -6,20 +6,27 @@
     </a>
 
     <div class="c-job-small-card__ttl--wrap">
-        <h2 class="c-job-small-card__ttl">
-          <a href="{{ route('jobs.show', $job->id) }}" class="c-job-small-card__ttl--link">{{ $job->title }}</a>
-        </h2>
-
-        @foreach($job->skills as $skill)
-          <span class="m-tag">
-            {{ $skill->name }}
+        <h3 class="c-job-small-card__ttl">
+          <a href="{{ route('jobs.show', $job->id) }}" class="c-job-small-card__ttl--link">{{ $job->short_title }}</a>
+        </h3>
+        <div class="c-job-small-card__job-item">
+          <span class="c-job-small-card__job-item--ttl">働き方</span>
+          <span class="c-job-small-card__job-item--content">
+            {{ config("constants.job.work_time.$job->work_time") }}
           </span>
-        @endforeach
-        @foreach($job->occupations as $occupation)
-          <span class="m-tag">
-            {{ $occupation->name }}
+        </div>
+        <div class="c-job-small-card__job-item">
+          <span class="c-job-small-card__job-item--ttl">オフィス出社頻度</span>
+          <span class="c-job-small-card__job-item--content">
+            {{ config("constants.job.office_time.$job->office_time") }}
           </span>
-        @endforeach
+        </div>
+        <div class="c-job-small-card__job-item">
+          <span class="c-job-small-card__job-item--ttl">報酬</span>
+          <span class="c-job-small-card__job-item--content">
+            {{ $job->salary_min }} ~ {{ $job->salary_max }}
+          </span>
+        </div>
     </div>
   </div>
 </div>

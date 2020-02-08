@@ -292,7 +292,7 @@ export default {
     box-sizing: border-box;
     width: 100%;
     padding: 0.3em;
-    padding-left: 40px;
+    padding-left: 16px;
     letter-spacing: 1px;
     border: 0;
     border-radius: 4px;

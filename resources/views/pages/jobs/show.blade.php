@@ -14,7 +14,7 @@
 
     <!-- description -->
     <div class="p-job-show--description">
-      <h2>概要</h2>
+      <h2 class="h2-ttl">概要</h2>
       <p>
         {{ $job->description }}
       </p>
@@ -22,7 +22,7 @@
 
     <!-- show application_qualification -->
     <div class="p-job-show--application-qualification">
-      <h2>募集要件</h2>
+      <h2 class="h2-ttl">募集要件</h2>
         <p>
         {{ $job->application_qualification }}
       </p>
@@ -32,21 +32,21 @@
 
     <!-- show requirement -->
     <div class="p-job-show--requirement">
-      <h2>求人要件</h2>
+      <h2 class="h2-ttl">求人要件</h2>
 
       <div class="row">
           <div class="col-md-6">
             <div class="p-job-show--requirement__block">
-              <h3>オフィス出社頻度</h3>
+              <h3 class="h3-ttl">オフィス出社頻度</h3>
               <p>{{ config("constants.job.office_time.$job->office_time") }}</p>
             </div>
 
             <div class="p-job-show--requirement__block">
-              <h3>働き方</h3>
+              <h3 class="h3-ttl">働き方</h3>
               <p>{{ config("constants.job.work_time.$job->work_time") }}</p>
             </div>
             <div class="p-job-show--requirement__block">
-              <h3>スキル・職種</h3>
+              <h3 class="h3-ttl">スキル・職種</h3>
               @foreach($job->skills as $skill)
                 <span class="m-tag">
                   {{ $skill->name }}
@@ -63,7 +63,7 @@
 
           <div class="col-md-6">
             <div class="p-job-show--requirement__block">
-              <h3>報酬</h3>
+              <h3 class="h3-ttl">報酬</h3>
               <p>
                 {{ $job->salary_min }} ~ {{ $job->salary_max }}
               </p>
@@ -110,7 +110,7 @@
           <img src="{{ $job->company->logo->url }}" class="rounded-circle" style="width: 64px; height: 64px;">
         </div>
         <div class="col-md-9">
-          <h2>{{ $job->company->name }}</h2>
+          <h2 class="h2-ttl">{{ $job->company->name }}</h2>
           <p>
             {{ $job->company->description }}
           </p>
@@ -127,7 +127,7 @@
 
     <!-- show other -->
     <div class="p-job-show--other">
-      <h2>関連する求人一覧</h2>
+      <h2 class="h2-ttl">関連する求人一覧</h2>
       <div class="row">
         @foreach($relatedJobs as $job)
             <div class="col-md-4">
@@ -136,7 +136,7 @@
         @endforeach
       </div>
 
-      <div class="text-center">
+      <div class="p-job-show--other__more">
         <a href="">もっと見る</a>
       </div>
     </div>

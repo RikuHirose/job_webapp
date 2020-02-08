@@ -1,15 +1,19 @@
 /* ----------------------------------------------------------------------------
- * jobs indexCard
+ * jobs smallCard
  * ------------------------------------------------------------------------- */
 
- .c-job-index-card {
+ .c-job-small-card {
+
+  border: 1px solid rgb(32, 32, 32);
+  border-image: initial;
+  border-radius: 4px;
 
   &--img__wrap {
     padding: 0;
   }
   &--img__sizing {
     width: 100%;
-    height: auto;
+    height: 128px;
     object-fit: cover;
     opacity: 1;
     -webkit-transition: .3s ease-in-out;
@@ -26,17 +30,31 @@
 
   &__ttl {
     padding-bottom: 8px;
-    font-size: 16px;
-    line-height: 1.4;
+    font-size: 12px;
     margin: 0;
     font-weight: 600;
+    line-height: 1.4;
 
     &--wrap {
       min-height: 40px;
+      padding: 16px;
     }
 
     &--link {
       color: $c-text-headliner;
+    }
+  }
+
+  &__job-item {
+    font-size: 10px;
+    padding-bottom: 8px;
+    &--ttl {
+      font-weight: 700;
+      margin-right: 4px;
+    }
+
+    &--content {
+
     }
   }
  }

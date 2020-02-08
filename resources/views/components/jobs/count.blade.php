@@ -1,3 +1,4 @@
 <div class="c-job-count">
-  求人一覧 {{ $jobs->count() + ($jobs->perPage() * ($jobs->currentPage() - 1)) }} / {{ $jobs->total() }}
+  <span class="c-job-count__bold">求人一覧</span>
+   {{ $jobs->count() + ($jobs->perPage() * ($jobs->currentPage() - 1)) }} / {{ $jobs->total() }}
 </div>
