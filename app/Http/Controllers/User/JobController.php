@@ -19,7 +19,7 @@ class JobController extends Controller
         \SeoHelper::setIndexSeo();
 
         return view('pages.jobs.index', [
-            'jobs'      => $jobs,
+            'jobs'       => $jobs,
             'parameters' => $parameters,
         ]);
     }
@@ -32,11 +32,17 @@ class JobController extends Controller
         $defaultIsFavorited   = \Auth::check() ? $this->favoriteRepository->isFavorited($job->id, \Auth::user()->id) : false;
         $defaultFavoriteCount = $this->favoriteRepository->getFavoriteCount($job->id);
 
+        $relatedJobs = $this->jobRepository->getByRelationModelKey([
+            'skillIds'      => $job->skills->modelKeys(),
+            'occupationIds' => $job->occupations->modelKeys()
+        ]);
+        $relatedJobs->load('bgImage', 'company.logo', 'occupations', 'skills');
 
         \SeoHelper::setJobShowSeo($job);
 
         return view('pages.jobs.show', [
             'job'                  => $job,
+            'relatedJobs'          => $relatedJobs->take(3),
             'defaultIsApplied'     => $defaultIsApplied,
             'defaultIsFavorited'   => $defaultIsFavorited,
             'defaultFavoriteCount' => $defaultFavoriteCount,

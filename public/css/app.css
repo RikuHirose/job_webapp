@@ -10988,6 +10988,47 @@ input[type=button]::focus {
   text-align: center;
 }
 
+/* ----------------------------------------------------------------------------
+ * jobs indexCard
+ * ------------------------------------------------------------------------- */
+
+.c-job-index-card--img__wrap {
+  padding: 0;
+}
+
+.c-job-index-card--img__sizing {
+  width: 100%;
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+  opacity: 1;
+  transition: 0.3s ease-in-out;
+}
+
+.c-job-index-card--img__sizing:hover {
+  opacity: 0.8;
+}
+
+.c-job-index-card--right {
+  position: relative;
+}
+
+.c-job-index-card__ttl {
+  padding-bottom: 8px;
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 0;
+  font-weight: 600;
+}
+
+.c-job-index-card__ttl--wrap {
+  min-height: 40px;
+}
+
+.c-job-index-card__ttl--link {
+  color: #000000;
+}
+
 /* ============================================================================
 * modules
 * ========================================================================= */

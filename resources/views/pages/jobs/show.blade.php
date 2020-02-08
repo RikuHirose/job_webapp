@@ -128,6 +128,17 @@
     <!-- show other -->
     <div class="p-job-show--other">
       <h2>関連する求人一覧</h2>
+      <div class="row">
+        @foreach($relatedJobs as $job)
+            <div class="col-md-4">
+              @include('components.jobs.smallCard', ['job' => $job])
+            </div>
+        @endforeach
+      </div>
+
+      <div class="text-center">
+        <a href="">もっと見る</a>
+      </div>
     </div>
 
 </div>

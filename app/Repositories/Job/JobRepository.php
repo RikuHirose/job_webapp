@@ -79,6 +79,45 @@ class JobRepository extends BaseRepository implements JobRepositoryInterface
     }
 
     /**
+     * jobにひもづくrelationからを検索
+     *
+     * @param array $relationModelKey
+     * @return $jobs
+     */
+    public function getByRelationModelKey(Array $relationModelKey)
+    {
+        $jobs = $this->getBlankModel();
+
+        if (isset($relationModelKey['skillIds'])) {
+
+            $skillIds = $relationModelKey['skillIds'];
+            $jobs     = $jobs->when($skillIds, function ($query) use ($skillIds) {
+
+                return $query->whereIn('jobs.id', function ($q) use ($skillIds) {
+                    $q->from('job_skills')
+                        ->select('job_skills.job_id')
+                        ->whereIn('job_skills.skill_id', $skillIds);
+                });
+            });
+        }
+
+        if (isset($relationModelKey['occupationIds'])) {
+
+            $occupationIds = $relationModelKey['occupationIds'];
+            $jobs          = $jobs->when($occupationIds, function ($query) use ($occupationIds) {
+
+                return $query->whereIn('jobs.id', function ($q) use ($occupationIds) {
+                    $q->from('job_occupations')
+                        ->select('job_occupations.job_id')
+                        ->whereIn('job_occupations.occupation_id', $occupationIds);
+                });
+            });
+        }
+
+        return $jobs->get();
+    }
+
+    /**
      * お気に入りされたjobsを取得
      *
      * @param array $parameters

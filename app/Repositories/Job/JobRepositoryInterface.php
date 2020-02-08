@@ -10,6 +10,8 @@ interface JobRepositoryInterface extends BaseRepositoryInterface
 
     public function paginateFilterByParameters(Array $parameters = null);
 
+    public function getByRelationModelKey(Array $relationModelKey);
+
     public function getByFavorited(int $userId);
 
     public function getByApplied(int $userId);
