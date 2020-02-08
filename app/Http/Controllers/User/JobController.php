@@ -33,8 +33,8 @@ class JobController extends Controller
         $defaultFavoriteCount = $this->favoriteRepository->getFavoriteCount($job->id);
 
         $relatedJobs = $this->jobRepository->getByRelationModelKey([
-            'skillIds'      => $job->skills->modelKeys(),
-            'occupationIds' => $job->occupations->modelKeys()
+            'skill_id'      => $job->skills->modelKeys(),
+            'occupation_id' => $job->occupations->modelKeys()
         ]);
         $relatedJobs->load('bgImage', 'company.logo', 'occupations', 'skills');
 

@@ -196,7 +196,7 @@ export default {
       if (this.parameters['office_time']) { this.office_time = this.parameters['office_time'] }
     },
     searchJobs () {
-      let url = `/jobs?word=${this.freeWord}&occupation_id=${this.occupation_id}&skill_id=${this.skill_id}&work_time=${this.work_time}&office_time=${this.office_time}`
+      let url = `/jobs?word=${this.freeWord}&occupation_id[]=${this.occupation_id}&skill_id[]=${this.skill_id}&work_time=${this.work_time}&office_time=${this.office_time}`
 
       window.location.href = url
     }

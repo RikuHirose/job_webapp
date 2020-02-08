@@ -2286,7 +2286,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     searchJobs: function searchJobs() {
-      var url = "/jobs?word=".concat(this.freeWord, "&occupation_id=").concat(this.occupation_id, "&skill_id=").concat(this.skill_id, "&work_time=").concat(this.work_time, "&office_time=").concat(this.office_time);
+      var url = "/jobs?word=".concat(this.freeWord, "&occupation_id[]=").concat(this.occupation_id, "&skill_id[]=").concat(this.skill_id, "&work_time=").concat(this.work_time, "&office_time=").concat(this.office_time);
       window.location.href = url;
     }
   }
