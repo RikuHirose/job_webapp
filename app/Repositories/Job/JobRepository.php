@@ -22,6 +22,7 @@ class JobRepository extends BaseRepository implements JobRepositoryInterface
     public function paginateFilterByParameters(Array $parameters = null)
     {
         $jobs = $this->getBlankModel();
+        $jobs = $this->buildQueryByRelationModelKey($jobs, $parameters);
 
         if (isset($parameters['word'])) {
             $word = $parameters['word'];
@@ -33,33 +34,33 @@ class JobRepository extends BaseRepository implements JobRepositoryInterface
             });
         }
 
-        if (isset($parameters['occupation_id'])) {
-            $occupationId = $parameters['occupation_id'];
-            $jobs         = $jobs->when($occupationId, function ($query) use ($occupationId) {
-                // return $query->whereHas('occupations', function ($q) use ($occupationId) {
-                //     $q->where('occupations.id', $occupationId);
-                // });
-                return $query->whereIn('jobs.id', function ($q) use ($occupationId) {
-                    $q->from('job_occupations')
-                        ->select('job_occupations.job_id')
-                        ->where('job_occupations.occupation_id', $occupationId);
-                });
-            });
-        }
+        // if (isset($parameters['occupation_id'])) {
+        //     $occupationId = $parameters['occupation_id'];
+        //     $jobs         = $jobs->when($occupationId, function ($query) use ($occupationId) {
+        //         // return $query->whereHas('occupations', function ($q) use ($occupationId) {
+        //         //     $q->where('occupations.id', $occupationId);
+        //         // });
+        //         return $query->whereIn('jobs.id', function ($q) use ($occupationId) {
+        //             $q->from('job_occupations')
+        //                 ->select('job_occupations.job_id')
+        //                 ->where('job_occupations.occupation_id', $occupationId);
+        //         });
+        //     });
+        // }
 
-        if (isset($parameters['skill_id'])) {
-            $skillId = $parameters['skill_id'];
-            $jobs    = $jobs->when($skillId, function ($query) use ($skillId) {
-                // return $query->whereHas('skills', function ($q) use ($skillId) {
-                //     $q->where('skills.id', $skillId);
-                // });
-                return $query->whereIn('jobs.id', function ($q) use ($skillId) {
-                    $q->from('job_skills')
-                        ->select('job_skills.job_id')
-                        ->where('job_skills.skill_id', $skillId);
-                });
-            });
-        }
+        // if (isset($parameters['skill_id'])) {
+        //     $skillId = $parameters['skill_id'];
+        //     $jobs    = $jobs->when($skillId, function ($query) use ($skillId) {
+        //         // return $query->whereHas('skills', function ($q) use ($skillId) {
+        //         //     $q->where('skills.id', $skillId);
+        //         // });
+        //         return $query->whereIn('jobs.id', function ($q) use ($skillId) {
+        //             $q->from('job_skills')
+        //                 ->select('job_skills.job_id')
+        //                 ->where('job_skills.skill_id', $skillId);
+        //         });
+        //     });
+        // }
 
         if (isset($parameters['work_time'])) {
             $workTime = $parameters['work_time'];
@@ -79,19 +80,17 @@ class JobRepository extends BaseRepository implements JobRepositoryInterface
     }
 
     /**
-     * jobにひもづくrelationからを検索
+     * jobにひもづくrelationからqueryをreturn
      *
      * @param array $relationModelKey
      * @return $jobs
      */
-    public function getByRelationModelKey(Array $relationModelKey)
+    private function buildQueryByRelationModelKey(Job $model, Array $relationModelKey = null)
     {
-        $jobs = $this->getBlankModel();
+        if (isset($relationModelKey['skill_id']) && !is_null($relationModelKey['skill_id'][0]) ) {
 
-        if (isset($relationModelKey['skillIds'])) {
-
-            $skillIds = $relationModelKey['skillIds'];
-            $jobs     = $jobs->when($skillIds, function ($query) use ($skillIds) {
+            $skillIds  = $relationModelKey['skill_id'];
+            $model     = $model->when($skillIds, function ($query) use ($skillIds) {
 
                 return $query->whereIn('jobs.id', function ($q) use ($skillIds) {
                     $q->from('job_skills')
@@ -101,10 +100,10 @@ class JobRepository extends BaseRepository implements JobRepositoryInterface
             });
         }
 
-        if (isset($relationModelKey['occupationIds'])) {
+        if (isset($relationModelKey['occupation_id']) && !is_null($relationModelKey['occupation_id'][0]) ) {
 
-            $occupationIds = $relationModelKey['occupationIds'];
-            $jobs          = $jobs->when($occupationIds, function ($query) use ($occupationIds) {
+            $occupationIds  = $relationModelKey['occupation_id'];
+            $model          = $model->when($occupationIds, function ($query) use ($occupationIds) {
 
                 return $query->whereIn('jobs.id', function ($q) use ($occupationIds) {
                     $q->from('job_occupations')
@@ -113,6 +112,20 @@ class JobRepository extends BaseRepository implements JobRepositoryInterface
                 });
             });
         }
+
+        return $model;
+    }
+
+    /**
+     * jobにひもづくrelationから検索
+     *
+     * @param array $relationModelKey
+     * @return $jobs
+     */
+    public function getByRelationModelKey(Array $relationModelKey)
+    {
+        $jobs = $this->getBlankModel();
+        $jobs = $this->buildQueryByRelationModelKey($jobs, $relationModelKey);
 
         return $jobs->get();
     }

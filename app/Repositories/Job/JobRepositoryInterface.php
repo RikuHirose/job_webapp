@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Job;
 
+use App\Models\Job;
 use App\Repositories\Base\BaseRepositoryInterface;
 
 interface JobRepositoryInterface extends BaseRepositoryInterface
