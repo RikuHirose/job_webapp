@@ -15,8 +15,8 @@ class HomeController extends Controller
 
         \SeoHelper::setIndexSeo();
 
-        return view('home', [
-            'jobs'        => $jobs,
+        return view('pages.home', [
+            'jobs' => $jobs,
         ]);
     }
 }

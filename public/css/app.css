@@ -11567,6 +11567,50 @@ a.m-btn {
 * ========================================================================= */
 
 /* ----------------------------------------------------------------------------
+ * page home
+ * ------------------------------------------------------------------------- */
+
+.p-home__image {
+  height: 400px;
+  position: relative;
+  background-image: url(/images/bg-top.jpg);
+  -o-object-fit: cover;
+     object-fit: cover;
+  background-size: cover;
+  background-position: center;
+  padding-top: 136px;
+  padding-bottom: 40px;
+  width: 100%;
+}
+
+.p-home--copy {
+  position: relative;
+  color: #fff;
+  font-size: 36px;
+  font-weight: 400;
+  letter-spacing: 4px;
+  text-align: center;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+  margin-bottom: 48px;
+}
+
+.p-home__search-form {
+  width: 100%;
+}
+
+.p-home .m-search i {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 16px 10px;
+}
+
+.p-home .m-search input,
+.p-home .m-search button {
+  height: 54px;
+}
+
+/* ----------------------------------------------------------------------------
  * page job show
  * ------------------------------------------------------------------------- */
 

@@ -36,13 +36,17 @@
         @endif
 
         <main class="">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-8">
-                        @yield('content')
+             @if( isset($noContainer) && $noContainer == true )
+                @yield('content')
+            @else
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            @yield('content')
+                        </div>
                     </div>
                 </div>
-            </div>
+            @endif
         </main>
 
         @include('layouts._footer')
