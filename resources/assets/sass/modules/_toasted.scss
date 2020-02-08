@@ -1,0 +1,13 @@
+/* ----------------------------------------------------------------------------
+ * m-toasted
+ * ------------------------------------------------------------------------- */
+.m-toasted {
+}
+
+@include max-screen($breakpoint-mobile) {
+  .m-toasted {
+    min-width: 40% !important;
+    min-width: 56% !important;
+    top: 8% !important;
+  }
+}

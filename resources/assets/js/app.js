@@ -22,7 +22,10 @@ import Toasted from 'vue-toasted'
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 Vue.use(VModal, { dynamic: true, injectModalsContainer: true })
+Vue.use(Toasted, {position: 'top-right', duration: 1500, containerClass: 'm-toasted'})
 
+
+Vue.component('toast', require('./components/toast.vue').default)
 
 /* ============================================================================
  * form

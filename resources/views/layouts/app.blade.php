@@ -28,6 +28,13 @@
     <div id="app">
         @include('layouts._header')
 
+        @if(session('toast'))
+            <toast
+            :status="{{ json_encode(session('toast.status')) }}"
+            :message="{{ json_encode(session('toast.message')) }}"
+            ></toast>
+        @endif
+
         <main class="">
             <div class="container">
                 <div class="row justify-content-center">

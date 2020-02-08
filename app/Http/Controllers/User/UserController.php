@@ -50,10 +50,20 @@ class UserController extends Controller
         });
 
         if (empty($user)) {
-            return redirect()->back()->withErrors(trans('errors.general.save_failed'));
+            return redirect()->back()->with([
+                'toast' => [
+                    'status'  => 'error',
+                    'message' => '編集に失敗しました'
+                ]
+            ]);
         }
 
-        return redirect()->back();
+        return redirect()->back()->with([
+            'toast' => [
+                'status'  => 'success',
+                'message' => '編集しました'
+            ]
+        ]);
     }
 
     public function getFavorites()
