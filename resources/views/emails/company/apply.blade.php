@@ -15,7 +15,7 @@
 
    <p>{{ config('app.name') }}運営事務局</p>
 
-   <a href="{{ route('home') }}" target="_blank">{{ route('home') }}</a>
+   <a href="{{ route('index') }}" target="_blank">{{ route('index') }}</a>
 
   <p>----------------------------------------------</p>
 </html>

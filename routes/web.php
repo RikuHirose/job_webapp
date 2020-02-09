@@ -14,10 +14,8 @@
 
 Auth::routes();
 
-
-Route::get('/', 'HomeController@index')->name('home');
-
 Route::group(['namespace' => 'User'], function () {
+  Route::get('/', 'IndexController@index')->name('index');
   // jobs
   Route::resource('jobs', 'JobController', ['only' => ['index', 'show']]);
 

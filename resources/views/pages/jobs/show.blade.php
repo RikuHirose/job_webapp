@@ -76,11 +76,15 @@
     <div class="p-job-show--actions">
       <div class="w-50 mx-auto">
         @guest
-          <button class="m-btn" btn-type="favorite">
-            <span class="fa-star-yellow"></span>気になる!
-          </button>
+          <a href="{{ route('login') }}">
+            <button class="m-btn" btn-type="favorite">
+              <span class="fa-star-yellow"></span>気になる!
+            </button>
+          </a>
 
-          <button class="m-btn" btn-type="apply">応募する!</button>
+          <a href="{{ route('login') }}">
+            <button class="m-btn" btn-type="apply">応募する!</button>
+          </a>
         @endGuest
 
         @auth
