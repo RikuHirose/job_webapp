@@ -1850,7 +1850,7 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _modal_shareModal_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../modal/shareModal.vue */ "./resources/assets/js/components/modal/shareModal.vue");
+/* harmony import */ var _modal_applyModal_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../modal/applyModal.vue */ "./resources/assets/js/components/modal/applyModal.vue");
 //
 //
 //
@@ -1873,6 +1873,10 @@ __webpack_require__.r(__webpack_exports__);
       required: true,
       type: Number
     },
+    companyId: {
+      required: true,
+      type: Number
+    },
     userId: {
       required: true,
       type: Number
@@ -1887,13 +1891,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {},
   methods: {
-    showShareModal: function showShareModal() {
-      this.$modal.show(_modal_shareModal_vue__WEBPACK_IMPORTED_MODULE_0__["default"], {
+    showApplyModal: function showApplyModal() {
+      this.$modal.show(_modal_applyModal_vue__WEBPACK_IMPORTED_MODULE_0__["default"], {
         title: 'この求人に応募する',
         defaultIsApplied: this.defaultIsApplied,
         formData: {
           job_id: this.jobId,
-          user_id: this.userId
+          user_id: this.userId,
+          company_id: this.companyId,
+          status: 0
         }
       }, {
         height: 'auto',
@@ -2270,11 +2276,11 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       if (this.parameters['occupation_id']) {
-        this.occupation_id = this.parameters['occupation_id'];
+        this.occupation_id = this.parameters['occupation_id'][0];
       }
 
       if (this.parameters['skill_id']) {
-        this.skill_id = this.parameters['skill_id'];
+        this.skill_id = this.parameters['skill_id'][0];
       }
 
       if (this.parameters['work_time']) {
@@ -2294,9 +2300,9 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/modal/shareModal.vue?vue&type=script&lang=js&":
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/modal/applyModal.vue?vue&type=script&lang=js&":
 /*!**********************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/modal/shareModal.vue?vue&type=script&lang=js& ***!
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/modal/applyModal.vue?vue&type=script&lang=js& ***!
   \**********************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -2327,14 +2333,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     title: {
-      required: true,
-      type: String
-    },
-    description: {
       required: true,
       type: String
     },
@@ -2348,9 +2355,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   data: function data() {
-    return {};
+    return {
+      isApplied: true
+    };
   },
-  created: function created() {},
+  created: function created() {
+    this.isApplied = this.defaultIsApplied;
+  },
   methods: {
     postApplications: function () {
       var _postApplications = _asyncToGenerator(
@@ -2368,7 +2379,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 response = _context.sent;
 
                 if (response['status'] === 'success') {
-                  console.log(1);
+                  this.isApplied = true;
+                  this.$toasted.show('応募しました', {
+                    type: 'success'
+                  });
                 }
 
               case 4:
@@ -39123,7 +39137,7 @@ var render = function() {
             attrs: { "btn-type": "apply" },
             on: {
               click: function($event) {
-                return _vm.showShareModal()
+                return _vm.showApplyModal()
               }
             }
           },
@@ -39135,7 +39149,7 @@ var render = function() {
       ? _c(
           "button",
           { staticClass: "m-btn disabled", attrs: { "btn-type": "apply" } },
-          [_vm._v("\n      すでに応募済みです\n  ")]
+          [_vm._v("\n      すでに応募済です\n  ")]
         )
       : _vm._e()
   ])
@@ -39549,9 +39563,9 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/modal/shareModal.vue?vue&type=template&id=39d284c7&scoped=true&":
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/modal/applyModal.vue?vue&type=template&id=4fc83bd0&scoped=true&":
 /*!**************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/modal/shareModal.vue?vue&type=template&id=39d284c7&scoped=true& ***!
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/modal/applyModal.vue?vue&type=template&id=4fc83bd0&scoped=true& ***!
   \**************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -39571,7 +39585,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "text-center mt-3 mb-3" }, [
-        !_vm.defaultIsApplied
+        !_vm.isApplied
           ? _c(
               "button",
               {
@@ -39584,6 +39598,14 @@ var render = function() {
                 }
               },
               [_vm._v("\n            応募する\n        ")]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.isApplied
+          ? _c(
+              "button",
+              { staticClass: "m-btn", attrs: { "btn-type": "apply" } },
+              [_vm._v("\n            すでに応募済です\n        ")]
             )
           : _vm._e()
       ])
@@ -52121,17 +52143,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/assets/js/components/modal/shareModal.vue":
+/***/ "./resources/assets/js/components/modal/applyModal.vue":
 /*!*************************************************************!*\
-  !*** ./resources/assets/js/components/modal/shareModal.vue ***!
+  !*** ./resources/assets/js/components/modal/applyModal.vue ***!
   \*************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _shareModal_vue_vue_type_template_id_39d284c7_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./shareModal.vue?vue&type=template&id=39d284c7&scoped=true& */ "./resources/assets/js/components/modal/shareModal.vue?vue&type=template&id=39d284c7&scoped=true&");
-/* harmony import */ var _shareModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./shareModal.vue?vue&type=script&lang=js& */ "./resources/assets/js/components/modal/shareModal.vue?vue&type=script&lang=js&");
+/* harmony import */ var _applyModal_vue_vue_type_template_id_4fc83bd0_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./applyModal.vue?vue&type=template&id=4fc83bd0&scoped=true& */ "./resources/assets/js/components/modal/applyModal.vue?vue&type=template&id=4fc83bd0&scoped=true&");
+/* harmony import */ var _applyModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./applyModal.vue?vue&type=script&lang=js& */ "./resources/assets/js/components/modal/applyModal.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -52141,50 +52163,50 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _shareModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _shareModal_vue_vue_type_template_id_39d284c7_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _shareModal_vue_vue_type_template_id_39d284c7_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _applyModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _applyModal_vue_vue_type_template_id_4fc83bd0_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _applyModal_vue_vue_type_template_id_4fc83bd0_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
-  "39d284c7",
+  "4fc83bd0",
   null
   
 )
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/assets/js/components/modal/shareModal.vue"
+component.options.__file = "resources/assets/js/components/modal/applyModal.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/assets/js/components/modal/shareModal.vue?vue&type=script&lang=js&":
+/***/ "./resources/assets/js/components/modal/applyModal.vue?vue&type=script&lang=js&":
 /*!**************************************************************************************!*\
-  !*** ./resources/assets/js/components/modal/shareModal.vue?vue&type=script&lang=js& ***!
+  !*** ./resources/assets/js/components/modal/applyModal.vue?vue&type=script&lang=js& ***!
   \**************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_shareModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./shareModal.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/modal/shareModal.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_shareModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_applyModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./applyModal.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/modal/applyModal.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_applyModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/assets/js/components/modal/shareModal.vue?vue&type=template&id=39d284c7&scoped=true&":
+/***/ "./resources/assets/js/components/modal/applyModal.vue?vue&type=template&id=4fc83bd0&scoped=true&":
 /*!********************************************************************************************************!*\
-  !*** ./resources/assets/js/components/modal/shareModal.vue?vue&type=template&id=39d284c7&scoped=true& ***!
+  !*** ./resources/assets/js/components/modal/applyModal.vue?vue&type=template&id=4fc83bd0&scoped=true& ***!
   \********************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_shareModal_vue_vue_type_template_id_39d284c7_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./shareModal.vue?vue&type=template&id=39d284c7&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/modal/shareModal.vue?vue&type=template&id=39d284c7&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_shareModal_vue_vue_type_template_id_39d284c7_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_applyModal_vue_vue_type_template_id_4fc83bd0_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./applyModal.vue?vue&type=template&id=4fc83bd0&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/modal/applyModal.vue?vue&type=template&id=4fc83bd0&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_applyModal_vue_vue_type_template_id_4fc83bd0_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_shareModal_vue_vue_type_template_id_39d284c7_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_applyModal_vue_vue_type_template_id_4fc83bd0_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

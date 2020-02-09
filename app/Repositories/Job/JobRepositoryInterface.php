@@ -13,7 +13,7 @@ interface JobRepositoryInterface extends BaseRepositoryInterface
 
     public function getByRelationModelKey(Array $relationModelKey);
 
-    public function getByFavorited(int $userId);
+    public function paginateByFavorited(int $userId);
 
-    public function getByApplied(int $userId);
+    public function paginateByApplied(int $userId);
 }

@@ -3,6 +3,8 @@
 namespace App\Repositories\Job;
 
 Use App\Models\Job;
+Use App\Models\Favorite;
+Use App\Models\Application;
 use App\Repositories\Base\BaseRepository;
 
 class JobRepository extends BaseRepository implements JobRepositoryInterface
@@ -34,34 +36,6 @@ class JobRepository extends BaseRepository implements JobRepositoryInterface
             });
         }
 
-        // if (isset($parameters['occupation_id'])) {
-        //     $occupationId = $parameters['occupation_id'];
-        //     $jobs         = $jobs->when($occupationId, function ($query) use ($occupationId) {
-        //         // return $query->whereHas('occupations', function ($q) use ($occupationId) {
-        //         //     $q->where('occupations.id', $occupationId);
-        //         // });
-        //         return $query->whereIn('jobs.id', function ($q) use ($occupationId) {
-        //             $q->from('job_occupations')
-        //                 ->select('job_occupations.job_id')
-        //                 ->where('job_occupations.occupation_id', $occupationId);
-        //         });
-        //     });
-        // }
-
-        // if (isset($parameters['skill_id'])) {
-        //     $skillId = $parameters['skill_id'];
-        //     $jobs    = $jobs->when($skillId, function ($query) use ($skillId) {
-        //         // return $query->whereHas('skills', function ($q) use ($skillId) {
-        //         //     $q->where('skills.id', $skillId);
-        //         // });
-        //         return $query->whereIn('jobs.id', function ($q) use ($skillId) {
-        //             $q->from('job_skills')
-        //                 ->select('job_skills.job_id')
-        //                 ->where('job_skills.skill_id', $skillId);
-        //         });
-        //     });
-        // }
-
         if (isset($parameters['work_time'])) {
             $workTime = $parameters['work_time'];
             $jobs     = $jobs->when($workTime, function ($query) use ($workTime) {
@@ -87,11 +61,13 @@ class JobRepository extends BaseRepository implements JobRepositoryInterface
      */
     private function buildQueryByRelationModelKey(Job $model, Array $relationModelKey = null)
     {
-        if (isset($relationModelKey['skill_id']) && !is_null($relationModelKey['skill_id'][0]) ) {
+        if (isset($relationModelKey['skill_id']) && !empty($relationModelKey['skill_id'][0]) ) {
 
             $skillIds  = $relationModelKey['skill_id'];
             $model     = $model->when($skillIds, function ($query) use ($skillIds) {
-
+                // return $query->whereHas('skills', function ($q) use ($skillId) {
+                //     $q->where('skills.id', $skillId);
+                // });
                 return $query->whereIn('jobs.id', function ($q) use ($skillIds) {
                     $q->from('job_skills')
                         ->select('job_skills.job_id')
@@ -100,11 +76,14 @@ class JobRepository extends BaseRepository implements JobRepositoryInterface
             });
         }
 
-        if (isset($relationModelKey['occupation_id']) && !is_null($relationModelKey['occupation_id'][0]) ) {
+        if (isset($relationModelKey['occupation_id']) && !empty($relationModelKey['occupation_id'][0]) ) {
 
             $occupationIds  = $relationModelKey['occupation_id'];
             $model          = $model->when($occupationIds, function ($query) use ($occupationIds) {
 
+              // return $query->whereHas('occupations', function ($q) use ($occupationId) {
+              //     $q->where('occupations.id', $occupationId);
+              // });
                 return $query->whereIn('jobs.id', function ($q) use ($occupationIds) {
                     $q->from('job_occupations')
                         ->select('job_occupations.job_id')
@@ -133,15 +112,14 @@ class JobRepository extends BaseRepository implements JobRepositoryInterface
     /**
      * お気に入りされたjobsを取得
      *
-     * @param array $parameters
+     * @param int $userId
      * @return $jobs
      */
-    public function getByFavorited(int $userId)
+    public function paginateByFavorited(int $userId)
     {
         $jobs = $this->getBlankModel();
-
-        $jobs->whereIn('jobs.id', function ($query) use ($userId) {
-            $query->from('favorites')
+        $jobs = $jobs->whereIn('jobs.id', function ($query) use ($userId) {
+            return $query->from('favorites')
                 ->select('favorites.job_id')
                 ->where('favorites.user_id', $userId);
         });
@@ -152,15 +130,14 @@ class JobRepository extends BaseRepository implements JobRepositoryInterface
     /**
      * 応募されたjobsを取得
      *
-     * @param array $parameters
+     * @param int $userId
      * @return $jobs
      */
-    public function getByApplied(int $userId)
+    public function paginateByApplied(int $userId)
     {
         $jobs = $this->getBlankModel();
-
-        $jobs->whereIn('jobs.id', function ($query) use ($userId) {
-            $query->from('applications')
+        $jobs = $jobs->whereIn('jobs.id', function ($query) use ($userId) {
+            return $query->from('applications')
                 ->select('applications.job_id')
                 ->where('applications.user_id', $userId);
         });
