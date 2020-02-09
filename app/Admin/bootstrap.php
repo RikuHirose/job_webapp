@@ -19,4 +19,6 @@
  */
 
 Encore\Admin\Form::forget(['map', 'editor']);
+
+// https://qiita.com/n-sawada-12345/items/91cebdc468aaa22ea6a3
 app('view')->prependNamespace('admin',resource_path('views/laravel-admin'));

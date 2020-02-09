@@ -64,43 +64,53 @@ class AdminSeeder extends Seeder
         ],
       ]);
 
-      // DB::table('admin_menu')->insert([
-      //   [
-      //     'id'        => 8,
-      //     'parent_id' => 0,
-      //     'title'     => 'Companies',
-      //     'icon'      => 'fa-bars',
-      //     'uri'       => 'companies',
-      //   ],
-      //   [
-      //     'id'        => 9,
-      //     'parent_id' => 0,
-      //     'title'     => 'Jobs',
-      //     'icon'      => 'fa-bars',
-      //     'uri'       => 'jobs',
-      //   ],
-      //   [
-      //     'id'        => 10,
-      //     'parent_id' => 0,
-      //     'title'     => 'Meetings',
-      //     'icon'      => 'fa-bars',
-      //     'uri'       => 'meetings',
-      //   ],
-      //   [
-      //     'id'        => 11,
-      //     'parent_id' => 0,
-      //     'title'     => 'Mentors',
-      //     'icon'      => 'fa-bars',
-      //     'uri'       => 'mentors',
-      //   ],
-      //   [
-      //     'id'        => 12,
-      //     'parent_id' => 0,
-      //     'title'     => 'Users',
-      //     'icon'      => 'fa-bars',
-      //     'uri'       => 'users',
-      //   ]
-      // ]);
+      DB::table('admin_menu')->insert([
+        [
+          'parent_id' => 0,
+          'title'     => 'Companies',
+          'icon'      => 'fa-bars',
+          'uri'       => 'companies',
+        ],
+        [
+          'parent_id' => 0,
+          'title'     => 'Occupations',
+          'icon'      => 'fa-bars',
+          'uri'       => 'occupations',
+        ],
+        [
+          'parent_id' => 0,
+          'title'     => 'Skills',
+          'icon'      => 'fa-bars',
+          'uri'       => 'skills',
+        ],
+
+        [
+          'parent_id' => 0,
+          'title'     => 'Favorites',
+          'icon'      => 'fa-bars',
+          'uri'       => 'favorites',
+        ],
+
+        [
+          'parent_id' => 0,
+          'title'     => 'Applications',
+          'icon'      => 'fa-bars',
+          'uri'       => 'applications',
+        ],
+
+        [
+          'parent_id' => 0,
+          'title'     => 'Jobs',
+          'icon'      => 'fa-bars',
+          'uri'       => 'jobs',
+        ],
+        [
+          'parent_id' => 0,
+          'title'     => 'Users',
+          'icon'      => 'fa-bars',
+          'uri'       => 'users',
+        ]
+      ]);
 
 
       DB::table('admin_permissions')->insert([
