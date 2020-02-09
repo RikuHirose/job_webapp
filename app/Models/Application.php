@@ -14,7 +14,7 @@ class Application extends Model
     protected $fillable = [
       'job_id',
       'user_id',
-      'comapny_id',
+      'company_id',
       'status',
     ];
 
@@ -23,7 +23,7 @@ class Application extends Model
     // Relations
     public function job()
     {
-        return $this->belongsTo(\App\Models\File::class, 'job_id', 'id');
+        return $this->belongsTo(\App\Models\Job::class, 'job_id', 'id');
     }
 
     public function user()

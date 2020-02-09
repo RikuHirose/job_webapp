@@ -93,6 +93,7 @@
 
           <apply-button
               :job-id="{{ json_encode($job->id) }}"
+              :company-id="{{ json_encode($job->company->id) }}"
               :user-id="{{ json_encode($currentUser->id) }}"
               :default-is-applied="{{ json_encode($defaultIsApplied) }}">
           </apply-button>

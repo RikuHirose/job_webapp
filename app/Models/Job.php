@@ -12,6 +12,7 @@ class Job extends Model
     protected $table = 'jobs';
 
     protected $fillable = [
+      'id',
       'bg_image_id',
       'company_id',
       'title',
@@ -38,6 +39,16 @@ class Job extends Model
     public function company()
     {
         return $this->belongsTo(\App\Models\Company::class, 'company_id', 'id');
+    }
+
+    public function favorites()
+    {
+        return $this->hasMany(\App\Models\Favorite::class, 'job_id', 'id');
+    }
+
+    public function applications()
+    {
+        return $this->hasMany(\App\Models\Application::class, 'job_id', 'id');
     }
 
     public function occupations()
