@@ -3,12 +3,12 @@
 namespace App\Admin\Controllers;
 
 use App\Models\Job;
-use Encore\Admin\Controllers\AdminController;
+use App\Admin\Controllers\Controller;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
 
-class JobController extends AdminController
+class JobController extends Controller
 {
     /**
      * Title for current resource.
@@ -79,15 +79,19 @@ class JobController extends AdminController
     {
         $form = new Form(new Job());
 
+        $companyIdOptions = $this->companyRepository->getIdOptions();
+
         $form->number('bg_image_id', __('Bg image id'));
-        $form->number('company_id', __('Company id'));
+        $form->select('company_id', 'company id')->options($companyIdOptions)->rules('required');
+
         $form->text('title', __('Title'));
         $form->textarea('description', __('Description'));
         $form->textarea('application_qualification', __('Application qualification'));
         $form->text('salary_min', __('Salary min'));
         $form->text('salary_max', __('Salary max'));
-        $form->number('office_time', __('Office time'));
-        $form->number('work_time', __('Work time'));
+
+        $form->select('office_time', __('Office time'))->options(config('constants.job.office_time'));
+        $form->select('work_time', __('Work time'))->options(config('constants.job.work_time'));
 
         return $form;
     }

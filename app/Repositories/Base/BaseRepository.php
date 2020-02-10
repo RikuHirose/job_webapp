@@ -37,4 +37,23 @@ class BaseRepository implements BaseRepositoryInterface
 
       return $model;
     }
+
+    public function getIdOptions()
+    {
+        $idOptions = [];
+        $model     = $this->getBlankModel();
+        $tmp       = $model::orderBy('id')->get(['id', 'name']);
+        if ($tmp->isNotEmpty()) {
+            $list = $tmp->all();
+            foreach ($list as $v) {
+                if ($v->name == null) {
+                    $idOptions[$v->id] = $v->id;
+                } else {
+                    $idOptions[$v->id] = $v->name;
+                }
+            }
+        }
+
+        return $idOptions;
+    }
 }

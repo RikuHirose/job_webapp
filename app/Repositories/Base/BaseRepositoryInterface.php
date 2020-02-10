@@ -14,4 +14,5 @@ interface BaseRepositoryInterface
 
     public function update($model, Array $input);
 
+    public function getIdOptions();
 }
