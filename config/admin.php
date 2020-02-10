@@ -157,11 +157,11 @@ return [
 
         // Image and file upload path under the disk above.
         'directory' => [
-            'image' => 'gscc',
+            'image' => 'test',
             'file'  => 'files',
         ],
 
-        'validation' => 'file|image|mimes:jpeg,png,jpg,gif,svg|max:1024'
+        'validation' => 'file|image|mimes:jpeg,png,jpg,gif,svg|max:3024'
     ],
 
     /*

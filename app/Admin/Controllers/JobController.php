@@ -27,8 +27,13 @@ class JobController extends Controller
         $grid = new Grid(new Job());
 
         $grid->column('id', __('Id'));
-        $grid->column('cover_url', __('Bg image id'));
         $grid->column('company_id', __('Company id'));
+
+        $grid->cover_url(__('cover'))->display(function ($cover_url) {
+            $url = config('filesystems.disks.s3.url').$cover_url;
+            return "<img src='$url' width='50' height='50'>";
+        });
+
         $grid->column('title', __('Title'));
         $grid->column('description', __('Description'));
         $grid->column('application_qualification', __('Application qualification'));
@@ -54,7 +59,7 @@ class JobController extends Controller
         $show = new Show(Job::findOrFail($id));
 
         $show->field('id', __('Id'));
-        $show->field('cover_url', __('Bg image id'));
+        $show->field('cover_url');
         $show->field('company_id', __('Company id'));
         $show->field('title', __('Title'));
         $show->field('description', __('Description'));
@@ -81,7 +86,7 @@ class JobController extends Controller
 
         $companyIdOptions = $this->companyRepository->getIdOptions();
 
-        $form->number('cover_url', __('Bg image id'));
+        $form->image('cover_url')->sequenceName()->rules(config('admin.upload.validation'))->help('画像は3MB以下にしてください');
         $form->select('company_id', 'company id')->options($companyIdOptions)->rules('required');
 
         $form->text('title', __('Title'));
