@@ -79,7 +79,7 @@ class CompanyController extends AdminController
     {
         $form = new Form(new Company());
 
-        $form->url('logo_url', __('Logo image id'));
+        $form->image('logo_url')->sequenceName()->rules(config('admin.upload.validation'))->help('画像は3MB以下にしてください');
         $form->text('name', __('Name'));
         $form->email('email', __('Email'));
         $form->textarea('description', __('Description'));
@@ -88,6 +88,16 @@ class CompanyController extends AdminController
         $form->text('ceo_name', __('Ceo name'));
         $form->number('staff_number_type', __('Staff number type'));
         $form->text('website_url', __('Website url'));
+
+        // callback after save
+        $form->saved(function (Form $form) {
+            if(strpos($form->model()->logo_url, config('filesystems.disks.s3.url')) === false) {
+
+              $form->model()->update([
+                'logo_url' => config('filesystems.disks.s3.url').$form->model()->logo_url
+              ]);
+            }
+        });
 
         return $form;
     }

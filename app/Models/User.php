@@ -52,6 +52,7 @@ class User extends Authenticatable
         'birthday_year',
         'birthday_mounth',
         'birthday_day',
+        'cover_url_full',
     ];
 
     // Relations
@@ -96,8 +97,6 @@ class User extends Authenticatable
             return '/images/user-default.svg';
         }
 
-        if ($this->cover_url) {
-            return config('filesystems.disks.s3.url').$this->cover_url;
-        }
+        return $this->cover_url;
     }
 }

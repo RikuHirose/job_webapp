@@ -2330,6 +2330,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -2341,15 +2342,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       inputId: 'image-input',
-      imageUrl: '',
+      coverUrl: '',
       showImage: false,
       uploadedImage: ''
     };
   },
   created: function created() {
-    this.imageUrl = this.defaultCoverUrlFull;
+    this.coverUrl = this.defaultCoverUrlFull;
 
-    if (this.imageUrl) {
+    if (this.coverUrl) {
       this.showImage = true;
     }
   },
@@ -2370,28 +2371,30 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 formData = new FormData();
                 this.uploadedImage = event.target.files[0];
                 formData.append('file', this.uploadedImage);
-                _context.prev = 3;
-                _context.next = 6;
+                formData.append('userId', this.userId);
+                _context.prev = 4;
+                _context.next = 7;
                 return _services_api__WEBPACK_IMPORTED_MODULE_1__["postImages"](formData);
 
-              case 6:
+              case 7:
                 res = _context.sent;
-                this.imageUrl = res.data.imageUrl;
+                console.log(res);
+                this.coverUrl = res.coverUrl;
                 this.showImage = true;
-                _context.next = 14;
+                _context.next = 16;
                 break;
 
-              case 11:
-                _context.prev = 11;
-                _context.t0 = _context["catch"](3);
+              case 13:
+                _context.prev = 13;
+                _context.t0 = _context["catch"](4);
                 console.log(_context.t0);
 
-              case 14:
+              case 16:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[3, 11]]);
+        }, _callee, this, [[4, 13]]);
       }));
 
       function fileSelected(_x) {
@@ -39734,7 +39737,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "c-imgup-input" }, [
     _vm.showImage
-      ? _c("p", [_c("img", { attrs: { src: _vm.imageUrl } })])
+      ? _c("p", [_c("img", { attrs: { src: _vm.coverUrl } })])
       : _vm._e(),
     _vm._v(" "),
     _c("p", [
@@ -39753,7 +39756,13 @@ var render = function() {
         attrs: { id: _vm.inputId, type: "file" },
         on: { change: _vm.fileSelected }
       })
-    ])
+    ]),
+    _vm._v(" "),
+    _c("input", {
+      staticStyle: { display: "none" },
+      attrs: { type: "text", name: "cover_url" },
+      domProps: { value: _vm.coverUrl }
+    })
   ])
 }
 var staticRenderFns = []
@@ -52352,15 +52361,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!*******************************************************************!*\
   !*** ./resources/assets/js/components/input/imageUploadInput.vue ***!
   \*******************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _imageUploadInput_vue_vue_type_template_id_e3c1aa2c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./imageUploadInput.vue?vue&type=template&id=e3c1aa2c&scoped=true& */ "./resources/assets/js/components/input/imageUploadInput.vue?vue&type=template&id=e3c1aa2c&scoped=true&");
 /* harmony import */ var _imageUploadInput_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./imageUploadInput.vue?vue&type=script&lang=js& */ "./resources/assets/js/components/input/imageUploadInput.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _imageUploadInput_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _imageUploadInput_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _imageUploadInput_vue_vue_type_style_index_0_id_e3c1aa2c_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./imageUploadInput.vue?vue&type=style&index=0&id=e3c1aa2c&lang=scss&scoped=true& */ "./resources/assets/js/components/input/imageUploadInput.vue?vue&type=style&index=0&id=e3c1aa2c&lang=scss&scoped=true&");
+/* empty/unused harmony star reexport *//* harmony import */ var _imageUploadInput_vue_vue_type_style_index_0_id_e3c1aa2c_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./imageUploadInput.vue?vue&type=style&index=0&id=e3c1aa2c&lang=scss&scoped=true& */ "./resources/assets/js/components/input/imageUploadInput.vue?vue&type=style&index=0&id=e3c1aa2c&lang=scss&scoped=true&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -52392,7 +52400,7 @@ component.options.__file = "resources/assets/js/components/input/imageUploadInpu
 /*!********************************************************************************************!*\
   !*** ./resources/assets/js/components/input/imageUploadInput.vue?vue&type=script&lang=js& ***!
   \********************************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

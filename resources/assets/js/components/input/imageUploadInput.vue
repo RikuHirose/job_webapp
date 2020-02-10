@@ -1,12 +1,13 @@
 <template>
     <div class="c-imgup-input">
         <p v-if="showImage">
-            <img :src="imageUrl">
+            <img :src="coverUrl">
         </p>
         <p>
             <button class="m-btn" type="button" @click="selectImage">編集</button>
             <input :id="inputId" type="file" v-on:change="fileSelected" style="display: none;">
         </p>
+        <input type="text" name="cover_url" :value="coverUrl" style="display: none;">
     </div>
 </template>
 
@@ -19,14 +20,14 @@
         data: function(){
             return {
                 inputId: 'image-input',
-                imageUrl : '',
+                coverUrl : '',
                 showImage : false,
                 uploadedImage : '',
             }
         },
         created() {
-            this.imageUrl = this.defaultCoverUrlFull
-            if (this.imageUrl) {
+            this.coverUrl = this.defaultCoverUrlFull
+            if (this.coverUrl) {
                 this.showImage = true
             }
         },
@@ -39,10 +40,12 @@
                 const formData = new FormData()
                 this.uploadedImage = event.target.files[0]
                 formData.append('file', this.uploadedImage)
+                formData.append('userId', this.userId)
 
                 try {
                     let res = await api.postImages(formData)
-                    this.imageUrl = res.data.imageUrl
+                    console.log(res)
+                    this.coverUrl = res.coverUrl
                     this.showImage = true
 
                   } catch (error) {

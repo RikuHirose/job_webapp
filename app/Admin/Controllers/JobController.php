@@ -126,6 +126,16 @@ class JobController extends Controller
         $form->select('office_time', __('Office time'))->options(config('constants.job.office_time'));
         $form->select('work_time', __('Work time'))->options(config('constants.job.work_time'));
 
+        // callback after save
+        $form->saved(function (Form $form) {
+            if(strpos($form->model()->cover_url, config('filesystems.disks.s3.url')) === false) {
+
+              $form->model()->update([
+                'cover_url' => config('filesystems.disks.s3.url').$form->model()->cover_url
+              ]);
+            }
+        });
+
         return $form;
     }
 

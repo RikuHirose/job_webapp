@@ -27,12 +27,5 @@ class Company extends Model
 
     // カスタムの情報を返す
     protected $appends = [
-        'logo_url_full',
     ];
-
-    // Attributes
-    public function getCoverUrlFullAttribute()
-    {
-      return config('filesystems.disks.s3.url').$this->logo_url;
-    }
 }
