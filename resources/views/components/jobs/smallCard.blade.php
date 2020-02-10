@@ -2,7 +2,7 @@
 
   <div class="c-job-small-card--img__wrap">
     <a href="{{ route('jobs.show', $job->id) }}">
-      <img src="{{ $job->bgImage->url }}" class="c-job-small-card--img__sizing">
+      <img src="{{ $job->cover_url_full }}" class="c-job-small-card--img__sizing">
     </a>
 
     <div class="c-job-small-card__ttl--wrap">

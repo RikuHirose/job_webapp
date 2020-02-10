@@ -11,7 +11,7 @@ class IndexController extends Controller
     public function index()
     {
         $jobs = $this->jobRepository->paginateFilterByParameters();
-        $jobs->load('bgImage', 'company.logo', 'occupations', 'skills');
+        $jobs->load('company', 'occupations', 'skills');
 
         \SeoHelper::setIndexSeo();
 

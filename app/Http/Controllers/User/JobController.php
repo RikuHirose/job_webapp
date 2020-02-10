@@ -14,7 +14,7 @@ class JobController extends Controller
         $parameters  = \Request::query();
 
         $jobs = $this->jobRepository->paginateFilterByParameters($parameters);
-        $jobs->load('bgImage', 'company.logo', 'occupations', 'skills');
+        $jobs->load('company', 'occupations', 'skills');
 
         \SeoHelper::setIndexSeo();
 
@@ -26,7 +26,7 @@ class JobController extends Controller
 
     public function show(Job $job)
     {
-        $job->load('bgImage', 'company.logo', 'occupations', 'skills');
+        $job->load('company', 'occupations', 'skills');
 
         $defaultIsApplied     = \Auth::check() ? $this->applicationRepository->isApplied($job->id, \Auth::user()->id) : false;
         $defaultIsFavorited   = \Auth::check() ? $this->favoriteRepository->isFavorited($job->id, \Auth::user()->id) : false;
@@ -36,7 +36,7 @@ class JobController extends Controller
             'skill_id'      => $job->skills->modelKeys(),
             'occupation_id' => $job->occupations->modelKeys()
         ]);
-        $relatedJobs->load('bgImage', 'company.logo', 'occupations', 'skills');
+        $relatedJobs->load('company', 'occupations', 'skills');
 
         \SeoHelper::setJobShowSeo($job);
 

@@ -3,6 +3,8 @@
 namespace App\Admin\Controllers;
 
 use App\Models\Job;
+use App\Models\Skill;
+use App\Models\Occupation;
 use Illuminate\Http\Request;
 
 use App\Admin\Controllers\Controller;
@@ -111,6 +113,9 @@ class JobController extends Controller
 
         $form->image('cover_url')->sequenceName()->rules(config('admin.upload.validation'))->help('画像は3MB以下にしてください');
         $form->select('company_id', 'company id')->options($companyIdOptions)->rules('required');
+
+        $form->multipleSelect('adminSkills', 'skills')->options(Skill::all()->pluck('name', 'id'));
+        $form->multipleSelect('adminOccupations', 'occupations')->options(Occupation::all()->pluck('name', 'id'));
 
         $form->text('title', __('Title'));
         $form->textarea('description', __('Description'));

@@ -18,7 +18,7 @@ class UserComposer
         if (is_null($currentUser)) {
             $this->user = $currentUser;
         } else {
-            $this->user = $currentUser->load('bgImage', 'occupations', 'skills');
+            $this->user = $currentUser->load('occupations', 'skills');
         }
 
         $this->skills      = Skill::all();

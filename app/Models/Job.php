@@ -28,6 +28,7 @@ class Job extends Model
     // カスタムの情報を返す
     protected $appends = [
         'short_title',
+        'cover_url_full',
     ];
 
     // Relations
@@ -56,10 +57,45 @@ class Job extends Model
         return $this->belongsToMany(\App\Models\Skill::class, 'job_skills', 'job_id', 'skill_id');
     }
 
+    // adminでrelationする際にsetAdminSkillsAttributeの処理を挟むため、user側とadmin側が必要
+    public function adminSkills()
+    {
+        return $this->belongsToMany(\App\Models\Skill::class, 'job_skills', 'job_id', 'skill_id');
+    }
+
+    public function adminOccupations()
+    {
+        return $this->belongsToMany(\App\Models\Occupation::class, 'job_occupations', 'job_id', 'occupation_id');
+    }
+
     // Attributes
     public function getShortTitleAttribute()
     {
         return mb_strimwidth($this->title, 0, 55, '...');
     }
 
+    public function getCoverUrlFullAttribute()
+    {
+      return config('filesystems.disks.s3.url').$this->cover_url;
+    }
+
+    public function getAdminSkillsAttribute($value)
+    {
+        return explode(',', $value);
+    }
+
+    public function setAdminSkillsAttribute($value)
+    {
+        $this->attributes['adminSkills'] = implode(',', $value);
+    }
+
+    public function getAdminOccupationsAttribute($value)
+    {
+        return explode(',', $value);
+    }
+
+    public function setAdminOccupationsAttribute($value)
+    {
+        $this->attributes['adminOccupations'] = implode(',', $value);
+    }
 }
