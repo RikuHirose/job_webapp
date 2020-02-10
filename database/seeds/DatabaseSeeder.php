@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call(SkillSeeder::class);
         $this->call(OccupationSeeder::class);
-        $this->call(FileSeeder::class);
+        // $this->call(FileSeeder::class);
 
         $this->call(CompanySeeder::class);
         $this->call(JobSeeder::class);

@@ -27,7 +27,7 @@ class CompanyController extends AdminController
         $grid = new Grid(new Company());
 
         $grid->column('id', __('Id'));
-        $grid->column('logo_image_id', __('Logo image id'));
+        $grid->column('logo_url', __('Logo image id'));
         $grid->column('name', __('Name'));
         $grid->column('email', __('Email'));
         $grid->column('description', __('Description'));
@@ -54,7 +54,7 @@ class CompanyController extends AdminController
         $show = new Show(Company::findOrFail($id));
 
         $show->field('id', __('Id'));
-        $show->field('logo_image_id', __('Logo image id'));
+        $show->field('logo_url', __('Logo image id'));
         $show->field('name', __('Name'));
         $show->field('email', __('Email'));
         $show->field('description', __('Description'));
@@ -79,7 +79,7 @@ class CompanyController extends AdminController
     {
         $form = new Form(new Company());
 
-        $form->number('logo_image_id', __('Logo image id'));
+        $form->url('logo_url', __('Logo image id'));
         $form->text('name', __('Name'));
         $form->email('email', __('Email'));
         $form->textarea('description', __('Description'));

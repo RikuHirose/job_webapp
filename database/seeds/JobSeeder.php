@@ -13,7 +13,7 @@ class JobSeeder extends Seeder
     {
       DB::table('jobs')->insert([
         [
-         'bg_image_id'               => 1,
+         'cover_url'               => 'https://pbs.twimg.com/profile_banners/919769067497467909/1540006082',
          'company_id'                => 1,
          'title'                     => '【PMO担当募集！】社内向けシステム開発プロジェクトのマネジメント業務をお任せします。',
          'description'               => '社内向けシステム開発プロジェクトマネジメント業務を担って下さる方を募集します。',

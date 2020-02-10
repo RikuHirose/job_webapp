@@ -14,7 +14,7 @@ class CompanySeeder extends Seeder
       
       DB::table('companies')->insert([
         [
-         'logo_image_id'     => 2,
+         'logo_url'          => 'https://pbs.twimg.com/profile_images/987260951375130624/8garEn-Z_400x400.jpg',
          'name'              => 'GAOGAO',
          'email'             => 'test@test.com',
          'description'       => 'シンガポール本社のスタートアップ・スタジオ。バンコク/東京/ホーチミンに子会社登記してエンジニア30名以上でグローバルに15社以上のお客様の起業や開発を支援をしています。',

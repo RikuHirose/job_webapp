@@ -27,7 +27,7 @@ class UserController extends AdminController
         $grid = new Grid(new User());
 
         $grid->column('id', __('Id'));
-        $grid->column('bg_image_id', __('Bg image id'));
+        $grid->column('cover_url', __('Bg image id'));
         $grid->column('name', __('Name'));
         $grid->column('email', __('Email'));
         $grid->column('email_verified_at', __('Email verified at'));
@@ -55,7 +55,7 @@ class UserController extends AdminController
         $show = new Show(User::findOrFail($id));
 
         $show->field('id', __('Id'));
-        $show->field('bg_image_id', __('Bg image id'));
+        $show->field('cover_url', __('Bg image id'));
         $show->field('name', __('Name'));
         $show->field('email', __('Email'));
         $show->field('email_verified_at', __('Email verified at'));
@@ -81,7 +81,7 @@ class UserController extends AdminController
     {
         $form = new Form(new User());
 
-        $form->number('bg_image_id', __('Bg image id'));
+        $form->number('cover_url', __('Bg image id'));
         $form->text('name', __('Name'));
         $form->email('email', __('Email'));
         $form->datetime('email_verified_at', __('Email verified at'))->default(date('Y-m-d H:i:s'));

@@ -21,7 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'bg_image_id',
+        'cover_url',
         'birthday',
         'office_time_request',
         'work_time_request',
@@ -55,11 +55,6 @@ class User extends Authenticatable
     ];
 
     // Relations
-    public function bgImage()
-    {
-        return $this->belongsTo(\App\Models\File::class, 'bg_image_id', 'id');
-    }
-
     public function occupations()
     {
         return $this->belongsToMany(\App\Models\Occupation::class, 'user_occupations', 'user_id', 'occupation_id');
