@@ -12,6 +12,20 @@ class BaseRepository implements BaseRepositoryInterface
       return $model->all();
     }
 
+    public function find(int $id)
+    {
+      $model = $this->getBlankModel();
+
+      return $model->where('id', $id)->first();
+    }
+
+    public function findWithTrashed(int $id)
+    {
+      $model = $this->getBlankModel();
+
+      return $model->withTrashed()->where('id', $id)->first();
+    }
+
     public function delete($model)
     {
       return $model->delete();

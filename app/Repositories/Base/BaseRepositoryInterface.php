@@ -6,6 +6,10 @@ interface BaseRepositoryInterface
 {
 		public function all();
 
+    public function find(int $id);
+
+    public function findWithTrashed(int $id);
+
     public function delete($model);
 
     public function create(Array $input);
