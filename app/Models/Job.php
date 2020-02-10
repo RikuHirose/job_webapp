@@ -28,7 +28,6 @@ class Job extends Model
     // カスタムの情報を返す
     protected $appends = [
         'short_title',
-        'cover_url_full',
     ];
 
     // Relations
@@ -72,11 +71,6 @@ class Job extends Model
     public function getShortTitleAttribute()
     {
         return mb_strimwidth($this->title, 0, 55, '...');
-    }
-
-    public function getCoverUrlFullAttribute()
-    {
-      return config('filesystems.disks.s3.url').$this->cover_url;
     }
 
     public function getAdminSkillsAttribute($value)

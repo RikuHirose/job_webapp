@@ -8,7 +8,7 @@
 
     <!-- image -->
     <div class="w-100 p-job-show--image">
-      <img src="{{ $job->cover_url_full }}" class="">
+      <img src="{{ $job->cover_url }}" class="">
     </div>
 
     <!-- description -->
@@ -111,7 +111,7 @@
     <div class="p-job-show--company">
       <div class="row">
         <div class="col-md-3 text-center">
-          <img src="{{ $job->company->logo_url_full }}" class="rounded-circle" style="width: 64px; height: 64px;">
+          <img src="{{ $job->company->logo_url }}" class="rounded-circle" style="width: 64px; height: 64px;">
         </div>
         <div class="col-md-9">
           <h2 class="h2-ttl">{{ $job->company->name }}</h2>

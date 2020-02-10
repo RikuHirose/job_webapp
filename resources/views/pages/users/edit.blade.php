@@ -18,6 +18,13 @@
       @csrf
 
       <div class="m-frmbox">
+        <image-upload-input
+          :default-cover-url-full="{{ json_encode(!empty($currentUser->cover_url_full) ? $currentUser->cover_url_full : '') }}"
+        ></image-upload-input>
+
+      </div>
+
+      <div class="m-frmbox">
         <label>お名前</label>
         <input type="text" class="form-control m-frmbox__text" name="name" value="{{ $currentUser->name }}" required>
       </div>
@@ -114,13 +121,9 @@
         <label>自己PR</label>
 
         @if(old('description'))
-          <textarea name="description" class="form-control m-frmbox__textarea">
-            {{ old('description') }}
-          </textarea>
+          <textarea name="description" class="form-control m-frmbox__textarea">{{ old('description') }}</textarea>
         @else
-          <textarea name="description" class="form-control m-frmbox__textarea">
-            {{ $currentUser->description }}
-          </textarea>
+          <textarea name="description" class="form-control m-frmbox__textarea">{{ $currentUser->description }}</textarea>
         @endif
       </div>
 

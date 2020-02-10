@@ -6,5 +6,7 @@ Route::group(['prefix' => 'api', 'as' => 'api.', 'namespace' => 'Api'], function
         Route::post('dis-favorites', 'FavoriteController@postDisFavorite');
 
         Route::post('applications', 'ApplicationController@store');
+
+        Route::post('images', 'ImageController@store');
     });
 });

@@ -1,4 +1,5 @@
-const mix = require('laravel-mix');
+const mix = require('laravel-mix')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 /*
  |--------------------------------------------------------------------------
@@ -21,7 +22,17 @@ mix.webpackConfig({
         test: /\.(js|vue)?$/
       },
     ]
-  }
+  },
+  plugins: [
+    new CopyWebpackPlugin(
+      [
+        {
+          from: "./resources/assets/images/",
+          to:   "images/"
+        }
+      ]
+    )
+  ]
 })
 
 mix.js('resources/assets/js/app.js', 'public/js')

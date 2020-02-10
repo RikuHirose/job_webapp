@@ -16,6 +16,8 @@ use App\Repositories\Occupation\OccupationRepositoryInterface;
 use App\Repositories\Application\ApplicationRepositoryInterface;
 use App\Repositories\UserOccupation\UserOccupationRepositoryInterface;
 
+use App\Services\S3\S3ServiceInterface;
+
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
@@ -29,6 +31,8 @@ class Controller extends BaseController
     protected $applicationRepository;
     protected $userOccupationRepository;
 
+    protected $s3Service;
+
     public function __construct(
         JobRepositoryInterface $jobRepository,
         UserRepositoryInterface $userRepository,
@@ -37,7 +41,9 @@ class Controller extends BaseController
         UserSkillRepositoryInterface $userSkillRepository,
         OccupationRepositoryInterface $occupationRepository,
         ApplicationRepositoryInterface $applicationRepository,
-        UserOccupationRepositoryInterface $userOccupationRepository
+        UserOccupationRepositoryInterface $userOccupationRepository,
+
+        S3ServiceInterface $s3Service
     )
     {
         $this->jobRepository            = $jobRepository;
@@ -48,5 +54,6 @@ class Controller extends BaseController
         $this->occupationRepository     = $occupationRepository;
         $this->applicationRepository    = $applicationRepository;
         $this->userOccupationRepository = $userOccupationRepository;
+        $this->s3Service                = $s3Service;
     }
 }

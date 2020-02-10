@@ -33,6 +33,11 @@ Vue.component('toast', require('./components/toast.vue').default)
 Vue.component('search-form', require('./components/form/searchForm.vue').default)
 
 /* ============================================================================
+ * input
+ * ========================================================================= */
+Vue.component('image-upload-input', require('./components/input/imageUploadInput.vue').default)
+
+/* ============================================================================
  * button
  * ========================================================================= */
 Vue.component('apply-button', require('./components/button/applyButton.vue').default)
