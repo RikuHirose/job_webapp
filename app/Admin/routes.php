@@ -5,6 +5,7 @@ use Illuminate\Routing\Router;
 Admin::routes();
 
 Route::group([
+    'as'            => 'admin.',
     'prefix'        => config('admin.route.prefix'),
     'namespace'     => config('admin.route.namespace'),
     'middleware'    => config('admin.route.middleware'),
@@ -17,5 +18,7 @@ Route::group([
     $router->resource('favorites', FavoriteController::class);
     $router->resource('applications', ApplicationController::class);
     $router->resource('jobs', JobController::class);
+    $router->post('/jobs/restore', 'JobController@restore')->name('jobs.restore');
+
     $router->resource('users', UserController::class);
 });

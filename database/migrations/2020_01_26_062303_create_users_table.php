@@ -16,7 +16,7 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            $table->unsignedBigInteger('bg_image_id')->index()->nullable();
+            $table->string('cover_url')->nullable();
             $table->string('name');
             $table->string('email');
 
@@ -30,8 +30,6 @@ class CreateUsersTable extends Migration
             $table->longText('description')->nullable();
 
             $table->rememberToken();
-
-            $table->foreign('bg_image_id')->references('id')->on('files')->onDelete('set null');
 
             $table->timestamps();
             $table->softDeletes();

@@ -16,10 +16,10 @@ class CreateJobsTable extends Migration
         Schema::create('jobs', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            $table->unsignedBigInteger('bg_image_id')->index();
             $table->unsignedBigInteger('company_id')->index();
 
             $table->string('title');
+            $table->string('cover_url');
             $table->longText('description');
             $table->longText('application_qualification');
 
@@ -29,7 +29,6 @@ class CreateJobsTable extends Migration
             $table->unsignedBigInteger('office_time');
             $table->unsignedBigInteger('work_time');
 
-            $table->foreign('bg_image_id')->references('id')->on('files')->onDelete('cascade');
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
 
             $table->timestamps();

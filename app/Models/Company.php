@@ -12,7 +12,7 @@ class Company extends Model
     protected $table = 'companies';
 
     protected $fillable = [
-      'logo_image_id',
+      'logo_url',
       'name',
       'email',
       'description',
@@ -26,9 +26,4 @@ class Company extends Model
     protected $dates = ['deleted_at'];
 
     // Relations
-    public function logo()
-    {
-        return $this->belongsTo(\App\Models\File::class, 'logo_image_id', 'id');
-    }
-
 }

@@ -3,12 +3,14 @@
 namespace App\Admin\Controllers;
 
 use App\Models\Job;
-use Encore\Admin\Controllers\AdminController;
+use Illuminate\Http\Request;
+
+use App\Admin\Controllers\Controller;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
 
-class JobController extends AdminController
+class JobController extends Controller
 {
     /**
      * Title for current resource.
@@ -26,9 +28,14 @@ class JobController extends AdminController
     {
         $grid = new Grid(new Job());
 
-        $grid->column('id', __('Id'));
-        $grid->column('bg_image_id', __('Bg image id'));
+        $grid->id('ID')->sortable();
         $grid->column('company_id', __('Company id'));
+
+        $grid->cover_url(__('cover'))->display(function ($cover_url) {
+            $url = config('filesystems.disks.s3.url').$cover_url;
+            return "<img src='$url' width='50' height='50'>";
+        });
+
         $grid->column('title', __('Title'));
         $grid->column('description', __('Description'));
         $grid->column('application_qualification', __('Application qualification'));
@@ -39,6 +46,27 @@ class JobController extends AdminController
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
         $grid->column('deleted_at', __('Deleted at'));
+
+        $grid->actions(function ($actions) {
+            // soft delete 済みのdata
+            if (!is_null($this->row->deleted_at)) {
+                $ref   = route('admin.jobs.restore');
+                $jobId = $this->row->id;
+
+                $actions->append('<div style="padding-top: 10px;display:inline-block;" target="_blank">
+                              <form action="'.$ref.'" method="POST">
+                                  <input type="hidden" name="job_id" value="'.$jobId.'">
+                                  <input type="hidden" name="_token" value="'.csrf_token().'">
+                                  <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-file-text"></i> <span style="font-size: 12px;">求人の復活</span></button>
+                              </form>
+                          </div>');
+            }
+        });
+
+        $grid->filter(function ($filter) {
+            // Range filter, call the model's `onlyTrashed` method to query the soft deleted data.
+            $filter->scope('deleted_at', '削除済')->onlyTrashed();
+        });
 
         return $grid;
     }
@@ -54,7 +82,7 @@ class JobController extends AdminController
         $show = new Show(Job::findOrFail($id));
 
         $show->field('id', __('Id'));
-        $show->field('bg_image_id', __('Bg image id'));
+        $show->field('cover_url');
         $show->field('company_id', __('Company id'));
         $show->field('title', __('Title'));
         $show->field('description', __('Description'));
@@ -79,16 +107,28 @@ class JobController extends AdminController
     {
         $form = new Form(new Job());
 
-        $form->number('bg_image_id', __('Bg image id'));
-        $form->number('company_id', __('Company id'));
+        $companyIdOptions = $this->companyRepository->getIdOptions();
+
+        $form->image('cover_url')->sequenceName()->rules(config('admin.upload.validation'))->help('画像は3MB以下にしてください');
+        $form->select('company_id', 'company id')->options($companyIdOptions)->rules('required');
+
         $form->text('title', __('Title'));
         $form->textarea('description', __('Description'));
         $form->textarea('application_qualification', __('Application qualification'));
         $form->text('salary_min', __('Salary min'));
         $form->text('salary_max', __('Salary max'));
-        $form->number('office_time', __('Office time'));
-        $form->number('work_time', __('Work time'));
+
+        $form->select('office_time', __('Office time'))->options(config('constants.job.office_time'));
+        $form->select('work_time', __('Work time'))->options(config('constants.job.work_time'));
 
         return $form;
+    }
+
+    protected function restore(Request $request)
+    {
+        $job = $this->jobRepository->findWithTrashed($request->input('job_id'));
+        $job->restore();
+
+        return redirect()->back();
     }
 }

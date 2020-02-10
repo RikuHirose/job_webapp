@@ -16,7 +16,7 @@ class CreateCompaniesTable extends Migration
         Schema::create('companies', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            $table->unsignedBigInteger('logo_image_id')->index()->nullable();
+            $table->string('logo_url');
             $table->string('name');
             $table->string('email');
 
@@ -26,8 +26,6 @@ class CreateCompaniesTable extends Migration
             $table->string('ceo_name');
             $table->unsignedBigInteger('staff_number_type');
             $table->string('website_url')->nullable();
-
-            $table->foreign('logo_image_id')->references('id')->on('files')->onDelete('set null');
 
             $table->timestamps();
             $table->softDeletes();

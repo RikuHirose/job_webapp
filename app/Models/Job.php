@@ -13,7 +13,7 @@ class Job extends Model
 
     protected $fillable = [
       'id',
-      'bg_image_id',
+      'cover_url',
       'company_id',
       'title',
       'description',
@@ -31,11 +31,6 @@ class Job extends Model
     ];
 
     // Relations
-    public function bgImage()
-    {
-        return $this->belongsTo(\App\Models\File::class, 'bg_image_id', 'id');
-    }
-
     public function company()
     {
         return $this->belongsTo(\App\Models\Company::class, 'company_id', 'id');
