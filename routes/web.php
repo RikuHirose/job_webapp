@@ -14,6 +14,17 @@
 
 Auth::routes();
 
+Route::group([
+    'as'            => 'auth.',
+    'prefix'        => 'auth/',
+    'namespace'     => 'Auth'
+], function () {
+  Route::get('login/{provider}',    'SocialAccountController@redirectToProvider')->name('get.provider');
+  Route::get('{provider}/callback', 'SocialAccountController@handleProviderCallback');
+  Route::get('email', 'SocialAccountController@getEmail')->name('get.email');
+});
+
+
 Route::group(['namespace' => 'User'], function () {
   Route::get('/', 'IndexController@index')->name('index');
   // jobs

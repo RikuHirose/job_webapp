@@ -17,6 +17,7 @@ use App\Repositories\Application\ApplicationRepositoryInterface;
 use App\Repositories\UserOccupation\UserOccupationRepositoryInterface;
 
 use App\Services\S3\S3ServiceInterface;
+use App\Services\SocialAccount\SocialAccountServiceInterface;
 
 class Controller extends BaseController
 {
@@ -32,6 +33,7 @@ class Controller extends BaseController
     protected $userOccupationRepository;
 
     protected $s3Service;
+    protected $socialAccountService;
 
     public function __construct(
         JobRepositoryInterface $jobRepository,
@@ -43,7 +45,8 @@ class Controller extends BaseController
         ApplicationRepositoryInterface $applicationRepository,
         UserOccupationRepositoryInterface $userOccupationRepository,
 
-        S3ServiceInterface $s3Service
+        S3ServiceInterface $s3Service,
+        SocialAccountServiceInterface $socialAccountService
     )
     {
         $this->jobRepository            = $jobRepository;
@@ -55,5 +58,6 @@ class Controller extends BaseController
         $this->applicationRepository    = $applicationRepository;
         $this->userOccupationRepository = $userOccupationRepository;
         $this->s3Service                = $s3Service;
+        $this->socialAccountService     = $socialAccountService;
     }
 }

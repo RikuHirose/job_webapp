@@ -14,9 +14,11 @@
               <!-- login fb -->
               <div>
                 <div class="text-center mb-3">
-                  <button class="m-btn mx-auto col-md-6" btn-type="facebook" type="submit">
-                    facebookアカウントでログイン
-                  </button>
+                  <a href="{{ route('auth.get.provider', ['provider' => 'facebook']) }}">
+                    <button class="m-btn mx-auto col-md-6" btn-type="facebook" type="button">
+                      facebookアカウントでログイン
+                    </button>
+                  </a>
                 </div>
 
                 <div class="mt-2 mb-3 gray text-center">

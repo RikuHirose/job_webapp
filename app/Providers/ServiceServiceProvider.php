@@ -21,10 +21,16 @@ class ServiceServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // User
+        // S3
         $this->app->singleton(
             \App\Services\S3\S3ServiceInterface::class,
             \App\Services\S3\S3Service::class
+        );
+
+        // SocialAccount
+        $this->app->singleton(
+            \App\Services\SocialAccount\SocialAccountServiceInterface::class,
+            \App\Services\SocialAccount\SocialAccountService::class
         );
     }
 }
