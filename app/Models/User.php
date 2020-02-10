@@ -89,4 +89,15 @@ class User extends Authenticatable
     {
         return \UserHelper::getBirthDay($this->birthday);
     }
+
+    public function getCoverUrlFullAttribute()
+    {
+        if (is_null($this->cover_url)) {
+            return '/images/user-default.svg';
+        }
+
+        if ($this->cover_url) {
+            return config('filesystems.disks.s3.url').$this->cover_url;
+        }
+    }
 }

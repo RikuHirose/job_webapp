@@ -42,6 +42,16 @@ class RegisterController extends Controller
     }
 
     /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        return view('auth.register');
+    }
+
+    /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
@@ -83,7 +93,7 @@ class RegisterController extends Controller
         return redirect('/')->with([
             'toast' => [
                 'status'  => 'success',
-                'message' => '編集しました'
+                'message' => '登録しました'
             ]
         ]);
     }

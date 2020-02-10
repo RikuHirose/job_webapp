@@ -18,6 +18,14 @@
       @csrf
 
       <div class="m-frmbox">
+
+        <image-upload-input
+          :default-cover-url-full="{{ json_encode(!empty($currentUser->cover_url_full) ? $currentUser->cover_url_full : '') }}"
+        ></image-upload-input>
+
+      </div>
+
+      <div class="m-frmbox">
         <label>お名前</label>
         <input type="text" class="form-control m-frmbox__text" name="name" value="{{ $currentUser->name }}" required>
       </div>
