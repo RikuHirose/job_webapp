@@ -141,7 +141,9 @@
       </div>
 
       <div class="p-job-show--other__more">
-        <a href="">もっと見る</a>
+        <a href="{{ \UrlHelper::jobsIndexWithParameterBySkillAndOccuoation($job->skills, $job->occupations) }}">
+          もっと見る
+        </a>
       </div>
     </div>
 

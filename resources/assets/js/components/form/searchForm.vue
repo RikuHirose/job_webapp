@@ -154,7 +154,7 @@ export default {
   props: {
     skills: {required: true, type: Array},
     occupations: {required: true, type: Array},
-    parameters: {required: true, type: Array},
+    parameters: {required: true, type: Object},
     officeTime: {required: true, type: Array},
     workTime: {required: true, type: Array},
     searchButtonTitle: {required: true, type: String},
@@ -190,8 +190,12 @@ export default {
       if (this.parameters['word']) {
         this.freeWord = this.parameters['word']
       }
-      if (this.parameters['occupation_id']) { this.occupation_id = this.parameters['occupation_id'][0] }
-      if (this.parameters['skill_id']) { this.skill_id = this.parameters['skill_id'][0] }
+      if (this.parameters['occupation_id']) {
+        this.occupation_id = !this.parameters['occupation_id'][0] ? '' : this.parameters['occupation_id'][0]
+      }
+      if (this.parameters['skill_id']) {
+        this.skill_id = !this.parameters['skill_id'][0] ? '' : this.parameters['skill_id'][0]
+      }
       if (this.parameters['work_time']) { this.work_time = this.parameters['work_time'] }
       if (this.parameters['office_time']) { this.office_time = this.parameters['office_time'] }
     },

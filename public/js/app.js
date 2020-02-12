@@ -2228,7 +2228,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     parameters: {
       required: true,
-      type: Array
+      type: Object
     },
     officeTime: {
       required: true,
@@ -2276,11 +2276,11 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       if (this.parameters['occupation_id']) {
-        this.occupation_id = this.parameters['occupation_id'][0];
+        this.occupation_id = !this.parameters['occupation_id'][0] ? '' : this.parameters['occupation_id'][0];
       }
 
       if (this.parameters['skill_id']) {
-        this.skill_id = this.parameters['skill_id'][0];
+        this.skill_id = !this.parameters['skill_id'][0] ? '' : this.parameters['skill_id'][0];
       }
 
       if (this.parameters['work_time']) {

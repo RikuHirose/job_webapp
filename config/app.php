@@ -236,6 +236,7 @@ return [
         'Twitter'   => Artesaos\SEOTools\Facades\TwitterCard::class,
         // helper
         'SeoHelper' => App\Facades\Helpers\SeoHelper::class,
+        'UrlHelper' => \App\Facades\Helpers\UrlHelper::class,
         'UserHelper' => \App\Facades\Helpers\UserHelper::class,
         'MailHelper' => \App\Facades\Helpers\MailHelper::class,
     ],

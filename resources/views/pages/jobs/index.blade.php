@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="p-index">
+<div class="p-job-index">
 
-  <div>
+  <div class="p-job-index__search-form">
     <search-form
       :skills="{{ json_encode($allSkills) }}"
       :occupations="{{ json_encode($allOccupations) }}"
@@ -17,7 +17,8 @@
     @include('components.jobs.count', ['jobs' => $jobs, 'title' => '求人一覧'])
   </div>
 
-  @each('components.jobs.indexCard', $jobs, 'job')
+
+  @each('components.jobs.indexCard', $jobs, 'job' ,'pages.jobs.empty')
 
   {{ $jobs->links('vendor.pagination.default') }}
 </div>
