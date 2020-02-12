@@ -1,5 +1,5 @@
 <div class="c-job-search">
-  <search-form
+  <search-sp-form
         :skills="{{ json_encode($allSkills) }}"
         :occupations="{{ json_encode($allOccupations) }}"
         :office-time="{{ json_encode(config('constants.job.office_time')) }}"

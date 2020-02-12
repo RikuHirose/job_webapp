@@ -11567,10 +11567,10 @@ a.m-btn {
 * ========================================================================= */
 
 /* ----------------------------------------------------------------------------
- * page home
+ * page index
  * ------------------------------------------------------------------------- */
 
-.p-home__image {
+.p-index__image {
   height: 400px;
   position: relative;
   background-image: url(/images/bg-top.jpg);
@@ -11583,7 +11583,7 @@ a.m-btn {
   width: 100%;
 }
 
-.p-home--copy {
+.p-index--copy {
   position: relative;
   color: #fff;
   font-size: 36px;
@@ -11594,20 +11594,9 @@ a.m-btn {
   margin-bottom: 48px;
 }
 
-.p-home__search-form {
+.p-index__search-form {
   width: 100%;
-}
-
-.p-home .m-search i {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 16px 10px;
-}
-
-.p-home .m-search input,
-.p-home .m-search button {
-  height: 54px;
+  padding: 0 16px;
 }
 
 /* ----------------------------------------------------------------------------

@@ -1,19 +1,13 @@
 @extends('layouts.app', ['noContainer' => true])
 
 @section('content')
-<div class="p-home">
+<div class="p-index">
 
-  <!-- p-home--image -->
-  <div class="p-home__image">
-    <p class="p-home--copy">あなたのエンジニアキャリアの一歩目のために</p>
-    <div class="p-home__search-form">
-        <search-form
-        :skills="{{ json_encode($allSkills) }}"
-        :occupations="{{ json_encode($allOccupations) }}"
-        :office-time="{{ json_encode(config('constants.job.office_time')) }}"
-        :work-time="{{ json_encode(config('constants.job.work_time')) }}"
-        :parameters="{}"
-        :search-button-title="'検索する'" />
+  <!-- p-index--image -->
+  <div class="p-index__image">
+    <p class="p-index--copy">あなたのエンジニアキャリアの一歩目のために</p>
+    <div class="p-index__search-form">
+        @include('components.jobs.search')
     </div>
   </div>
 

@@ -7,6 +7,12 @@
           v-model="freeWord"
           type="text"
           placeholder="フリーワードで検索">
+
+        <button
+        class="m-search__input--btn"
+        @click="searchJobs()">
+          <i class="fa-search"></i>
+        </button>
       </div>
       <div>
         <button
@@ -15,14 +21,6 @@
           btn-type="search-obsessed"
           @click="openObsessedBar()">
           <span class="mr-3">こだわり条件</span>
-        </button>
-      </div>
-      <div>
-        <button
-          type="button"
-          class="m-btn"
-          @click="searchJobs()">
-          {{ searchButtonTitle }}
         </button>
       </div>
     </div>
@@ -125,6 +123,14 @@
         </tr>
       </table>
 
+      <div class="search--wrap">
+        <button
+          class="search__btn"
+          @click="searchJobs()">
+          {{ searchButtonTitle }}
+        </button>
+      </div>
+
       <div class="clearObsesed--wrap">
         <button
           class="clearObsesed__btn"
@@ -204,21 +210,11 @@ export default {
 </script>
 <style lang="scss" scoped>
 .m-search {
-
-  i {
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 16px 10px;
-  }
-  input, button {
-    height: 54px;
-  }
-
   box-shadow: 0 1px 2px 0 rgba(0,0,0,.2);
   border-radius: 2px;
-  width: 656px;
+  width: 100%;
   margin: 0 auto;
+  height: 40px;
   &--wrap {
     display: flex;
     width: 100%;
@@ -291,10 +287,20 @@ export default {
 
   &__input {
     position: relative;
-    width: 56%;
+    width: 80%;
     i {
       transition: 0.3s;
       color: #aaaaaa;
+    }
+
+    &--btn {
+      font-size: 16px;
+      color: #202020;
+      background-color: transparent;
+      border: none;
+      position: absolute;
+      top: 8px;
+      right: 8px;
     }
   }
   &__input input[type='text'] {
@@ -306,6 +312,8 @@ export default {
     letter-spacing: 1px;
     border: 0;
     border-radius: 4px;
+    background: #fff;
+    height: 40px;
     &:focus {
       outline: none;
     }
@@ -352,6 +360,24 @@ export default {
     }
   }
 
+  .search {
+    &--wrap {
+      width: 100%;
+      text-align:center;
+      margin-bottom: 16px;
+    }
+    &__btn {
+      width: 72%;
+      height: 32px !important;
+      border: 1px solid #19bfbf;
+      border-radius: 24px;
+      border-color: #19bfbf;
+      color: #fff;
+      background: #19bfbf;
+
+    }
+  }
+
   .clearObsesed {
     &--wrap {
       width: 100%;
@@ -362,6 +388,9 @@ export default {
       height: 32px !important;
       border: 1px solid #d5d5d8;
       background: #fff;
+      border-radius: 24px;
+      border: 1px solid #19bfbf;
+      color: #19bfbf;
 
     }
   }
