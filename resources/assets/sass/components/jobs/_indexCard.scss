@@ -67,3 +67,19 @@
     }
   }
  }
+
+@include max-screen($breakpoint-mobile) {
+  .c-job-index-card {
+    &--img__sizing {
+      height: 180px;
+    }
+    &--desc {
+      min-height: 56px;
+    }
+    hr {
+      border: 0;
+      border-top: 1px solid #3a3a3a;
+      margin: 32px 0;
+    }
+  }
+}

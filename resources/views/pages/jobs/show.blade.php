@@ -73,7 +73,7 @@
 
     <!-- show actions -->
     <div class="p-job-show--actions">
-      <div class="w-50 mx-auto">
+      <div class="p-job-show--actions__btns">
         @guest
           <a href="{{ route('login') }}">
             <button class="m-btn" btn-type="favorite">

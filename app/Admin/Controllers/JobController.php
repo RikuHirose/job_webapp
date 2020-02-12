@@ -34,8 +34,7 @@ class JobController extends Controller
         $grid->column('company_id', __('Company id'));
 
         $grid->cover_url(__('cover'))->display(function ($cover_url) {
-            $url = config('filesystems.disks.s3.url').$cover_url;
-            return "<img src='$url' width='50' height='50'>";
+            return "<img src='$cover_url' width='50' height='50'>";
         });
 
         $grid->column('title', __('Title'));

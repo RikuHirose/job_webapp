@@ -10988,6 +10988,22 @@ input[type=button]::focus {
   text-align: center;
 }
 
+@media screen and (max-width: 640px) {
+  .c-job-index-card--img__sizing {
+    height: 180px;
+  }
+
+  .c-job-index-card--desc {
+    min-height: 56px;
+  }
+
+  .c-job-index-card hr {
+    border: 0;
+    border-top: 1px solid #3a3a3a;
+    margin: 32px 0;
+  }
+}
+
 /* ----------------------------------------------------------------------------
  * jobs smallCard
  * ------------------------------------------------------------------------- */
@@ -11674,9 +11690,21 @@ a.m-btn {
   margin-bottom: 16px;
 }
 
+.p-job-show--actions__btns {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
+
 .p-job-show--other__more {
   text-align: center;
   margin: 40px 0;
+}
+
+@media screen and (max-width: 640px) {
+  .p-job-show--actions__btns {
+    width: 100%;
+  }
 }
 
 /* ----------------------------------------------------------------------------

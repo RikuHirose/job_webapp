@@ -49,12 +49,28 @@
     }
   }
 
+  &--actions {
+    &__btns {
+      width: 50%;
+      margin: 0 auto;
+      text-align: center;
+    }
+  }
+
   &--other {
     &__more {
       text-align: center;
       margin: 40px 0;
     }
   }
+}
 
-
+@include max-screen($breakpoint-mobile) {
+  .p-job-show {
+    &--actions {
+      &__btns {
+        width: 100%;
+      }
+    }
+  }
 }
