@@ -15,7 +15,7 @@
     <div class="p-job-show--description">
       <h2 class="h2-ttl">概要</h2>
       <p>
-        {{ $job->description }}
+        {!! $job->description !!}
       </p>
     </div>
 
@@ -23,7 +23,7 @@
     <div class="p-job-show--application-qualification">
       <h2 class="h2-ttl">募集要件</h2>
         <p>
-        {{ $job->application_qualification }}
+        {!! $job->application_qualification !!}
       </p>
     </div>
 

@@ -28,6 +28,7 @@ class Job extends Model
     // カスタムの情報を返す
     protected $appends = [
         'short_title',
+        'short_description',
     ];
 
     // Relations
@@ -71,6 +72,11 @@ class Job extends Model
     public function getShortTitleAttribute()
     {
         return mb_strimwidth($this->title, 0, 55, '...');
+    }
+
+    public function getShortDescriptionAttribute()
+    {
+        return mb_strimwidth($this->description, 0, 200, '...');
     }
 
     public function getAdminSkillsAttribute($value)
