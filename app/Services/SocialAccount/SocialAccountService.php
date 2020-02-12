@@ -3,15 +3,28 @@
 namespace App\Services\SocialAccount;
 
 use Laravel\Socialite\Contracts\User as ProviderUser;
-use App\Models\SocialAccount;
+use App\Repositories\SocialAccount\SocialAccountRepositoryInterface;
 
 class SocialAccountService implements SocialAccountServiceInterface
 {
-    public function getOrCreate($providerUser, $provider)
+    protected $socialAccountRepository;
+
+    public function __construct(
+        SocialAccountRepositoryInterface $socialAccountRepository
+    )
     {
-        $account = SocialAccount::where('provider', $provider)
-            ->where('provider_user_id', $providerUser->getId())
-            ->first();
+        $this->socialAccountRepository = $socialAccountRepository;
+    }
+
+    public function firstOrCreate($providerUser, $provider)
+    {
+        $account = $this->socialAccountRepository->firstOrCreate([
+            'provider' => $provider,
+            'provider_user_id', $providerUser->getId()
+        ]);
+        // $account = SocialAccount::where('provider', $provider)
+        //     ->where('provider_user_id', $providerUser->getId())
+        //     ->first();
 
         if ($account) {
             return $account->user;

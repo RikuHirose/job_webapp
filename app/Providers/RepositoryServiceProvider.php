@@ -72,6 +72,12 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repositories\Company\CompanyRepositoryInterface::class,
             \App\Repositories\Company\CompanyRepository::class
         );
+
+        // SocialAccount
+        $this->app->singleton(
+            \App\Repositories\SocialAccount\SocialAccountRepositoryInterface::class,
+            \App\Repositories\SocialAccount\SocialAccountRepository::class
+        );
     }
 
     /**

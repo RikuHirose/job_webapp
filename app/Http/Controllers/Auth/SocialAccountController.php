@@ -15,6 +15,8 @@ class SocialAccountController extends Controller
      */
     public function redirectToProvider($provider)
     {
+        // session(['previousPage' => url()->previous()]);
+
         return \Socialite::driver($provider)->redirect();
     }
 
@@ -23,25 +25,58 @@ class SocialAccountController extends Controller
      *
      * @return Response
      */
-    public function handleProviderCallback($provider)
+    public function handleProviderCallback($providerName)
     {
 
         try {
-            $user = \Socialite::with($provider)->user();
+            $socialUser = \Socialite::with($providerName)->user();
         } catch (\Exception $e) {
             \Log::error($e);
             return redirect('/login');
         }
 
-        $authUser = $this->socialAccountService->getOrCreate($user, $provider);
+        //privider_idですでに登録済みかチェック
+        $socialAccount = $this->socialAccountRepository->findByProviderId($socialUser->getId());
 
-        if(!$authUser) {
-            return redirect(route('auth.get.email'));
+        if (!$socialAccount) {
+
+            $user = \DB::transaction(function () use ($socialUser, $providerName) {
+
+                $user = $this->userRepository->firstOrCreate([
+                      'name'        => $socialUser->getName(),
+                      'email'       => $socialUser->getEmail(),
+                      'cover_url'   => $socialUser->avatar_original
+                ]);
+
+                $socialAccount = $this->socialAccountRepository->firstOrCreate([
+                    'user_id'     => $user->id,
+                    'provider_id' => $socialUser->getId(),
+                    'provider'    => $providerName
+                ]);
+
+                return $user;
+          });
         }
 
-        Auth::login($authUser);
+        if ($socialAccount) {
 
-        return redirect()->to('/');
+            $user = $this->userRepository->find($socialAccount->user_id);
+        }
+
+        auth()->login($user);
+
+
+        // if (!$authUser) {
+        //     return redirect(route('auth.get.email'));
+        // }
+
+        return redirect('/')->with([
+            'toast' => [
+                'status'  => 'success',
+                'message' => 'ログインしました'
+            ]
+        ]);
+
     }
 
     public function getEmail()
