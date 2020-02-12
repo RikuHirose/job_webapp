@@ -31,6 +31,7 @@ Vue.component('toast', require('./components/toast.vue').default)
  * form
  * ========================================================================= */
 Vue.component('search-form', require('./components/form/searchForm.vue').default)
+Vue.component('search-sp-form', require('./components/form/searchSpForm.vue').default)
 
 /* ============================================================================
  * input
