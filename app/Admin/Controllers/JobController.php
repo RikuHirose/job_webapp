@@ -117,8 +117,8 @@ class JobController extends Controller
         $form->multipleSelect('adminOccupations', 'occupations')->options(Occupation::all()->pluck('name', 'id'));
 
         $form->text('title', __('Title'));
-        $form->textarea('description', __('Description'));
-        $form->textarea('application_qualification', __('Application qualification'));
+        $form->summernote('description', __('Description'));
+        $form->summernote('application_qualification', __('Application qualification'));
         $form->text('salary_min', __('Salary min'));
         $form->text('salary_max', __('Salary max'));
 

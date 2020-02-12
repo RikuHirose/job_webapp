@@ -29,13 +29,13 @@
       </div>
     </div>
 
-    <div class="c-job-index-card--desc">
+<!--     <div class="c-job-index-card--desc">
       @if(!empty($job->description))
         <p class="c-job-index-card--desc-p">
-          {{ $job->description }}
+          {!! $job->short_description !!}
         </p>
       @endif
-    </div>
+    </div> -->
 
     <div class="c-job-index-card__btn--wrap">
       <a href="{{ route('jobs.show', $job->id) }}" class="w-100 m-btnM" btn-type="primary">
