@@ -2228,7 +2228,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     parameters: {
       required: true,
-      type: Object
+      type: Array
     },
     officeTime: {
       required: true,

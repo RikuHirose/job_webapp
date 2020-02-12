@@ -154,7 +154,7 @@ export default {
   props: {
     skills: {required: true, type: Array},
     occupations: {required: true, type: Array},
-    parameters: {required: true, type: Object},
+    parameters: {required: true, type: Array},
     officeTime: {required: true, type: Array},
     workTime: {required: true, type: Array},
     searchButtonTitle: {required: true, type: String},

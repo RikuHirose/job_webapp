@@ -8,7 +8,7 @@ class SocialAccount extends Model
     protected $table = 'social_accounts';
 
     protected $fillable = [
-        'provider_user_id',
+        'provider_id',
         'provider_access_token',
         'provider',
         'user_id',

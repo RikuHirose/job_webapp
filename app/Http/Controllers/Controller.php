@@ -14,9 +14,11 @@ use App\Repositories\Favorite\FavoriteRepositoryInterface;
 use App\Repositories\UserSkill\UserSkillRepositoryInterface;
 use App\Repositories\Occupation\OccupationRepositoryInterface;
 use App\Repositories\Application\ApplicationRepositoryInterface;
+use App\Repositories\SocialAccount\SocialAccountRepositoryInterface;
 use App\Repositories\UserOccupation\UserOccupationRepositoryInterface;
 
 use App\Services\S3\S3ServiceInterface;
+use App\Services\SocialAccount\SocialAccountServiceInterface;
 
 class Controller extends BaseController
 {
@@ -29,9 +31,11 @@ class Controller extends BaseController
     protected $userSkillRepository;
     protected $occupationRepository;
     protected $applicationRepository;
+    protected $socialAccountRepository;
     protected $userOccupationRepository;
 
     protected $s3Service;
+    protected $socialAccountService;
 
     public function __construct(
         JobRepositoryInterface $jobRepository,
@@ -41,9 +45,11 @@ class Controller extends BaseController
         UserSkillRepositoryInterface $userSkillRepository,
         OccupationRepositoryInterface $occupationRepository,
         ApplicationRepositoryInterface $applicationRepository,
+        SocialAccountRepositoryInterface $socialAccountRepository,
         UserOccupationRepositoryInterface $userOccupationRepository,
 
-        S3ServiceInterface $s3Service
+        S3ServiceInterface $s3Service,
+        SocialAccountServiceInterface $socialAccountService
     )
     {
         $this->jobRepository            = $jobRepository;
@@ -53,7 +59,9 @@ class Controller extends BaseController
         $this->userSkillRepository      = $userSkillRepository;
         $this->occupationRepository     = $occupationRepository;
         $this->applicationRepository    = $applicationRepository;
+        $this->socialAccountRepository  = $socialAccountRepository;
         $this->userOccupationRepository = $userOccupationRepository;
         $this->s3Service                = $s3Service;
+        $this->socialAccountService     = $socialAccountService;
     }
 }
