@@ -28,9 +28,9 @@ class AppServiceProvider extends ServiceProvider
         // https://qiita.com/niiyz/items/f0b63e7afeb540a8b4b1
         URL::forceRootUrl(config('app.url'));// ルートURLを設定
 
-        if(config('app.env') === 'production'){
-            // asset()やurl()がhttpsで生成される
-            URL::forceScheme('https');
-        }
+        // if (config('app.env') === 'production'){
+        //     // asset()やurl()がhttpsで生成される
+        //     URL::forceScheme('https');
+        // }
     }
 }
