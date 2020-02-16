@@ -55,8 +55,8 @@ Route::group(['namespace' => 'User'], function () {
 });
 
 
-// Route::group(['as' => 'about.'], function () {
-//   Route::get('/privacy', 'User\AboutController@privacy')->name('privacy');
-//   Route::get('/term', 'User\AboutController@term')->name('term');
-// });
+Route::group(['as' => 'about.'], function () {
+  Route::get('/privacy', 'User\AboutController@privacy')->name('privacy');
+  // Route::get('/term', 'User\AboutController@term')->name('term');
+});
 
