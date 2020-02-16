@@ -23,6 +23,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- {{ config('app.url') }} -->
 </head>
 <body>
     <div id="app">
