@@ -45,6 +45,7 @@ class LoginController extends Controller
     {
         // 前のpageのurlをsessionに格納する
         // https://stackoverflow.com/questions/29954791/laravel-5-after-login-redirect-back-to-previous-page
+        \Log::info(url()->previous());
         Session::put('previousPage', url()->previous());
 
         return view('auth.login');
