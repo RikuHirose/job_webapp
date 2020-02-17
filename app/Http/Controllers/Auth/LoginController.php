@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -44,7 +45,7 @@ class LoginController extends Controller
     {
         // 前のpageのurlをsessionに格納する
         // https://stackoverflow.com/questions/29954791/laravel-5-after-login-redirect-back-to-previous-page
-        session(['previousPage' => url()->previous()]);
+        Session::put('previousPage', url()->previous());
 
         return view('auth.login');
     }
@@ -58,8 +59,8 @@ class LoginController extends Controller
      */
     protected function authenticated(Request $request, $user)
     {
-        \Log::info('previousPage: '.session('previousPage'));
-        return redirect(session('previousPage'))->with([
+        \Log::info('previousPage: '.Session::get('previousPage'));
+        return redirect(Session::get('previousPage'))->with([
             'toast' => [
                 'status'  => 'success',
                 'message' => 'ログインしました'
