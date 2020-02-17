@@ -58,6 +58,7 @@ class LoginController extends Controller
      */
     protected function authenticated(Request $request, $user)
     {
+        \Log::info('previousPage: '.session('previousPage'));
         return redirect(session('previousPage'))->with([
             'toast' => [
                 'status'  => 'success',
