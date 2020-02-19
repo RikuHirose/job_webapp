@@ -13,15 +13,15 @@
                 <li class="mb-4">
                   <a href="/" class="text-white">トップ</a>
                 </li>
-                <li class="mb-4">
+                <!-- <li class="mb-4">
                   <a href="" class="text-white">お問い合わせ</a>
-                </li>
+                </li> -->
                 <li class="mb-4">
                   <a href="{{ route('about.privacy') }}" class="text-white">プライバシーポリシー</a>
                 </li>
-                <li class="mb-4">
+                <!-- <li class="mb-4">
                   <a href="" class="text-white">利用規約</a>
-                </li>
+                </li> -->
               </ul>
           </div>
         </div>
