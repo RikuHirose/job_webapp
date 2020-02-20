@@ -36,7 +36,7 @@ class SocialAccountController extends Controller
             \Log::info($socialUser2);
 
         } catch (\Exception $e) {
-            \Log::error(url()->current());
+            \Log::error(url()->full());
             \Log::error($e);
             return redirect('/login');
         }

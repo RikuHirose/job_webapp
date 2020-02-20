@@ -52,7 +52,6 @@ class User extends Authenticatable
         'birthday_year',
         'birthday_mounth',
         'birthday_day',
-        'cover_url_full',
     ];
 
     // Relations
@@ -89,14 +88,5 @@ class User extends Authenticatable
     public function getBirthdayDayAttribute()
     {
         return \UserHelper::getBirthDay($this->birthday);
-    }
-
-    public function getCoverUrlFullAttribute()
-    {
-        if (is_null($this->cover_url)) {
-            return '/images/user-default.svg';
-        }
-
-        return $this->cover_url;
     }
 }
