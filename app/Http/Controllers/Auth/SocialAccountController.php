@@ -32,8 +32,8 @@ class SocialAccountController extends Controller
             // https://qiita.com/hikarizm/items/44c1e9ff34726c9260d3
             $socialUser = \Socialite::driver($providerName)->stateless()->user();
             $socialUser2 = \Socialite::driver($providerName)->user();
-            \Log::info($socialUser);
-            \Log::info($socialUser2);
+            logger($socialUser);
+            logger($socialUser2);
 
         } catch (\Exception $e) {
             \Log::error(url()->full());
