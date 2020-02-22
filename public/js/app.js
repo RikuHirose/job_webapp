@@ -2574,7 +2574,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    defaultCoverUrlFull: {
+    defaultCoverUrl: {
       required: false,
       type: String
     }
@@ -2588,7 +2588,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   created: function created() {
-    this.coverUrl = this.defaultCoverUrlFull;
+    this.coverUrl = this.defaultCoverUrl;
 
     if (this.coverUrl) {
       this.showImage = true;
@@ -2728,12 +2728,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 if (response['status'] === 'success') {
                   this.isApplied = true;
-                  this.$toasted.show('応募しました', {
+                  this.$toasted.show('この求人に応募しました', {
                     type: 'success'
                   });
                 }
 
-              case 4:
+                if (response['status'] === 'fail') {
+                  this.$toasted.show('この求人は既に応募済みです', {
+                    type: 'error'
+                  });
+                }
+
+              case 5:
               case "end":
                 return _context.stop();
             }

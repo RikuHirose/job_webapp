@@ -33,6 +33,8 @@ class ApplicationController extends Controller
                 ]);
             }
 
+            return response(['status' => 'fail']);
+
         } catch (\Exception $e) {
             \Log::error($e);
             return response(['status' => 'fail']);

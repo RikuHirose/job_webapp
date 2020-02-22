@@ -15,7 +15,7 @@
     import * as api from '../../services/api'
     export default {
         props: {
-            defaultCoverUrlFull: {required: false, type: String},
+            defaultCoverUrl: {required: false, type: String},
         },
         data: function(){
             return {
@@ -26,7 +26,7 @@
             }
         },
         created() {
-            this.coverUrl = this.defaultCoverUrlFull
+            this.coverUrl = this.defaultCoverUrl
             if (this.coverUrl) {
                 this.showImage = true
             }

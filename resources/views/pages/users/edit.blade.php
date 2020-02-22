@@ -4,22 +4,12 @@
 <div class="p-user-edit">
 
   <div class="p-user-edit__container">
-    <!-- error message -->
-    @if($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
     <form action="{{ route('user.update') }}" method="POST">
       @csrf
 
       <div class="m-frmbox">
         <image-upload-input
-          :default-cover-url-full="{{ json_encode(!empty($currentUser->cover_url_full) ? $currentUser->cover_url_full : '') }}"
+          :default-cover-url="{{ json_encode(!empty($currentUser->cover_url) ? $currentUser->cover_url : '') }}"
         ></image-upload-input>
 
       </div>

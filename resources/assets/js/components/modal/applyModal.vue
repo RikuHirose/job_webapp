@@ -41,7 +41,11 @@ export default {
 
         if (response['status'] === 'success') {
           this.isApplied = true
-          this.$toasted.show('応募しました', {type : 'success'})
+          this.$toasted.show('この求人に応募しました', {type : 'success'})
+        }
+
+        if (response['status'] === 'fail') {
+          this.$toasted.show('この求人は既に応募済みです', {type : 'error'})
         }
     },
   }
