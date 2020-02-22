@@ -5,7 +5,7 @@
 
   <!-- p-index--image -->
   <div class="p-index__image">
-    <p class="p-index--copy">あなたのエンジニアキャリアの一歩目のために</p>
+    <p class="p-index--copy">エンジニアキャリアの一歩目を支える</p>
     <div class="p-index__search-form">
         @include('components.jobs.search')
     </div>

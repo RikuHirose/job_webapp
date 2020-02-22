@@ -140,12 +140,9 @@
       @click.self="closeObsessedBar()" />
   </div>
 </template>
+
 <script>
-// import FileUpload from 'vue-upload-component'
 export default {
-  // components: {
-  //   FileUpload,
-  // },
   props: {
     skills: {required: true, type: Array},
     occupations: {required: true, type: Array},
