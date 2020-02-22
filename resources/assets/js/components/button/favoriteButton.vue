@@ -40,6 +40,8 @@ export default {
         if (response['status'] === 'success') {
           this.likesCount = response['likesCount']
           this.isLiked    = response['isLiked']
+
+          this.$toasted.show('この求人をお気に入りに追加しました', {type : 'success'})
         }
     },
 
@@ -49,6 +51,8 @@ export default {
         if (response['status'] === 'success') {
           this.likesCount = response['likesCount']
           this.isLiked    = response['isLiked']
+
+          this.$toasted.show('この求人をお気に入りから削除しました', {type : 'success'})
         }
 
         // if (response['status'] === 'fail') {
