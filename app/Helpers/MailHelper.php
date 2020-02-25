@@ -9,6 +9,8 @@ class MailHelper
     {
         if (config('app.env') === 'production') {
             Mail::to($to)->send($sendContent);
+
+            $content = view($sendContent->build()->view, $sendContent->build()->viewData)->render();
             \Log::debug('TO: '.$to.' | Subject: '.$sendContent->build()->subject.' | Content: '.$content);
         }
 
