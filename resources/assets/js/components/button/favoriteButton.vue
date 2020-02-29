@@ -7,7 +7,7 @@
     </button>
     <button
       v-if="isLiked"
-      class="m-btn" btn-type="favorite" @click="deleteFavorite()">
+      class="m-btn isLiked" btn-type="favorite" @click="deleteFavorite()">
       <span class="fa-star-yellow"></span>気になる! {{ likesCount }}
     </button>
   </div>
@@ -63,4 +63,8 @@ export default {
 
 </script>
 <style lang="scss" scoped>
+.isLiked {
+  background-color: #19bfbf;
+  color: #fff;
+}
 </style>
