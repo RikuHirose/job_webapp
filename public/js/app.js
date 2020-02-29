@@ -2015,8 +2015,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return postFavorite;
     }(),
-    postDisFavorite: function () {
-      var _postDisFavorite = _asyncToGenerator(
+    deleteFavorite: function () {
+      var _deleteFavorite = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
         var response;
@@ -2025,7 +2025,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return _services_api__WEBPACK_IMPORTED_MODULE_1__["postDisFavorite"]({
+                return _services_api__WEBPACK_IMPORTED_MODULE_1__["deleteFavorite"]({
                   job_id: this.jobId,
                   user_id: this.userId
                 });
@@ -2051,11 +2051,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee2, this);
       }));
 
-      function postDisFavorite() {
-        return _postDisFavorite.apply(this, arguments);
+      function deleteFavorite() {
+        return _deleteFavorite.apply(this, arguments);
       }
 
-      return postDisFavorite;
+      return deleteFavorite;
     }()
   }
 });
@@ -2213,11 +2213,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-// import FileUpload from 'vue-upload-component'
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  // components: {
-  //   FileUpload,
-  // },
   props: {
     skills: {
       required: true,
@@ -39662,7 +39659,7 @@ var render = function() {
             attrs: { "btn-type": "favorite" },
             on: {
               click: function($event) {
-                return _vm.postDisFavorite()
+                return _vm.deleteFavorite()
               }
             }
           },
@@ -53315,7 +53312,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!*********************************************!*\
   !*** ./resources/assets/js/services/api.js ***!
   \*********************************************/
-/*! exports provided: postFavorite, postDisFavorite, postApplications, postImages */
+/*! exports provided: postFavorite, postApplications, postImages, deleteFavorite */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -53323,8 +53320,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _postFavorite__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./postFavorite */ "./resources/assets/js/services/postFavorite.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "postFavorite", function() { return _postFavorite__WEBPACK_IMPORTED_MODULE_0__["postFavorite"]; });
 
-/* harmony import */ var _postDisFavorite__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./postDisFavorite */ "./resources/assets/js/services/postDisFavorite.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "postDisFavorite", function() { return _postDisFavorite__WEBPACK_IMPORTED_MODULE_1__["postDisFavorite"]; });
+/* harmony import */ var _deleteFavorite__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./deleteFavorite */ "./resources/assets/js/services/deleteFavorite.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "deleteFavorite", function() { return _deleteFavorite__WEBPACK_IMPORTED_MODULE_1__["deleteFavorite"]; });
 
 /* harmony import */ var _postApplications__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./postApplications */ "./resources/assets/js/services/postApplications.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "postApplications", function() { return _postApplications__WEBPACK_IMPORTED_MODULE_2__["postApplications"]; });
@@ -53336,6 +53333,32 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+/***/ }),
+
+/***/ "./resources/assets/js/services/deleteFavorite.js":
+/*!********************************************************!*\
+  !*** ./resources/assets/js/services/deleteFavorite.js ***!
+  \********************************************************/
+/*! exports provided: deleteFavorite */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteFavorite", function() { return deleteFavorite; });
+function deleteFavorite(formData) {
+  // https://qiita.com/yfujii1127/items/991ae9ff29b478a55b1c
+  return new Promise(function (resolve, reject) {
+    axios["delete"]('/api/v1/favorites', {
+      data: formData
+    }) // eslint-disable-line
+    .then(function (res) {
+      resolve(res.data);
+    })["catch"](function (error) {
+      reject(error);
+    });
+  });
+}
 
 /***/ }),
 
@@ -53352,29 +53375,6 @@ __webpack_require__.r(__webpack_exports__);
 function postApplications(formData) {
   return new Promise(function (resolve, reject) {
     axios.post('/api/v1/applications', formData) // eslint-disable-line
-    .then(function (res) {
-      resolve(res.data);
-    })["catch"](function (error) {
-      reject(error);
-    });
-  });
-}
-
-/***/ }),
-
-/***/ "./resources/assets/js/services/postDisFavorite.js":
-/*!*********************************************************!*\
-  !*** ./resources/assets/js/services/postDisFavorite.js ***!
-  \*********************************************************/
-/*! exports provided: postDisFavorite */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "postDisFavorite", function() { return postDisFavorite; });
-function postDisFavorite(formData) {
-  return new Promise(function (resolve, reject) {
-    axios.post('/api/v1/dis-favorites', formData) // eslint-disable-line
     .then(function (res) {
       resolve(res.data);
     })["catch"](function (error) {

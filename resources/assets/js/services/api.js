@@ -1,5 +1,5 @@
 export * from './postFavorite'
-export * from './postDisFavorite'
+export * from './deleteFavorite'
 export * from './postApplications'
 
 export * from './postImages'

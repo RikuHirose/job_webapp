@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class FavoriteController extends Controller
 {
-    public function postFavorite(Request $request)
+    public function store(Request $request)
     {
         $input = $request->only($this->favoriteRepository->getBlankModel()->getFillable());
 
@@ -29,7 +29,7 @@ class FavoriteController extends Controller
         ]);
     }
 
-    public function postDisFavorite(Request $request)
+    public function delete(Request $request)
     {
         $input = $request->only($this->favoriteRepository->getBlankModel()->getFillable());
 

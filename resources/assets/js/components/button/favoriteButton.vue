@@ -7,7 +7,7 @@
     </button>
     <button
       v-if="isLiked"
-      class="m-btn" btn-type="favorite" @click="postDisFavorite()">
+      class="m-btn" btn-type="favorite" @click="deleteFavorite()">
       <span class="fa-star-yellow"></span>気になる! {{ likesCount }}
     </button>
   </div>
@@ -45,8 +45,8 @@ export default {
         }
     },
 
-    async postDisFavorite() {
-        let response = await api.postDisFavorite( { job_id: this.jobId, user_id: this.userId} )
+    async deleteFavorite() {
+        let response = await api.deleteFavorite( { job_id: this.jobId, user_id: this.userId} )
 
         if (response['status'] === 'success') {
           this.likesCount = response['likesCount']

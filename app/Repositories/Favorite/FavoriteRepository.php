@@ -8,10 +8,10 @@ use App\Repositories\Base\BaseRepository;
 class FavoriteRepository extends BaseRepository implements FavoriteRepositoryInterface
 {
 
-		public function getBlankModel()
-		{
-			return new Favorite();
-		}
+	public function getBlankModel()
+	{
+		return new Favorite();
+	}
 
     public function getFavoriteCount(int $jobId)
     {
