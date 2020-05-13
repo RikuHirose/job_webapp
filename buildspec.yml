@@ -1,0 +1,18 @@
+version: 0.2
+phases:
+  build:
+    commands:
+      - |
+        if [ -e composer.lock ]; then
+          rm -r composer.lock
+        fi
+      - |
+        if [ -e vendor ]; then
+          rm -rf vendor
+        fi
+      - php -dmemory_limit=-1 composer.phar update --no-scripts --prefer-dist --no-interaction
+      - |
+
+artifacts:
+  files:
+    - ./**/*
