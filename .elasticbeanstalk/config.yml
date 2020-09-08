@@ -1,6 +1,7 @@
 branch-defaults:
   master:
     environment: job-webapp-production
+    group_suffix: null
 global:
   application_name: job_webapp
   branch: null
