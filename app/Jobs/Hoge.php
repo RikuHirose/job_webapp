@@ -29,7 +29,9 @@ class Hoge implements ShouldQueue
      */
     public function handle()
     {
-        \Log::channel('slack')->error('test job');
+        \App\Models\Skill::create([
+            'name' => 'test'
+        ]);
     }
 
      /**
