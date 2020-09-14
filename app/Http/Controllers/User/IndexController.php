@@ -23,6 +23,5 @@ class IndexController extends Controller
     public function show(Request $request)
     {
         Hoge::dispatch()->delay(10);
-        dd(1);
     }
 }
