@@ -27,6 +27,8 @@ Route::group([
 
 Route::group(['namespace' => 'User'], function () {
   Route::get('/', 'IndexController@index')->name('index');
+  Route::get('/test', 'IndexController@show')->name('show');
+
   // jobs
   Route::resource('jobs', 'JobController', ['only' => ['index', 'show']]);
 
